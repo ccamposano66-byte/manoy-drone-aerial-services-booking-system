@@ -24,10 +24,10 @@
     .container {
       max-width: 850px;
       margin: auto;
-      background: white;
+      background: #ffffff;
       padding: 30px;
       border-radius: 18px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.20);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
 
     .header {
@@ -75,6 +75,14 @@
       font-size: 15px;
     }
 
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #ff7a00;
+      box-shadow: 0 0 0 2px rgba(255,122,0,0.15);
+    }
+
     textarea {
       min-height: 110px;
       resize: vertical;
@@ -96,6 +104,10 @@
       cursor: pointer;
       font-weight: normal;
       margin: 0;
+    }
+
+    .checkbox-item:hover {
+      background: #fff1e5;
     }
 
     .checkbox-item input {
@@ -175,6 +187,14 @@
       background: #ffe5e5;
       color: #a00000;
       border-radius: 8px;
+      line-height: 1.5;
+      word-break: break-word;
+    }
+
+    .success-message {
+      color: #176b2c;
+      font-weight: bold;
+      margin-top: 10px;
     }
 
     .footer {
@@ -182,9 +202,11 @@
       margin-top: 25px;
       color: #777;
       font-size: 12px;
+      line-height: 1.6;
     }
 
     @media (max-width: 600px) {
+
       body {
         padding: 10px;
       }
@@ -200,6 +222,7 @@
       h1 {
         font-size: 21px;
       }
+
     }
   </style>
 </head>
@@ -225,24 +248,55 @@
 
   <form id="bookingForm">
 
+    <!-- CLIENT INFORMATION -->
+
     <h2>Client Information</h2>
 
     <label>Full Name *</label>
-    <input type="text" id="clientName" required>
+
+    <input
+      type="text"
+      id="clientName"
+      placeholder="Enter your full name"
+      required
+    >
+
 
     <label>Company / Organization</label>
-    <input type="text" id="company">
+
+    <input
+      type="text"
+      id="company"
+      placeholder="Company name"
+    >
+
 
     <label>Mobile Number *</label>
-    <input type="tel" id="mobile" required>
+
+    <input
+      type="tel"
+      id="mobile"
+      placeholder="09XXXXXXXXX"
+      required
+    >
+
 
     <label>Email Address *</label>
-    <input type="email" id="email" required>
 
+    <input
+      type="email"
+      id="email"
+      placeholder="your@email.com"
+      required
+    >
+
+
+    <!-- PROJECT DETAILS -->
 
     <h2>Project Details</h2>
 
     <label>Project Location *</label>
+
     <input
       type="text"
       id="location"
@@ -250,11 +304,23 @@
       required
     >
 
+
     <label>Preferred Date *</label>
-    <input type="date" id="date" required>
+
+    <input
+      type="date"
+      id="date"
+      required
+    >
+
 
     <label>Preferred Time</label>
-    <input type="time" id="time">
+
+    <input
+      type="time"
+      id="time"
+    >
+
 
     <label>Project Description *</label>
 
@@ -264,6 +330,8 @@
       required
     ></textarea>
 
+
+    <!-- SERVICES -->
 
     <h2>Select Drone Services</h2>
 
@@ -352,6 +420,8 @@
     </div>
 
 
+    <!-- DRONE -->
+
     <h2>Preferred Drone / Equipment</h2>
 
     <select id="drone">
@@ -391,6 +461,8 @@
     </select>
 
 
+    <!-- PAYMENT -->
+
     <h2>Down Payment</h2>
 
     <div class="payment-box">
@@ -417,14 +489,22 @@
       <div class="payment-info">
 
         <strong>GCash</strong><br>
-        Account Name: Carlos Diego Camposano<br>
-        GCash Number: 09266166632
+
+        Account Name:
+        Carlos Diego Camposano<br>
+
+        GCash Number:
+        09266166632
 
         <br><br>
 
         <strong>RCBC Bank Transfer</strong><br>
-        Account Name: Carlos Diego Camposano<br>
-        Account Number: 0000009052660268
+
+        Account Name:
+        Carlos Diego Camposano<br>
+
+        Account Number:
+        0000009052660268
 
       </div>
 
@@ -450,27 +530,49 @@
     </div>
 
 
-    <button type="submit" id="submitButton">
+    <button
+      type="submit"
+      id="submitButton"
+    >
       Submit Booking
     </button>
 
   </form>
 
 
-  <div class="error" id="errorMessage"></div>
+  <!-- ERROR -->
+
+  <div
+    class="error"
+    id="errorMessage"
+  ></div>
 
 
-  <div class="result" id="result">
+  <!-- SUCCESS -->
+
+  <div
+    class="result"
+    id="result"
+  >
 
     <h2>Booking Submitted!</h2>
 
-    <p>Your booking request has been received.</p>
+    <p>
+      Your booking request has been received.
+    </p>
 
-    <p class="reference" id="bookingReference"></p>
+    <p
+      class="reference"
+      id="bookingReference"
+    ></p>
 
     <div class="status">
       Pending Verification
     </div>
+
+    <p class="success-message">
+      Your booking has been successfully saved.
+    </p>
 
     <p style="margin-top:15px;">
       Please keep your booking reference number for future inquiries.
@@ -482,6 +584,7 @@
   <div class="footer">
 
     © 2026 Manoy Drone Aerial Services<br>
+
     All Rights Reserved.
 
   </div>
@@ -489,20 +592,23 @@
 </div>
 
 
-<!-- FIREBASE -->
+<!-- FIREBASE FIRESTORE CONNECTION -->
 
 <script type="module">
 
-  import { initializeApp }
-    from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+  import {
+    initializeApp
+  } from
+  "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
 
   import {
     getFirestore,
     collection,
     addDoc,
     serverTimestamp
-  }
-  from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+  } from
+  "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
   // FIREBASE CONFIG
@@ -533,23 +639,27 @@
   };
 
 
-  // INITIALIZE FIREBASE
+  // START FIREBASE
 
   const app =
     initializeApp(firebaseConfig);
 
 
-  // INITIALIZE FIRESTORE
+  // START FIRESTORE
 
   const db =
     getFirestore(app);
 
 
-  // BOOKING FORM
+  // GET FORM
 
   const bookingForm =
-    document.getElementById("bookingForm");
+    document.getElementById(
+      "bookingForm"
+    );
 
+
+  // SUBMIT BOOKING
 
   bookingForm.addEventListener(
     "submit",
@@ -559,17 +669,33 @@
 
 
       const submitButton =
-        document.getElementById("submitButton");
+        document.getElementById(
+          "submitButton"
+        );
+
 
       const errorMessage =
-        document.getElementById("errorMessage");
+        document.getElementById(
+          "errorMessage"
+        );
 
+
+      const result =
+        document.getElementById(
+          "result"
+        );
+
+
+      // HIDE OLD MESSAGES
 
       errorMessage.style.display =
         "none";
 
+      result.style.display =
+        "none";
 
-      // GET SERVICES
+
+      // SERVICES
 
       const services = [];
 
@@ -578,39 +704,44 @@
         .querySelectorAll(
           'input[name="service"]:checked'
         )
-        .forEach(function(item) {
+        .forEach(
+          function(item) {
 
-          services.push(item.value);
+            services.push(
+              item.value
+            );
 
-        });
-
-
-      if (services.length === 0) {
-
-        alert(
-          "Please select at least one drone service."
+          }
         );
+
+
+      if (
+        services.length === 0
+      ) {
+
+        errorMessage.textContent =
+          "Please select at least one drone service.";
+
+        errorMessage.style.display =
+          "block";
 
         return;
 
       }
 
 
-      // GENERATE BOOKING REFERENCE
-
-      const randomNumber =
-        Math.floor(
-          100000 +
-          Math.random() * 900000
-        );
-
+      // BOOKING NUMBER
 
       const bookingReference =
         "MDAVS-" +
-        randomNumber;
+        Math.floor(
+          100000 +
+          Math.random() *
+          900000
+        );
 
 
-      // GET FORM DATA
+      // DATA
 
       const bookingData = {
 
@@ -619,42 +750,58 @@
 
         clientName:
           document
-            .getElementById("clientName")
+            .getElementById(
+              "clientName"
+            )
             .value,
 
         company:
           document
-            .getElementById("company")
+            .getElementById(
+              "company"
+            )
             .value,
 
         mobile:
           document
-            .getElementById("mobile")
+            .getElementById(
+              "mobile"
+            )
             .value,
 
         email:
           document
-            .getElementById("email")
+            .getElementById(
+              "email"
+            )
             .value,
 
         location:
           document
-            .getElementById("location")
+            .getElementById(
+              "location"
+            )
             .value,
 
         date:
           document
-            .getElementById("date")
+            .getElementById(
+              "date"
+            )
             .value,
 
         time:
           document
-            .getElementById("time")
+            .getElementById(
+              "time"
+            )
             .value,
 
         description:
           document
-            .getElementById("description")
+            .getElementById(
+              "description"
+            )
             .value,
 
         services:
@@ -662,19 +809,26 @@
 
         drone:
           document
-            .getElementById("drone")
+            .getElementById(
+              "drone"
+            )
             .value,
 
         paymentMethod:
           document
-            .getElementById("paymentMethod")
+            .getElementById(
+              "paymentMethod"
+            )
             .value,
 
         amountPaid:
           Number(
             document
-              .getElementById("amountPaid")
-              .value || 0
+              .getElementById(
+                "amountPaid"
+              )
+              .value ||
+            0
           ),
 
         transactionReference:
@@ -695,30 +849,37 @@
 
       try {
 
-        // DISABLE BUTTON
+        // BUTTON LOADING
 
         submitButton.disabled =
           true;
 
         submitButton.textContent =
-          "Submitting Booking...";
+          "Saving Booking...";
 
 
         // SAVE TO FIRESTORE
 
-        await addDoc(
+        const docRef =
+          await addDoc(
 
-          collection(
-            db,
-            "bookings"
-          ),
+            collection(
+              db,
+              "bookings"
+            ),
 
-          bookingData
+            bookingData
 
+          );
+
+
+        // SUCCESS
+
+        console.log(
+          "Booking saved successfully:",
+          docRef.id
         );
 
-
-        // SHOW SUCCESS
 
         document
           .getElementById(
@@ -729,24 +890,16 @@
           bookingReference;
 
 
-        document
-          .getElementById(
-            "result"
-          )
-          .style.display =
+        result.style.display =
           "block";
 
 
-        document
-          .getElementById(
-            "result"
-          )
-          .scrollIntoView({
+        result.scrollIntoView({
 
-            behavior:
-              "smooth"
+          behavior:
+            "smooth"
 
-          });
+        });
 
 
         // RESET FORM
@@ -765,14 +918,25 @@
 
       } catch (error) {
 
+        // SHOW EXACT ERROR
+
         console.error(
-          "Booking Error:",
+          "FIREBASE ERROR:",
           error
         );
 
 
-        errorMessage.textContent =
-          "Sorry, your booking could not be submitted. Please try again.";
+        errorMessage.innerHTML =
+
+          "<strong>Firebase Error</strong><br>" +
+
+          "Code: " +
+          error.code +
+
+          "<br><br>" +
+
+          "Message: " +
+          error.message;
 
 
         errorMessage.style.display =
