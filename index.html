@@ -27,7 +27,7 @@
       background: white;
       padding: 30px;
       border-radius: 18px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.20);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.20);
     }
 
     .header {
@@ -35,17 +35,9 @@
       margin-bottom: 30px;
     }
 
-    .logo {
-      width: 120px;
-      height: 120px;
-      object-fit: contain;
-      margin-bottom: 12px;
-    }
-
     h1 {
       font-size: 26px;
       margin-bottom: 8px;
-      color: #111;
     }
 
     .subtitle {
@@ -64,7 +56,6 @@
       font-size: 20px;
       border-bottom: 2px solid #eee;
       padding-bottom: 8px;
-      color: #222;
     }
 
     label {
@@ -82,14 +73,6 @@
       border: 1px solid #ccc;
       border-radius: 8px;
       font-size: 15px;
-      outline: none;
-    }
-
-    input:focus,
-    select:focus,
-    textarea:focus {
-      border-color: #ff7a00;
-      box-shadow: 0 0 0 2px rgba(255, 122, 0, 0.15);
     }
 
     textarea {
@@ -115,10 +98,6 @@
       margin: 0;
     }
 
-    .checkbox-item:hover {
-      background: #fff1e5;
-    }
-
     .checkbox-item input {
       width: auto;
       accent-color: #ff7a00;
@@ -142,12 +121,6 @@
       line-height: 1.6;
     }
 
-    .payment-note {
-      margin-top: 12px;
-      font-size: 13px;
-      color: #666;
-    }
-
     button {
       width: 100%;
       margin-top: 30px;
@@ -159,12 +132,15 @@
       font-size: 17px;
       font-weight: bold;
       cursor: pointer;
-      transition: 0.2s;
     }
 
     button:hover {
       background: #e66d00;
-      transform: translateY(-1px);
+    }
+
+    button:disabled {
+      background: #999;
+      cursor: not-allowed;
     }
 
     .result {
@@ -180,7 +156,6 @@
       font-size: 22px;
       font-weight: bold;
       margin: 12px 0;
-      color: #111;
     }
 
     .status {
@@ -193,16 +168,23 @@
       font-weight: bold;
     }
 
+    .error {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      background: #ffe5e5;
+      color: #a00000;
+      border-radius: 8px;
+    }
+
     .footer {
       text-align: center;
       margin-top: 25px;
       color: #777;
       font-size: 12px;
-      line-height: 1.6;
     }
 
     @media (max-width: 600px) {
-
       body {
         padding: 10px;
       }
@@ -218,12 +200,6 @@
       h1 {
         font-size: 21px;
       }
-
-      .logo {
-        width: 100px;
-        height: 100px;
-      }
-
     }
   </style>
 </head>
@@ -233,13 +209,6 @@
 <div class="container">
 
   <div class="header">
-
-    <!-- Upload your logo to GitHub and name it logo.png -->
-    <img
-      class="logo"
-      src="logo.png"
-      alt="Manoy Drone Aerial Services Logo"
-    >
 
     <h1>Manoy Drone Aerial Services</h1>
 
@@ -256,55 +225,24 @@
 
   <form id="bookingForm">
 
-    <!-- CLIENT INFORMATION -->
-
     <h2>Client Information</h2>
 
-    <label for="clientName">Full Name *</label>
+    <label>Full Name *</label>
+    <input type="text" id="clientName" required>
 
-    <input
-      type="text"
-      id="clientName"
-      placeholder="Enter your full name"
-      required
-    >
+    <label>Company / Organization</label>
+    <input type="text" id="company">
 
+    <label>Mobile Number *</label>
+    <input type="tel" id="mobile" required>
 
-    <label for="company">Company / Organization</label>
+    <label>Email Address *</label>
+    <input type="email" id="email" required>
 
-    <input
-      type="text"
-      id="company"
-      placeholder="Company name (optional)"
-    >
-
-
-    <label for="mobile">Mobile Number *</label>
-
-    <input
-      type="tel"
-      id="mobile"
-      placeholder="09XXXXXXXXX"
-      required
-    >
-
-
-    <label for="email">Email Address *</label>
-
-    <input
-      type="email"
-      id="email"
-      placeholder="your@email.com"
-      required
-    >
-
-
-    <!-- PROJECT DETAILS -->
 
     <h2>Project Details</h2>
 
-    <label for="location">Project Location *</label>
-
+    <label>Project Location *</label>
     <input
       type="text"
       id="location"
@@ -312,34 +250,20 @@
       required
     >
 
+    <label>Preferred Date *</label>
+    <input type="date" id="date" required>
 
-    <label for="date">Preferred Date *</label>
+    <label>Preferred Time</label>
+    <input type="time" id="time">
 
-    <input
-      type="date"
-      id="date"
-      required
-    >
-
-
-    <label for="time">Preferred Time</label>
-
-    <input
-      type="time"
-      id="time"
-    >
-
-
-    <label for="description">Project Description *</label>
+    <label>Project Description *</label>
 
     <textarea
       id="description"
-      placeholder="Tell us about your project and requirements..."
+      placeholder="Tell us about your project..."
       required
     ></textarea>
 
-
-    <!-- DRONE SERVICES -->
 
     <h2>Select Drone Services</h2>
 
@@ -428,8 +352,6 @@
     </div>
 
 
-    <!-- DRONE EQUIPMENT -->
-
     <h2>Preferred Drone / Equipment</h2>
 
     <select id="drone">
@@ -469,20 +391,13 @@
     </select>
 
 
-    <!-- PAYMENT -->
-
     <h2>Down Payment</h2>
 
     <div class="payment-box">
 
-      <label for="paymentMethod">
-        Payment Method *
-      </label>
+      <label>Payment Method *</label>
 
-      <select
-        id="paymentMethod"
-        required
-      >
+      <select id="paymentMethod" required>
 
         <option value="">
           Select Payment Method
@@ -502,29 +417,19 @@
       <div class="payment-info">
 
         <strong>GCash</strong><br>
-
-        Account Name:
-        Carlos Diego Camposano<br>
-
-        GCash Number:
-        09266166632
+        Account Name: Carlos Diego Camposano<br>
+        GCash Number: 09266166632
 
         <br><br>
 
         <strong>RCBC Bank Transfer</strong><br>
-
-        Account Name:
-        Carlos Diego Camposano<br>
-
-        Account Number:
-        0000009052660268
+        Account Name: Carlos Diego Camposano<br>
+        Account Number: 0000009052660268
 
       </div>
 
 
-      <label for="amountPaid">
-        Down Payment Amount
-      </label>
+      <label>Down Payment Amount</label>
 
       <input
         type="number"
@@ -534,9 +439,7 @@
       >
 
 
-      <label for="transactionReference">
-        Transaction Reference Number
-      </label>
+      <label>Transaction Reference Number</label>
 
       <input
         type="text"
@@ -544,40 +447,26 @@
         placeholder="Enter transaction reference number"
       >
 
-
-      <p class="payment-note">
-        Please make sure your payment details are correct before submitting your booking.
-      </p>
-
     </div>
 
 
-    <!-- SUBMIT -->
-
-    <button type="submit">
+    <button type="submit" id="submitButton">
       Submit Booking
     </button>
 
   </form>
 
 
-  <!-- BOOKING RESULT -->
+  <div class="error" id="errorMessage"></div>
 
-  <div
-    class="result"
-    id="result"
-  >
+
+  <div class="result" id="result">
 
     <h2>Booking Submitted!</h2>
 
-    <p>
-      Your booking request has been received.
-    </p>
+    <p>Your booking request has been received.</p>
 
-    <p
-      class="reference"
-      id="bookingReference"
-    ></p>
+    <p class="reference" id="bookingReference"></p>
 
     <div class="status">
       Pending Verification
@@ -593,7 +482,6 @@
   <div class="footer">
 
     © 2026 Manoy Drone Aerial Services<br>
-
     All Rights Reserved.
 
   </div>
@@ -601,29 +489,101 @@
 </div>
 
 
-<script>
+<!-- FIREBASE -->
 
-  document
-    .getElementById("bookingForm")
-    .addEventListener("submit", function(event) {
+<script type="module">
+
+  import { initializeApp }
+    from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+  import {
+    getFirestore,
+    collection,
+    addDoc,
+    serverTimestamp
+  }
+  from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+
+
+  // FIREBASE CONFIG
+
+  const firebaseConfig = {
+
+    apiKey:
+      "AIzaSyDKX2ZsfE8VRlwL38wjzBF-immeyh5CvwQ",
+
+    authDomain:
+      "manoy-drone-booking-system.firebaseapp.com",
+
+    projectId:
+      "manoy-drone-booking-system",
+
+    storageBucket:
+      "manoy-drone-booking-system.firebasestorage.app",
+
+    messagingSenderId:
+      "1046234143737",
+
+    appId:
+      "1:1046234143737:web:5642929f7b189e0a8fbb28",
+
+    measurementId:
+      "G-BMVTT7JNLM"
+
+  };
+
+
+  // INITIALIZE FIREBASE
+
+  const app =
+    initializeApp(firebaseConfig);
+
+
+  // INITIALIZE FIRESTORE
+
+  const db =
+    getFirestore(app);
+
+
+  // BOOKING FORM
+
+  const bookingForm =
+    document.getElementById("bookingForm");
+
+
+  bookingForm.addEventListener(
+    "submit",
+    async function(event) {
 
       event.preventDefault();
 
 
-      // GET SELECTED SERVICES
+      const submitButton =
+        document.getElementById("submitButton");
+
+      const errorMessage =
+        document.getElementById("errorMessage");
+
+
+      errorMessage.style.display =
+        "none";
+
+
+      // GET SERVICES
 
       const services = [];
 
+
       document
-        .querySelectorAll('input[name="service"]:checked')
+        .querySelectorAll(
+          'input[name="service"]:checked'
+        )
         .forEach(function(item) {
 
           services.push(item.value);
 
         });
 
-
-      // REQUIRE AT LEAST ONE SERVICE
 
       if (services.length === 0) {
 
@@ -650,137 +610,182 @@
         randomNumber;
 
 
-      // DISPLAY BOOKING REFERENCE
+      // GET FORM DATA
 
-      document
-        .getElementById("bookingReference")
-        .textContent =
-        "Booking Reference: " +
-        bookingReference;
-
-
-      // SHOW RESULT
-
-      document
-        .getElementById("result")
-        .style.display =
-        "block";
-
-
-      // SCROLL TO RESULT
-
-      document
-        .getElementById("result")
-        .scrollIntoView({
-
-          behavior: "smooth"
-
-        });
-
-
-      // DEMO DATA
-
-      console.log({
+      const bookingData = {
 
         bookingReference:
-
           bookingReference,
 
-
         clientName:
-
           document
             .getElementById("clientName")
             .value,
 
-
         company:
-
           document
             .getElementById("company")
             .value,
 
-
         mobile:
-
           document
             .getElementById("mobile")
             .value,
 
-
         email:
-
           document
             .getElementById("email")
             .value,
 
-
         location:
-
           document
             .getElementById("location")
             .value,
 
-
         date:
-
           document
             .getElementById("date")
             .value,
 
-
         time:
-
           document
             .getElementById("time")
             .value,
 
-
         description:
-
           document
             .getElementById("description")
             .value,
 
-
         services:
-
           services,
 
-
         drone:
-
           document
             .getElementById("drone")
             .value,
 
-
         paymentMethod:
-
           document
             .getElementById("paymentMethod")
             .value,
 
-
         amountPaid:
-
-          document
-            .getElementById("amountPaid")
-            .value,
-
+          Number(
+            document
+              .getElementById("amountPaid")
+              .value || 0
+          ),
 
         transactionReference:
-
           document
-            .getElementById("transactionReference")
+            .getElementById(
+              "transactionReference"
+            )
             .value,
 
-
         status:
+          "Pending Verification",
 
-          "Pending Verification"
+        createdAt:
+          serverTimestamp()
 
-      });
+      };
+
+
+      try {
+
+        // DISABLE BUTTON
+
+        submitButton.disabled =
+          true;
+
+        submitButton.textContent =
+          "Submitting Booking...";
+
+
+        // SAVE TO FIRESTORE
+
+        await addDoc(
+
+          collection(
+            db,
+            "bookings"
+          ),
+
+          bookingData
+
+        );
+
+
+        // SHOW SUCCESS
+
+        document
+          .getElementById(
+            "bookingReference"
+          )
+          .textContent =
+          "Booking Reference: " +
+          bookingReference;
+
+
+        document
+          .getElementById(
+            "result"
+          )
+          .style.display =
+          "block";
+
+
+        document
+          .getElementById(
+            "result"
+          )
+          .scrollIntoView({
+
+            behavior:
+              "smooth"
+
+          });
+
+
+        // RESET FORM
+
+        bookingForm.reset();
+
+
+        // RESET BUTTON
+
+        submitButton.disabled =
+          false;
+
+        submitButton.textContent =
+          "Submit Booking";
+
+
+      } catch (error) {
+
+        console.error(
+          "Booking Error:",
+          error
+        );
+
+
+        errorMessage.textContent =
+          "Sorry, your booking could not be submitted. Please try again.";
+
+
+        errorMessage.style.display =
+          "block";
+
+
+        submitButton.disabled =
+          false;
+
+        submitButton.textContent =
+          "Submit Booking";
+
+      }
 
     });
 
