@@ -1,1 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Manoy Drone Aerial Services Booking System</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      color: #222;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .logo {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #666;
+      font-size: 14px;
+    }
+
+    h2 {
+      margin-top: 25px;
+      margin-bottom: 15px;
+      font-size: 20px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 8px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-top: 15px;
+      margin-bottom: 6px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .checkbox-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px;
+      background: #f7f7f7;
+      border-radius: 8px;
+    }
+
+    .checkbox-item input {
+      width: auto;
+    }
+
+    .payment-box {
+      background: #f7f9fb;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    .payment-info {
+      margin-top: 10px;
+      padding: 12px;
+      background: white;
+      border-left: 4px solid #333;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 25px;
+      padding: 15px;
+      background: #111;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #333;
+    }
+
+    .result {
+      display: none;
+      margin-top: 25px;
+      padding: 20px;
+      background: #eef8ee;
+      border-radius: 10px;
+      border: 1px solid #b7d9b7;
+    }
+
+    .reference {
+      font-size: 22px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 25px;
+      color: #777;
+      font-size: 12px;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+      .checkbox-group {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 21px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="header">
+
+    <!-- Palitan ang logo URL kapag mayroon ka nang online logo -->
+    <img
+      class="logo"
+      src="https://via.placeholder.com/100"
+      alt="Manoy Drone Logo"
+    >
+
+    <h1>Manoy Drone Aerial Services</h1>
+
+    <div class="subtitle">
+      Booking System
+    </div>
+
+    <p style="margin-top:10px;">
+      Book your drone service with us.
+    </p>
+
+  </div>
+
+
+  <form id="bookingForm">
+
+    <h2>Client Information</h2>
+
+    <label>Full Name *</label>
+    <input type="text" id="clientName" required>
+
+    <label>Company / Organization</label>
+    <input type="text" id="company">
+
+    <label>Mobile Number *</label>
+    <input type="tel" id="mobile" required>
+
+    <label>Email Address *</label>
+    <input type="email" id="email" required>
+
+
+    <h2>Project Details</h2>
+
+    <label>Project Location *</label>
+    <input type="text" id="location" placeholder="City / Municipality / Project Site" required>
+
+    <label>Preferred Date *</label>
+    <input type="date" id="date" required>
+
+    <label>Preferred Time</label>
+    <input type="time" id="time">
+
+    <label>Project Description *</label>
+    <textarea
+      id="description"
+      placeholder="Tell us about your project..."
+      required
+    ></textarea>
+
+
+    <h2>Select Drone Services</h2>
+
+    <div class="checkbox-group">
+
+      <label class="checkbox-item">
+        <input type="checkbox" name="service" value="Aerial Videography">
+        Aerial Videography
+      </label>
+
+      <label class="checkbox-item">
+        <input type="checkbox" name="service" value="Aerial Photography">
+        Aerial Photography
+      </label>
+
+      <label class="checkbox-item">
+        <input type="checkbox" name="service" value="Aerial Mapping & Surveying">
+        Aerial Mapping & Surveying
+      </label>
+
+      <label class="checkbox-item">
+        <input type="checkbox" name="service" value="Aerial Drone Thermal Inspection">
+        Aerial Drone Thermal Inspection
+      </label>
+
+      <label class="checkbox-item">
+        <input type="checkbox" name="service" value="Drone Inspection">
+        Drone Inspection
+      </label>
+
+      <label class="checkbox-item">
+        <input type="checkbox" name="service" value="Construction Monitoring">
+        Construction Monitoring
+      </label>
+
+      <label class="checkbox-item">
+        <input type="checkbox" name="service" value="Real Estate Aerial Services">
+        Real Estate Aerial Services
+      </label>
+
+      <label class="checkbox-item">
+        <input type="checkbox" name="service" value="Event Aerial Coverage">
+        Event Aerial Coverage
+      </label>
+
+      <label class="checkbox-item">
+        <input type="checkbox" name="service" value="Promotional Aerial Content">
+        Promotional Aerial Content
+      </label>
+
+      <label class="checkbox-item">
+        <input type="checkbox" name="service" value="FPV Drone Services">
+        FPV Drone Services
+      </label>
+
+      <label class="checkbox-item">
+        <input type="checkbox" name="service" value="Drone Live Feed / Live Streaming">
+        Drone Live Feed / Live Streaming
+      </label>
+
+      <label class="checkbox-item">
+        <input type="checkbox" name="service" value="Infrastructure / Structural Inspection">
+        Infrastructure / Structural Inspection
+      </label>
+
+      <label class="checkbox-item">
+        <input type="checkbox" name="service" value="Solar Farm Thermal Inspection">
+        Solar Farm Thermal Inspection
+      </label>
+
+      <label class="checkbox-item">
+        <input type="checkbox" name="service" value="Telecommunication / Cell Tower Inspection">
+        Telecommunication / Cell Tower Inspection
+      </label>
+
+      <label class="checkbox-item">
+        <input type="checkbox" name="service" value="Drone Capture Only">
+        Drone Capture Only
+      </label>
+
+      <label class="checkbox-item">
+        <input type="checkbox" name="service" value="Other Drone Services">
+        Other Drone Services
+      </label>
+
+    </div>
+
+
+    <h2>Preferred Drone / Equipment</h2>
+
+    <select id="drone">
+
+      <option value="">
+        Recommend the best equipment
+      </option>
+
+      <option value="DJI Matrice 4TD">
+        DJI Matrice 4TD
+      </option>
+
+      <option value="DJI Matrice 4E">
+        DJI Matrice 4E
+      </option>
+
+      <option value="DJI Mavic 5 Pro">
+        DJI Mavic 5 Pro
+      </option>
+
+      <option value="DJI Mavic 3 Pro">
+        DJI Mavic 3 Pro
+      </option>
+
+      <option value="DJI Air 3S">
+        DJI Air 3S
+      </option>
+
+      <option value="DJI Avata 2 (FPV)">
+        DJI Avata 2 (FPV)
+      </option>
+
+      <option value="DJI Flip">
+        DJI Flip
+      </option>
+
+    </select>
+
+
+    <h2>Down Payment</h2>
+
+    <div class="payment-box">
+
+      <label>Payment Method *</label>
+
+      <select id="paymentMethod" required>
+
+        <option value="">
+          Select Payment Method
+        </option>
+
+        <option value="GCash">
+          GCash
+        </option>
+
+        <option value="RCBC Bank Transfer">
+          RCBC Bank Transfer
+        </option>
+
+      </select>
+
+
+      <div class="payment-info">
+
+        <strong>GCash</strong><br>
+        Account Name: Carlos Diego Camposano<br>
+        GCash Number: 09266166632
+
+        <br><br>
+
+        <strong>RCBC Bank Transfer</strong><br>
+        Account Name: Carlos Diego Camposano<br>
+        Account Number: 0000009052660268
+
+      </div>
+
+
+      <label>Down Payment Amount</label>
+
+      <input
+        type="number"
+        id="amountPaid"
+        placeholder="₱ 0.00"
+        min="0"
+      >
+
+
+      <label>Transaction Reference Number</label>
+
+      <input
+        type="text"
+        id="transactionReference"
+        placeholder="Enter transaction reference number"
+      >
+
+    </div>
+
+
+    <button type="submit">
+      Submit Booking
+    </button>
+
+  </form>
+
+
+  <div class="result" id="result">
+
+    <h2>Booking Submitted!</h2>
+
+    <p>Your booking request has been received.</p>
+
+    <p class="reference" id="bookingReference"></p>
+
+    <p>
+      Status:
+      <strong>Pending Verification</strong>
+    </p>
+
+    <p style="margin-top:10px;">
+      Please keep your booking reference number for future inquiries.
+    </p>
+
+  </div>
+
+
+  <div class="footer">
+
+    © 2026 Manoy Drone Aerial Services<br>
+    All Rights Reserved.
+
+  </div>
+
+</div>
+
+
+<script>
+
+  document
+    .getElementById("bookingForm")
+    .addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+
+      const services = [];
+
+      document
+        .querySelectorAll('input[name="service"]:checked')
+        .forEach(function(item) {
+
+          services.push(item.value);
+
+        });
+
+
+      if (services.length === 0) {
+
+        alert("Please select at least one drone service.");
+
+        return;
+
+      }
+
+
+      const randomNumber =
+        Math.floor(100000 + Math.random() * 900000);
+
+
+      const bookingReference =
+        "MDAVS-" + randomNumber;
+
+
+      document
+        .getElementById("bookingReference")
+        .textContent =
+        "Booking Reference: " + bookingReference;
+
+
+      document
+        .getElementById("result")
+        .style.display = "block";
+
+
+      document
+        .getElementById("result")
+        .scrollIntoView({
+          behavior: "smooth"
+        });
+
+
+      console.log({
+
+        bookingReference:
+          bookingReference,
+
+        clientName:
+          document.getElementById("clientName").value,
+
+        company:
+          document.getElementById("company").value,
+
+        mobile:
+          document.getElementById("mobile").value,
+
+        email:
+          document.getElementById("email").value,
+
+        location:
+          document.getElementById("location").value,
+
+        date:
+          document.getElementById("date").value,
+
+        time:
+          document.getElementById("time").value,
+
+        description:
+          document.getElementById("description").value,
+
+        services:
+          services,
+
+        drone:
+          document.getElementById("drone").value,
+
+        paymentMethod:
+          document.getElementById("paymentMethod").value,
+
+        amountPaid:
+          document.getElementById("amountPaid").value,
+
+        transactionReference:
+          document.getElementById("transactionReference").value,
+
+        status:
+          "Pending Verification"
+
+      });
+
+    });
+
+</script>
+
+</body>
+</html>
