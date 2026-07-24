@@ -22,7 +22,7 @@
     }
 
     .container {
-      max-width: 850px;
+      max-width: 900px;
       margin: auto;
       background: #ffffff;
       padding: 30px;
@@ -110,6 +110,118 @@
       font-size: 13px;
       color: #222;
       word-break: break-word;
+    }
+
+    /* RATES SECTION */
+
+    .rates-section {
+      margin-top: 25px;
+      padding: 25px;
+      background: linear-gradient(135deg, #fff7ef, #ffffff);
+      border: 1px solid #ffd5ad;
+      border-radius: 14px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+
+    .rates-title {
+      text-align: center;
+      color: #ff7a00;
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .rates-subtitle {
+      text-align: center;
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    .rate-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 15px;
+      border-left: 5px solid #ff7a00;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+    }
+
+    .rate-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .rate-card h3 {
+      color: #ff7a00;
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .rate-card p {
+      color: #555;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .rate-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .rate-table th {
+      background: #ff7a00;
+      color: white;
+      padding: 10px;
+      text-align: left;
+    }
+
+    .rate-table td {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .rate-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .rate-table tr:nth-child(even) {
+      background: #fff8f1;
+    }
+
+    .price-highlight {
+      font-size: 22px;
+      font-weight: bold;
+      color: #ff7a00;
+      margin: 8px 0;
+    }
+
+    .starting-label {
+      color: #666;
+      font-size: 13px;
+    }
+
+    .quote-box {
+      background: #fff7ef;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 10px;
+      border: 1px solid #ffd5ad;
+      color: #555;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .rate-note {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f7f7f7;
+      border-radius: 8px;
+      text-align: center;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.6;
     }
 
     h2 {
@@ -273,6 +385,15 @@
         grid-template-columns: 1fr;
       }
 
+      .rate-table {
+        font-size: 12px;
+      }
+
+      .rate-table th,
+      .rate-table td {
+        padding: 8px;
+      }
+
     }
 
     @media (max-width: 600px) {
@@ -295,6 +416,10 @@
 
       .logo {
         width: 180px;
+      }
+
+      .rates-section {
+        padding: 18px;
       }
 
     }
@@ -375,6 +500,213 @@
             <p>0926 616 6632</p>
           </div>
         </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- OUR RATES -->
+
+    <div class="rates-section">
+
+      <div class="rates-title">
+        💰 OUR RATES
+      </div>
+
+      <div class="rates-subtitle">
+        Transparent starting rates for selected drone services
+      </div>
+
+
+      <!-- SOLAR THERMAL -->
+
+      <div class="rate-card">
+
+        <h3>
+          ☀️ Solar Farm Thermal Inspection
+        </h3>
+
+        <p>
+          Professional thermal inspection using
+          <strong>DJI Matrice 4TD</strong>.
+        </p>
+
+        <table class="rate-table">
+
+          <thead>
+            <tr>
+              <th>Project Area</th>
+              <th>Rate</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr>
+              <td>1–2 Hectares</td>
+              <td><strong>₱18,000</strong></td>
+            </tr>
+
+            <tr>
+              <td>2–5 Hectares</td>
+              <td><strong>₱28,000</strong></td>
+            </tr>
+
+            <tr>
+              <td>5–10 Hectares</td>
+              <td><strong>₱36,000</strong></td>
+            </tr>
+
+            <tr>
+              <td>10–20 Hectares</td>
+              <td><strong>₱49,000</strong></td>
+            </tr>
+
+            <tr>
+              <td>20–50 Hectares</td>
+              <td><strong>₱95,000</strong></td>
+            </tr>
+
+            <tr>
+              <td>50–100 Hectares</td>
+              <td><strong>₱220,000</strong></td>
+            </tr>
+
+            <tr>
+              <td>100 Hectares & Above</td>
+              <td>
+                <strong>₱220,000 + ₱1,000</strong>
+                per additional hectare
+              </td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+
+      <!-- AERIAL MAPPING -->
+
+      <div class="rate-card">
+
+        <h3>
+          🗺️ Aerial Mapping & Surveying
+        </h3>
+
+        <p>
+          Professional aerial mapping and surveying services.
+          Rates are based on project area.
+        </p>
+
+        <table class="rate-table">
+
+          <thead>
+            <tr>
+              <th>Project Area</th>
+              <th>Rate</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr>
+              <td>1–10 Hectares</td>
+              <td><strong>₱5,000 / hectare</strong></td>
+            </tr>
+
+            <tr>
+              <td>11–50 Hectares</td>
+              <td><strong>₱4,000 / hectare</strong></td>
+            </tr>
+
+            <tr>
+              <td>51–100 Hectares</td>
+              <td><strong>₱3,000 / hectare</strong></td>
+            </tr>
+
+            <tr>
+              <td>101–200 Hectares</td>
+              <td><strong>₱2,000 / hectare</strong></td>
+            </tr>
+
+            <tr>
+              <td>201–300 Hectares</td>
+              <td><strong>₱1,000 / hectare</strong></td>
+            </tr>
+
+            <tr>
+              <td>301–1,000 Hectares</td>
+              <td><strong>₱800 / hectare</strong></td>
+            </tr>
+
+            <tr>
+              <td>1,001+ Hectares</td>
+              <td><strong>₱500 / hectare</strong></td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+
+      <!-- AERIAL PHOTO VIDEO -->
+
+      <div class="rate-card">
+
+        <h3>
+          🎥 Aerial Videography & Photography
+        </h3>
+
+        <div class="starting-label">
+          Starting at
+        </div>
+
+        <div class="price-highlight">
+          ₱8,000
+        </div>
+
+        <p>
+          Final quotation depends on project scope,
+          location, flight duration, required equipment,
+          deliverables, and production requirements.
+        </p>
+
+      </div>
+
+
+      <!-- OTHER SERVICES -->
+
+      <div class="rate-card">
+
+        <h3>
+          📋 Other Drone Services
+        </h3>
+
+        <div class="quote-box">
+
+          <strong>Request a Quote</strong><br>
+
+          Customized quotation available based on
+          project requirements, location, scope of work,
+          equipment, and deliverables.
+
+        </div>
+
+      </div>
+
+
+      <div class="rate-note">
+
+        <strong>Note:</strong>
+        Published rates are for reference and may vary
+        depending on project requirements, location,
+        accessibility, flight conditions, permits,
+        equipment, and final deliverables.
 
       </div>
 
@@ -470,166 +802,85 @@
 
     <div class="checkbox-group">
 
-
       <label class="checkbox-item">
-        <input
-          type="checkbox"
-          name="service"
-          value="Aerial Videography"
-        >
+        <input type="checkbox" name="service" value="Aerial Videography">
         Aerial Videography
       </label>
 
-
       <label class="checkbox-item">
-        <input
-          type="checkbox"
-          name="service"
-          value="Aerial Photography"
-        >
+        <input type="checkbox" name="service" value="Aerial Photography">
         Aerial Photography
       </label>
 
-
       <label class="checkbox-item">
-        <input
-          type="checkbox"
-          name="service"
-          value="Aerial Mapping & Surveying"
-        >
+        <input type="checkbox" name="service" value="Aerial Mapping & Surveying">
         Aerial Mapping & Surveying
       </label>
 
-
       <label class="checkbox-item">
-        <input
-          type="checkbox"
-          name="service"
-          value="Aerial Drone Thermal Inspection"
-        >
+        <input type="checkbox" name="service" value="Aerial Drone Thermal Inspection">
         Aerial Drone Thermal Inspection
       </label>
 
-
       <label class="checkbox-item">
-        <input
-          type="checkbox"
-          name="service"
-          value="Drone Inspection"
-        >
+        <input type="checkbox" name="service" value="Drone Inspection">
         Drone Inspection
       </label>
 
-
       <label class="checkbox-item">
-        <input
-          type="checkbox"
-          name="service"
-          value="Construction Monitoring"
-        >
+        <input type="checkbox" name="service" value="Construction Monitoring">
         Construction Monitoring
       </label>
 
-
       <label class="checkbox-item">
-        <input
-          type="checkbox"
-          name="service"
-          value="Real Estate Aerial Services"
-        >
+        <input type="checkbox" name="service" value="Real Estate Aerial Services">
         Real Estate Aerial Services
       </label>
 
-
       <label class="checkbox-item">
-        <input
-          type="checkbox"
-          name="service"
-          value="Event Aerial Coverage"
-        >
+        <input type="checkbox" name="service" value="Event Aerial Coverage">
         Event Aerial Coverage
       </label>
 
-
       <label class="checkbox-item">
-        <input
-          type="checkbox"
-          name="service"
-          value="Promotional Aerial Content"
-        >
+        <input type="checkbox" name="service" value="Promotional Aerial Content">
         Promotional Aerial Content
       </label>
 
-
       <label class="checkbox-item">
-        <input
-          type="checkbox"
-          name="service"
-          value="FPV Drone Services"
-        >
+        <input type="checkbox" name="service" value="FPV Drone Services">
         FPV Drone Services
       </label>
 
-
       <label class="checkbox-item">
-        <input
-          type="checkbox"
-          name="service"
-          value="Drone Live Feed / Live Streaming"
-        >
+        <input type="checkbox" name="service" value="Drone Live Feed / Live Streaming">
         Drone Live Feed / Live Streaming
       </label>
 
-
       <label class="checkbox-item">
-        <input
-          type="checkbox"
-          name="service"
-          value="Infrastructure / Structural Inspection"
-        >
+        <input type="checkbox" name="service" value="Infrastructure / Structural Inspection">
         Infrastructure / Structural Inspection
       </label>
 
-
       <label class="checkbox-item">
-        <input
-          type="checkbox"
-          name="service"
-          value="Solar Farm Thermal Inspection"
-        >
+        <input type="checkbox" name="service" value="Solar Farm Thermal Inspection">
         Solar Farm Thermal Inspection
       </label>
 
-
       <label class="checkbox-item">
-        <input
-          type="checkbox"
-          name="service"
-          value="Telecommunication / Cell Tower Inspection"
-        >
+        <input type="checkbox" name="service" value="Telecommunication / Cell Tower Inspection">
         Telecommunication / Cell Tower Inspection
       </label>
 
-
       <label class="checkbox-item">
-        <input
-          type="checkbox"
-          name="service"
-          value="Drone Capture Only"
-        >
+        <input type="checkbox" name="service" value="Drone Capture Only">
         Drone Capture Only
       </label>
 
-
       <label class="checkbox-item">
-        <input
-          type="checkbox"
-          name="service"
-          value="Other Drone Services"
-        >
+        <input type="checkbox" name="service" value="Other Drone Services">
         Other Drone Services
       </label>
-
 
     </div>
 
@@ -677,13 +928,9 @@
 
     <div class="payment-box">
 
-
       <label>Payment Method *</label>
 
-      <select
-        id="paymentMethod"
-        required
-      >
+      <select id="paymentMethod" required>
 
         <option value="">
           Select Payment Method
@@ -703,24 +950,14 @@
       <div class="payment-info">
 
         <strong>GCash</strong><br>
-
-        Account Name:
-        Carlos Diego Camposano<br>
-
-        GCash Number:
-        09266166632
-
+        Account Name: Carlos Diego Camposano<br>
+        GCash Number: 09266166632
 
         <br><br>
 
-
         <strong>RCBC Bank Transfer</strong><br>
-
-        Account Name:
-        Carlos Diego Camposano<br>
-
-        Account Number:
-        0000009052660268
+        Account Name: Carlos Diego Camposano<br>
+        Account Number: 0000009052660268
 
       </div>
 
@@ -743,7 +980,6 @@
         placeholder="Enter transaction reference number"
       >
 
-
     </div>
 
 
@@ -753,7 +989,6 @@
     >
       Submit Booking
     </button>
-
 
   </form>
 
@@ -777,32 +1012,26 @@
       Booking Submitted!
     </h2>
 
-
     <p>
       Your booking request has been received.
     </p>
-
 
     <p
       class="reference"
       id="bookingReference"
     ></p>
 
-
     <div class="status">
       Pending Verification
     </div>
-
 
     <p class="success-message">
       Your booking has been successfully saved.
     </p>
 
-
     <p style="margin-top:15px;">
       Please keep your booking reference number for future inquiries.
     </p>
-
 
   </div>
 
