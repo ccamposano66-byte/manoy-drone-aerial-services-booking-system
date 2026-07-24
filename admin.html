@@ -1,835 +1,345 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
 
 <meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+
 >
 
 <title>
 Manoy Drone Aerial Services - Admin Dashboard
 </title>
 
-
 <style>
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
 }
 
-
-body {
-
-  font-family:
-    Arial,
-    sans-serif;
-
-  background:
-    #f4f4f4;
-
-  color:
-    #222;
-
+body{
+font-family:Arial,sans-serif;
+background:#f4f4f4;
+color:#222;
 }
 
-
-/* ================================
-   LOGIN PAGE
-================================ */
-
-.login-page {
-
-  min-height:
-    100vh;
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-  background:
-    linear-gradient(
-      135deg,
-      #ff7a00,
-      #ff9d2e
-    );
-
-  padding:
-    20px;
-
+.login-page{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+background:linear-gradient(135deg,#ff7a00,#ff9d2e);
+padding:20px;
 }
 
-
-.login-box {
-
-  background:
-    white;
-
-  width:
-    100%;
-
-  max-width:
-    420px;
-
-  padding:
-    30px;
-
-  border-radius:
-    18px;
-
-  box-shadow:
-    0 10px 30px
-    rgba(
-      0,
-      0,
-      0,
-      0.2
-    );
-
+.login-box{
+background:white;
+width:100%;
+max-width:420px;
+padding:30px;
+border-radius:18px;
+box-shadow:0 10px 30px rgba(0,0,0,.2);
 }
 
-
-.login-box h1 {
-
-  text-align:
-    center;
-
-  font-size:
-    24px;
-
-  margin-bottom:
-    8px;
-
+.login-box h1{
+text-align:center;
+font-size:24px;
+margin-bottom:8px;
 }
 
-
-.login-box p {
-
-  text-align:
-    center;
-
-  color:
-    #666;
-
-  margin-bottom:
-    25px;
-
+.login-box p{
+text-align:center;
+color:#666;
+margin-bottom:25px;
 }
 
-
-.login-box input {
-
-  width:
-    100%;
-
-  padding:
-    14px;
-
-  margin-bottom:
-    15px;
-
-  border:
-    1px solid #ccc;
-
-  border-radius:
-    8px;
-
-  font-size:
-    15px;
-
+.login-box input{
+width:100%;
+padding:14px;
+margin-bottom:15px;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:15px;
 }
 
-
-.login-box button {
-
-  width:
-    100%;
-
-  padding:
-    14px;
-
-  background:
-    #ff7a00;
-
-  color:
-    white;
-
-  border:
-    none;
-
-  border-radius:
-    8px;
-
-  font-size:
-    16px;
-
-  font-weight:
-    bold;
-
-  cursor:
-    pointer;
-
+.login-box button{
+width:100%;
+padding:14px;
+background:#ff7a00;
+color:white;
+border:none;
+border-radius:8px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
 }
 
-
-.login-box button:hover {
-
-  background:
-    #e66d00;
-
+.login-box button:hover{
+background:#e66d00;
 }
 
-
-.login-box button:disabled {
-
-  background:
-    #999;
-
-  cursor:
-    not-allowed;
-
+.login-error{
+display:none;
+margin-top:15px;
+padding:12px;
+background:#ffe5e5;
+color:#a00000;
+border-radius:8px;
+font-size:14px;
 }
 
-
-.login-error {
-
-  display:
-    none;
-
-  margin-top:
-    15px;
-
-  padding:
-    12px;
-
-  background:
-    #ffe5e5;
-
-  color:
-    #a00000;
-
-  border-radius:
-    8px;
-
-  font-size:
-    14px;
-
+.dashboard{
+display:none;
 }
 
-
-/* ================================
-   DASHBOARD
-================================ */
-
-.dashboard {
-
-  display:
-    none;
-
+.topbar{
+background:#ff7a00;
+color:white;
+padding:18px 25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
 }
 
-
-/* ================================
-   TOP BAR
-================================ */
-
-.topbar {
-
-  background:
-    #ff7a00;
-
-  color:
-    white;
-
-  padding:
-    18px 25px;
-
-  display:
-    flex;
-
-  justify-content:
-    space-between;
-
-  align-items:
-    center;
-
-  gap:
-    15px;
-
+.topbar h1{
+font-size:22px;
 }
 
-
-.topbar h1 {
-
-  font-size:
-    22px;
-
+.logout-btn{
+background:white;
+color:#ff7a00;
+border:none;
+padding:10px 16px;
+border-radius:7px;
+font-weight:bold;
+cursor:pointer;
 }
 
-
-.logout-btn {
-
-  background:
-    white;
-
-  color:
-    #ff7a00;
-
-  border:
-    none;
-
-  padding:
-    10px 16px;
-
-  border-radius:
-    7px;
-
-  font-weight:
-    bold;
-
-  cursor:
-    pointer;
-
+.dashboard-container{
+max-width:1400px;
+margin:auto;
+padding:25px;
 }
 
-
-.logout-btn:hover {
-
-  background:
-    #fff3e8;
-
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+margin-bottom:25px;
 }
 
-
-/* ================================
-   DASHBOARD CONTAINER
-================================ */
-
-.dashboard-container {
-
-  max-width:
-    1400px;
-
-  margin:
-    auto;
-
-  padding:
-    25px;
-
+.stat-card{
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 3px 10px rgba(0,0,0,.08);
 }
 
-
-/* ================================
-   STATISTICS
-================================ */
-
-.stats {
-
-  display:
-    grid;
-
-  grid-template-columns:
-    repeat(
-      4,
-      1fr
-    );
-
-  gap:
-    15px;
-
-  margin-bottom:
-    25px;
-
+.stat-card h3{
+font-size:14px;
+color:#666;
+margin-bottom:10px;
 }
 
-
-.stat-card {
-
-  background:
-    white;
-
-  padding:
-    20px;
-
-  border-radius:
-    12px;
-
-  box-shadow:
-    0 3px 10px
-    rgba(
-      0,
-      0,
-      0,
-      0.08
-    );
-
+.stat-card strong{
+font-size:28px;
 }
 
-
-.stat-card h3 {
-
-  font-size:
-    14px;
-
-  color:
-    #666;
-
-  margin-bottom:
-    10px;
-
+.controls{
+background:white;
+padding:20px;
+border-radius:12px;
+margin-bottom:20px;
+display:flex;
+gap:10px;
+flex-wrap:wrap;
 }
-
-
-.stat-card strong {
-
-  font-size:
-    28px;
-
-}
-
-
-/* ================================
-   CONTROLS
-================================ */
-
-.controls {
-
-  background:
-    white;
-
-  padding:
-    20px;
-
-  border-radius:
-    12px;
-
-  margin-bottom:
-    20px;
-
-  display:
-    flex;
-
-  gap:
-    10px;
-
-  flex-wrap:
-    wrap;
-
-}
-
 
 .controls input,
-.controls select {
+.controls select{
+padding:12px;
+border:1px solid #ccc;
+border-radius:7px;
+font-size:14px;
+}
 
-  padding:
-    12px;
+.controls input{
+flex:1;
+min-width:250px;
+}
 
-  border:
-    1px solid #ccc;
+.booking-card{
+background:white;
+border-radius:12px;
+margin-bottom:18px;
+padding:20px;
+box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
 
-  border-radius:
-    7px;
+.booking-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+flex-wrap:wrap;
+border-bottom:1px solid #eee;
+padding-bottom:15px;
+margin-bottom:15px;
+}
 
-  font-size:
-    14px;
+.booking-reference{
+font-size:20px;
+font-weight:bold;
+color:#ff7a00;
+}
+
+.booking-date{
+color:#666;
+font-size:13px;
+}
+
+.booking-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+}
+
+.info-box{
+background:#f8f8f8;
+padding:12px;
+border-radius:8px;
+}
+
+.info-box strong{
+display:block;
+font-size:12px;
+color:#777;
+margin-bottom:5px;
+}
+
+.info-box span{
+font-size:14px;
+word-break:break-word;
+}
+
+.services{
+margin-top:15px;
+padding:15px;
+background:#fff7ef;
+border-left:4px solid #ff7a00;
+border-radius:7px;
+}
+
+.services strong{
+display:block;
+margin-bottom:5px;
+}
+
+.status-area{
+margin-top:18px;
+display:flex;
+align-items:center;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.status-area select{
+padding:10px;
+border:1px solid #ccc;
+border-radius:7px;
+}
+
+.update-btn{
+padding:10px 15px;
+background:#ff7a00;
+color:white;
+border:none;
+border-radius:7px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.update-btn:hover{
+background:#e66d00;
+}
+
+.update-btn:disabled{
+background:#999;
+cursor:not-allowed;
+}
+
+.empty{
+text-align:center;
+background:white;
+padding:40px;
+border-radius:12px;
+color:#777;
+}
+
+.loading{
+text-align:center;
+padding:30px;
+color:#777;
+}
+
+.status-message{
+display:none;
+margin-top:15px;
+padding:15px;
+border-radius:8px;
+font-weight:bold;
+}
+
+.status-success{
+background:#e8f7e8;
+color:#187a18;
+border:1px solid #b8dfb8;
+}
+
+.status-error{
+background:#ffe5e5;
+color:#a00000;
+border:1px solid #e0aaaa;
+}
+
+@media(max-width:900px){
+
+.stats{
+grid-template-columns:repeat(2,1fr);
+}
+
+.booking-grid{
+grid-template-columns:repeat(2,1fr);
+}
 
 }
 
+@media(max-width:600px){
 
-.controls input {
-
-  flex:
-    1;
-
-  min-width:
-    250px;
-
+.topbar{
+flex-direction:column;
+text-align:center;
 }
 
-
-/* ================================
-   BOOKING CARD
-================================ */
-
-.booking-card {
-
-  background:
-    white;
-
-  border-radius:
-    12px;
-
-  margin-bottom:
-    18px;
-
-  padding:
-    20px;
-
-  box-shadow:
-    0 3px 10px
-    rgba(
-      0,
-      0,
-      0,
-      0.08
-    );
-
+.stats{
+grid-template-columns:1fr 1fr;
 }
 
-
-.booking-header {
-
-  display:
-    flex;
-
-  justify-content:
-    space-between;
-
-  align-items:
-    center;
-
-  gap:
-    15px;
-
-  flex-wrap:
-    wrap;
-
-  border-bottom:
-    1px solid #eee;
-
-  padding-bottom:
-    15px;
-
-  margin-bottom:
-    15px;
-
+.booking-grid{
+grid-template-columns:1fr;
 }
 
-
-.booking-reference {
-
-  font-size:
-    20px;
-
-  font-weight:
-    bold;
-
-  color:
-    #ff7a00;
-
+.dashboard-container{
+padding:15px;
 }
-
-
-.booking-date {
-
-  color:
-    #666;
-
-  font-size:
-    13px;
-
-}
-
-
-/* ================================
-   BOOKING GRID
-================================ */
-
-.booking-grid {
-
-  display:
-    grid;
-
-  grid-template-columns:
-    repeat(
-      3,
-      1fr
-    );
-
-  gap:
-    15px;
-
-}
-
-
-.info-box {
-
-  background:
-    #f8f8f8;
-
-  padding:
-    12px;
-
-  border-radius:
-    8px;
-
-}
-
-
-.info-box strong {
-
-  display:
-    block;
-
-  font-size:
-    12px;
-
-  color:
-    #777;
-
-  margin-bottom:
-    5px;
-
-}
-
-
-.info-box span {
-
-  font-size:
-    14px;
-
-  word-break:
-    break-word;
-
-}
-
-
-/* ================================
-   SERVICES
-================================ */
-
-.services {
-
-  margin-top:
-    15px;
-
-  padding:
-    15px;
-
-  background:
-    #fff7ef;
-
-  border-left:
-    4px solid #ff7a00;
-
-  border-radius:
-    7px;
-
-}
-
-
-.services strong {
-
-  display:
-    block;
-
-  margin-bottom:
-    5px;
-
-}
-
-
-/* ================================
-   STATUS AREA
-================================ */
-
-.status-area {
-
-  margin-top:
-    18px;
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  gap:
-    10px;
-
-  flex-wrap:
-    wrap;
-
-}
-
-
-.status-area select {
-
-  padding:
-    10px;
-
-  border:
-    1px solid #ccc;
-
-  border-radius:
-    7px;
-
-}
-
-
-.update-btn {
-
-  padding:
-    10px 15px;
-
-  background:
-    #ff7a00;
-
-  color:
-    white;
-
-  border:
-    none;
-
-  border-radius:
-    7px;
-
-  cursor:
-    pointer;
-
-  font-weight:
-    bold;
-
-}
-
-
-.update-btn:hover {
-
-  background:
-    #e66d00;
-
-}
-
-
-.update-btn:disabled {
-
-  background:
-    #999;
-
-  cursor:
-    not-allowed;
-
-}
-
-
-/* ================================
-   EMPTY / LOADING
-================================ */
-
-.empty {
-
-  text-align:
-    center;
-
-  background:
-    white;
-
-  padding:
-    40px;
-
-  border-radius:
-    12px;
-
-  color:
-    #777;
-
-}
-
-
-.loading {
-
-  text-align:
-    center;
-
-  padding:
-    30px;
-
-  color:
-    #777;
-
-}
-
-
-/* ================================
-   MOBILE
-================================ */
-
-@media (
-  max-width:
-  900px
-) {
-
-  .stats {
-
-    grid-template-columns:
-      repeat(
-        2,
-        1fr
-      );
-
-  }
-
-
-  .booking-grid {
-
-    grid-template-columns:
-      repeat(
-        2,
-        1fr
-      );
-
-  }
-
-}
-
-
-@media (
-  max-width:
-  600px
-) {
-
-  .topbar {
-
-    flex-direction:
-      column;
-
-    text-align:
-      center;
-
-  }
-
-
-  .stats {
-
-    grid-template-columns:
-      1fr 1fr;
-
-  }
-
-
-  .booking-grid {
-
-    grid-template-columns:
-      1fr;
-
-  }
-
-
-  .dashboard-container {
-
-    padding:
-      15px;
-
-  }
 
 }
 
@@ -837,285 +347,205 @@ body {
 
 </head>
 
-
 <body>
 
-
-<!-- =================================
-     LOGIN
-================================= -->
+<!-- LOGIN -->
 
 <div
-  class="login-page"
-  id="loginPage"
+class="login-page"
+id="loginPage"
 >
 
-  <div
-    class="login-box"
-  >
+<div class="login-box">
 
-    <h1>
-      Manoy Drone Aerial Services
-    </h1>
+<h1>
+Manoy Drone Aerial Services
+</h1>
 
-    <p>
-      Admin Dashboard
-    </p>
+<p>
+Admin Dashboard
+</p>
 
+<input
+type="email"
+id="adminEmail"
+placeholder="Admin Email"
 
-    <input
-      type="email"
-      id="adminEmail"
-      placeholder="Admin Email"
-    >
+>
 
+<input
+type="password"
+id="adminPassword"
+placeholder="Password"
 
-    <input
-      type="password"
-      id="adminPassword"
-      placeholder="Password"
-    >
+>
 
+<button id="loginButton">
+Admin Login
+</button>
 
-    <button
-      id="loginButton"
-    >
-      Admin Login
-    </button>
-
-
-    <div
-      class="login-error"
-      id="loginError"
-    ></div>
-
-  </div>
+<div
+class="login-error"
+id="loginError"
+></div>
 
 </div>
 
+</div>
 
-
-<!-- =================================
-     DASHBOARD
-================================= -->
+<!-- DASHBOARD -->
 
 <div
-  class="dashboard"
-  id="dashboard"
+class="dashboard"
+id="dashboard"
 >
 
+<div class="topbar">
 
-  <!-- TOPBAR -->
+<h1>
 
-  <div
-    class="topbar"
-  >
+Manoy Drone Aerial Services
 
-    <h1>
+<br>
 
-      Manoy Drone Aerial Services
+Admin Dashboard
 
-      <br>
+</h1>
 
-      Admin Dashboard
+<button
+class="logout-btn"
+id="logoutButton"
 
-    </h1>
+>
 
+Logout
 
-    <button
-      class="logout-btn"
-      id="logoutButton"
-    >
-
-      Logout
-
-    </button>
-
-  </div>
-
-
-
-  <!-- DASHBOARD CONTENT -->
-
-  <div
-    class="dashboard-container"
-  >
-
-
-    <!-- STATISTICS -->
-
-    <div
-      class="stats"
-    >
-
-
-      <div
-        class="stat-card"
-      >
-
-        <h3>
-          Total Bookings
-        </h3>
-
-        <strong
-          id="totalBookings"
-        >
-          0
-        </strong>
-
-      </div>
-
-
-
-      <div
-        class="stat-card"
-      >
-
-        <h3>
-          Pending Verification
-        </h3>
-
-        <strong
-          id="pendingBookings"
-        >
-          0
-        </strong>
-
-      </div>
-
-
-
-      <div
-        class="stat-card"
-      >
-
-        <h3>
-          Confirmed
-        </h3>
-
-        <strong
-          id="confirmedBookings"
-        >
-          0
-        </strong>
-
-      </div>
-
-
-
-      <div
-        class="stat-card"
-      >
-
-        <h3>
-          Completed
-        </h3>
-
-        <strong
-          id="completedBookings"
-        >
-          0
-        </strong>
-
-      </div>
-
-
-    </div>
-
-
-
-    <!-- SEARCH / FILTER -->
-
-    <div
-      class="controls"
-    >
-
-
-      <input
-        type="text"
-        id="searchInput"
-        placeholder="Search booking reference, client, company..."
-      >
-
-
-      <select
-        id="statusFilter"
-      >
-
-        <option
-          value="All"
-        >
-          All Status
-        </option>
-
-
-        <option
-          value="Pending Verification"
-        >
-          Pending Verification
-        </option>
-
-
-        <option
-          value="Confirmed"
-        >
-          Confirmed
-        </option>
-
-
-        <option
-          value="Completed"
-        >
-          Completed
-        </option>
-
-
-        <option
-          value="Cancelled"
-        >
-          Cancelled
-        </option>
-
-      </select>
-
-
-    </div>
-
-
-
-    <!-- BOOKINGS -->
-
-    <div
-      id="bookingsContainer"
-    >
-
-      <div
-        class="loading"
-      >
-
-        Loading bookings...
-
-      </div>
-
-    </div>
-
-
-  </div>
+</button>
 
 </div>
 
+<div class="dashboard-container">
 
+<!-- STATISTICS -->
 
-<!-- =================================
-     FIREBASE
-================================= -->
+<div class="stats">
+
+<div class="stat-card">
+
+<h3>
+Total Bookings
+</h3>
+
+<strong id="totalBookings">
+0
+</strong>
+
+</div>
+
+<div class="stat-card">
+
+<h3>
+Pending Verification
+</h3>
+
+<strong id="pendingBookings">
+0
+</strong>
+
+</div>
+
+<div class="stat-card">
+
+<h3>
+Confirmed
+</h3>
+
+<strong id="confirmedBookings">
+0
+</strong>
+
+</div>
+
+<div class="stat-card">
+
+<h3>
+Completed
+</h3>
+
+<strong id="completedBookings">
+0
+</strong>
+
+</div>
+
+</div>
+
+<!-- SEARCH -->
+
+<div class="controls">
+
+<input
+type="text"
+id="searchInput"
+placeholder="Search booking reference, client, company..."
+
+>
+
+<select id="statusFilter">
+
+<option value="All">
+All Status
+</option>
+
+<option value="Pending Verification">
+Pending Verification
+</option>
+
+<option value="Confirmed">
+Confirmed
+</option>
+
+<option value="Completed">
+Completed
+</option>
+
+<option value="Cancelled">
+Cancelled
+</option>
+
+</select>
+
+</div>
+
+<!-- GLOBAL STATUS MESSAGE -->
+
+<div
+class="status-message"
+id="globalStatusMessage"
+></div>
+
+<!-- BOOKINGS -->
+
+<div id="bookingsContainer">
+
+<div class="loading">
+Loading bookings...
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- FIREBASE -->
 
 <script type="module">
 
 
 import {
 
-  initializeApp
+initializeApp
 
 }
 
@@ -1124,16 +554,15 @@ from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 
-
 import {
 
-  getAuth,
+getAuth,
 
-  signInWithEmailAndPassword,
+signInWithEmailAndPassword,
 
-  onAuthStateChanged,
+onAuthStateChanged,
 
-  signOut
+signOut
 
 }
 
@@ -1142,22 +571,21 @@ from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 
-
 import {
 
-  getFirestore,
+getFirestore,
 
-  collection,
+collection,
 
-  getDocs,
+getDocs,
 
-  doc,
+doc,
 
-  updateDoc,
+updateDoc,
 
-  query,
+query,
 
-  orderBy
+orderBy
 
 }
 
@@ -1167,1733 +595,1691 @@ from
 
 
 
-/* =================================
-   FIREBASE CONFIG
-================================= */
+/*
+==================================================
+GOOGLE APPS SCRIPT WEB APP URL
+==================================================
+*/
 
+const APPS_SCRIPT_URL =
+
+"https://script.google.com/macros/s/AKfycbyy8WrtnUQaAvdqN1VB2nDl4tEN3fhjoLmx-Qg0GTjxI1UGpGIbgyqh_D9QQz4dZ0Kw/exec";
+
+
+
+/*
+==================================================
+FIREBASE CONFIG
+==================================================
+*/
 
 const firebaseConfig = {
 
+apiKey:
 
-  apiKey:
+"AIzaSyDKX2ZsfE8VRlwL38wjzBF-immeyh5CvwQ",
 
-    "AIzaSyDKX2ZsfE8VRlwL38wjzBF-immeyh5CvwQ",
+authDomain:
 
+"manoy-drone-booking-system.firebaseapp.com",
 
-  authDomain:
+projectId:
 
-    "manoy-drone-booking-system.firebaseapp.com",
+"manoy-drone-booking-system",
 
+storageBucket:
 
-  projectId:
+"manoy-drone-booking-system.firebasestorage.app",
 
-    "manoy-drone-booking-system",
+messagingSenderId:
 
+"1046234143737",
 
-  storageBucket:
+appId:
 
-    "manoy-drone-booking-system.firebasestorage.app",
+"1:1046234143737:web:5642929f7b189e0a8fbb28",
 
+measurementId:
 
-  messagingSenderId:
-
-    "1046234143737",
-
-
-  appId:
-
-    "1:1046234143737:web:5642929f7b189e0a8fbb28",
-
-
-  measurementId:
-
-    "G-BMVTT7JNLM"
+"G-BMVTT7JNLM"
 
 };
 
 
 
-/* =================================
-   INITIALIZE FIREBASE
-================================= */
-
+/*
+==================================================
+INITIALIZE FIREBASE
+==================================================
+*/
 
 const app =
-  initializeApp(
-    firebaseConfig
-  );
-
+initializeApp(
+firebaseConfig
+);
 
 const auth =
-  getAuth(
-    app
-  );
-
+getAuth(app);
 
 const db =
-  getFirestore(
-    app
-  );
+getFirestore(app);
 
 
 
-/* =================================
-   ELEMENTS
-================================= */
-
+/*
+==================================================
+ELEMENTS
+==================================================
+*/
 
 const loginPage =
-  document.getElementById(
-    "loginPage"
-  );
-
+document.getElementById(
+"loginPage"
+);
 
 const dashboard =
-  document.getElementById(
-    "dashboard"
-  );
-
+document.getElementById(
+"dashboard"
+);
 
 const loginButton =
-  document.getElementById(
-    "loginButton"
-  );
-
+document.getElementById(
+"loginButton"
+);
 
 const logoutButton =
-  document.getElementById(
-    "logoutButton"
-  );
-
+document.getElementById(
+"logoutButton"
+);
 
 const loginError =
-  document.getElementById(
-    "loginError"
-  );
-
+document.getElementById(
+"loginError"
+);
 
 const bookingsContainer =
-  document.getElementById(
-    "bookingsContainer"
-  );
-
+document.getElementById(
+"bookingsContainer"
+);
 
 const searchInput =
-  document.getElementById(
-    "searchInput"
-  );
-
+document.getElementById(
+"searchInput"
+);
 
 const statusFilter =
-  document.getElementById(
-    "statusFilter"
-  );
+document.getElementById(
+"statusFilter"
+);
+
+const globalStatusMessage =
+document.getElementById(
+"globalStatusMessage"
+);
 
 
-let allBookings =
-  [];
+let allBookings = [];
 
 
 
-/* =================================
-   LOGIN
-================================= */
-
+/*
+==================================================
+LOGIN
+==================================================
+*/
 
 loginButton.addEventListener(
 
-  "click",
+"click",
 
-  async function() {
+async function(){
 
+const email =
 
-    const email =
+document
 
-      document
+.getElementById(
+"adminEmail"
+)
 
-        .getElementById(
-          "adminEmail"
-        )
+.value
 
-        .value
-
-        .trim();
-
-
-    const password =
-
-      document
-
-        .getElementById(
-          "adminPassword"
-        )
-
-        .value;
+.trim();
 
 
-    loginError.style.display =
-      "none";
+const password =
+
+document
+
+.getElementById(
+"adminPassword"
+)
+
+.value;
 
 
-    if (
-      !email ||
-      !password
-    ) {
+loginError.style.display =
+"none";
 
 
-      loginError.textContent =
+if(
+!email ||
+!password
+){
 
-        "Please enter your email and password.";
+loginError.textContent =
 
+"Please enter your email and password.";
 
-      loginError.style.display =
-        "block";
+loginError.style.display =
+"block";
 
+return;
 
-      return;
-
-    }
-
-
-    try {
-
-
-      loginButton.disabled =
-        true;
+}
 
 
-      loginButton.textContent =
+try{
 
-        "Logging in...";
+loginButton.disabled =
+true;
 
-
-      await signInWithEmailAndPassword(
-
-        auth,
-
-        email,
-
-        password
-
-      );
+loginButton.textContent =
+"Logging in...";
 
 
-    }
+await signInWithEmailAndPassword(
+
+auth,
+
+email,
+
+password
+
+);
 
 
-    catch (
-      error
-    ) {
+}
+
+catch(error){
+
+console.error(error);
 
 
-      console.error(
-        error
-      );
+loginError.textContent =
+error.message;
+
+loginError.style.display =
+"block";
 
 
-      loginError.textContent =
+loginButton.disabled =
+false;
 
-        error.message;
+loginButton.textContent =
+"Admin Login";
 
+}
 
-      loginError.style.display =
-        "block";
-
-
-      loginButton.disabled =
-        false;
-
-
-      loginButton.textContent =
-
-        "Admin Login";
-
-    }
-
-  }
+}
 
 );
 
 
 
-/* =================================
-   LOGOUT
-================================= */
-
+/*
+==================================================
+LOGOUT
+==================================================
+*/
 
 logoutButton.addEventListener(
 
-  "click",
+"click",
 
-  async function() {
+async function(){
 
+await signOut(
+auth
+);
 
-    await signOut(
-      auth
-    );
-
-  }
+}
 
 );
 
 
 
-/* =================================
-   AUTH STATE
-================================= */
-
+/*
+==================================================
+AUTH STATE
+==================================================
+*/
 
 onAuthStateChanged(
 
-  auth,
+auth,
 
-  function(
-    user
-  ) {
+function(user){
 
+if(user){
 
-    if (
-      user
-    ) {
+loginPage.style.display =
+"none";
 
+dashboard.style.display =
+"block";
 
-      loginPage.style.display =
-        "none";
+loadBookings();
 
+}
 
-      dashboard.style.display =
-        "block";
+else{
 
+loginPage.style.display =
+"flex";
 
-      loadBookings();
+dashboard.style.display =
+"none";
 
+}
 
-    }
-
-
-    else {
-
-
-      loginPage.style.display =
-        "flex";
-
-
-      dashboard.style.display =
-        "none";
-
-
-    }
-
-  }
+}
 
 );
 
 
 
-/* =================================
-   LOAD BOOKINGS
-================================= */
+/*
+==================================================
+LOAD BOOKINGS
+==================================================
+*/
 
+async function loadBookings(){
 
-async function loadBookings() {
+bookingsContainer.innerHTML =
 
+'<div class="loading">Loading bookings...</div>';
 
-  bookingsContainer.innerHTML =
 
-    '<div class="loading">Loading bookings...</div>';
+try{
 
+const bookingsQuery =
 
-  try {
+query(
 
+collection(
+db,
+"bookings"
+),
 
-    const bookingsQuery =
+orderBy(
+"createdAt",
+"desc"
+)
 
-      query(
+);
 
-        collection(
 
-          db,
+const snapshot =
 
-          "bookings"
+await getDocs(
+bookingsQuery
+);
 
-        ),
 
-        orderBy(
+allBookings = [];
 
-          "createdAt",
 
-          "desc"
+snapshot.forEach(
 
-        )
+function(documentSnapshot){
 
-      );
+allBookings.push({
 
+id:
+documentSnapshot.id,
 
-    const snapshot =
+...documentSnapshot.data()
 
-      await getDocs(
+});
 
-        bookingsQuery
+}
 
-      );
+);
 
 
-    allBookings =
-      [];
+updateStatistics();
 
+displayBookings(
+allBookings
+);
 
-    snapshot.forEach(
 
-      function(
-        documentSnapshot
-      ) {
+}
 
+catch(error){
 
-        const data =
-          documentSnapshot.data();
+console.error(error);
 
 
-        allBookings.push({
+bookingsContainer.innerHTML =
 
+'<div class="empty">' +
 
-          id:
+'Error loading bookings:<br><br>' +
 
-            documentSnapshot.id,
+escapeHtml(
+error.message
+) +
 
+'</div>';
 
-          ...data
-
-
-        });
-
-
-      }
-
-    );
-
-
-    updateStatistics();
-
-
-    displayBookings(
-
-      allBookings
-
-    );
-
-
-  }
-
-
-  catch (
-    error
-  ) {
-
-
-    console.error(
-      error
-    );
-
-
-    bookingsContainer.innerHTML =
-
-
-      '<div class="empty">' +
-
-
-      'Error loading bookings:<br><br>' +
-
-
-      escapeHtml(
-        error.message
-      ) +
-
-
-      '</div>';
-
-
-  }
+}
 
 }
 
 
 
-/* =================================
-   STATISTICS
-================================= */
+/*
+==================================================
+STATISTICS
+==================================================
+*/
+
+function updateStatistics(){
+
+document.getElementById(
+"totalBookings"
+).textContent =
+
+allBookings.length;
 
 
-function updateStatistics() {
+document.getElementById(
+"pendingBookings"
+).textContent =
+
+allBookings.filter(
+
+function(item){
+
+return item.status ===
+"Pending Verification";
+
+}
+
+).length;
 
 
-  document
+document.getElementById(
+"confirmedBookings"
+).textContent =
 
-    .getElementById(
-      "totalBookings"
-    )
+allBookings.filter(
 
-    .textContent =
+function(item){
 
-      allBookings.length;
+return item.status ===
+"Confirmed";
 
+}
 
-
-  document
-
-    .getElementById(
-      "pendingBookings"
-    )
-
-    .textContent =
+).length;
 
 
-      allBookings.filter(
+document.getElementById(
+"completedBookings"
+).textContent =
 
-        function(
-          item
-        ) {
+allBookings.filter(
 
+function(item){
 
-          return (
+return item.status ===
+"Completed";
 
-            item.status ===
+}
 
-            "Pending Verification"
-
-          );
-
-
-        }
-
-      ).length;
-
-
-
-  document
-
-    .getElementById(
-      "confirmedBookings"
-    )
-
-    .textContent =
-
-
-      allBookings.filter(
-
-        function(
-          item
-        ) {
-
-
-          return (
-
-            item.status ===
-
-            "Confirmed"
-
-          );
-
-
-        }
-
-      ).length;
-
-
-
-  document
-
-    .getElementById(
-      "completedBookings"
-    )
-
-    .textContent =
-
-
-      allBookings.filter(
-
-        function(
-          item
-        ) {
-
-
-          return (
-
-            item.status ===
-
-            "Completed"
-
-          );
-
-
-        }
-
-      ).length;
+).length;
 
 }
 
 
 
-/* =================================
-   DISPLAY BOOKINGS
-================================= */
-
+/*
+==================================================
+DISPLAY BOOKINGS
+==================================================
+*/
 
 function displayBookings(
+bookings
+){
 
-  bookings
+const search =
 
-) {
+searchInput
 
+.value
 
-  const search =
+.toLowerCase()
 
-    searchInput
+.trim();
 
-      .value
 
-      .toLowerCase()
+const filter =
 
-      .trim();
+statusFilter.value;
 
 
-  const filter =
+const filtered =
 
-    statusFilter
+bookings.filter(
 
-      .value;
+function(booking){
 
 
+const matchesSearch =
 
-  const filtered =
+String(
 
-    bookings.filter(
+booking.bookingReference ||
+""
 
-      function(
-        booking
-      ) {
+)
 
+.toLowerCase()
 
-        const matchesSearch =
+.includes(search)
 
 
-          String(
+||
 
-            booking.bookingReference ||
 
-            ""
+String(
 
-          )
+booking.clientName ||
+""
 
-          .toLowerCase()
+)
 
-          .includes(
-            search
-          )
+.toLowerCase()
 
+.includes(search)
 
-          ||
 
+||
 
-          String(
 
-            booking.clientName ||
+String(
 
-            ""
+booking.company ||
+""
 
-          )
+)
 
-          .toLowerCase()
+.toLowerCase()
 
-          .includes(
-            search
-          )
+.includes(search);
 
 
-          ||
 
+const matchesStatus =
 
-          String(
+filter ===
+"All"
 
-            booking.company ||
+||
 
-            ""
+booking.status ===
+filter;
 
-          )
 
-          .toLowerCase()
+return(
 
-          .includes(
-            search
-          );
+matchesSearch &&
 
+matchesStatus
 
+);
 
-        const matchesStatus =
+}
 
+);
 
-          filter ===
 
-          "All"
 
+if(
+filtered.length === 0
+){
 
-          ||
+bookingsContainer.innerHTML =
 
+'<div class="empty">' +
 
-          booking.status ===
+'No bookings found.' +
 
-          filter;
+'</div>';
 
+return;
 
+}
 
-        return (
 
-          matchesSearch &&
+bookingsContainer.innerHTML =
+"";
 
-          matchesStatus
 
-        );
+filtered.forEach(
 
-      }
+function(booking){
 
-    );
 
+const card =
 
+document.createElement(
+"div"
+);
 
-  if (
 
-    filtered.length ===
+card.className =
+"booking-card";
 
-    0
 
-  ) {
+const services =
 
+Array.isArray(
+booking.services
+)
 
-    bookingsContainer.innerHTML =
+?
 
+booking.services.join(
+", "
+)
 
-      '<div class="empty">' +
+:
 
+"Not specified";
 
-      'No bookings found.' +
 
+let createdAt =
+"Not available";
 
-      '</div>';
 
+if(
+booking.createdAt
+){
 
-    return;
+try{
 
-  }
+if(
+typeof booking.createdAt.toDate ===
+"function"
+){
 
+createdAt =
 
+booking.createdAt
 
-  bookingsContainer.innerHTML =
-    "";
+.toDate()
 
+.toLocaleString();
 
+}
 
-  filtered.forEach(
+else{
 
-    function(
-      booking
-    ) {
+createdAt =
 
+String(
+booking.createdAt
+);
 
-      const card =
+}
 
-        document.createElement(
+}
 
-          "div"
+catch(error){
 
-        );
+createdAt =
+"Not available";
 
-
-      card.className =
-
-        "booking-card";
-
-
-
-      const services =
-
-        Array.isArray(
-
-          booking.services
-
-        )
-
-
-        ?
-
-
-        booking.services.join(
-
-          ", "
-
-        )
-
-
-        :
-
-
-        "Not specified";
-
-
-
-      let createdAt =
-
-        "Not available";
-
-
-
-      if (
-
-        booking.createdAt
-
-      ) {
-
-
-        try {
-
-
-          if (
-
-            typeof
-
-            booking.createdAt.toDate ===
-
-            "function"
-
-          ) {
-
-
-            createdAt =
-
-              booking.createdAt
-
-                .toDate()
-
-                .toLocaleString();
-
-
-          }
-
-
-          else {
-
-
-            createdAt =
-
-              new Date(
-
-                booking.createdAt
-
-              )
-
-              .toLocaleString();
-
-
-          }
-
-
-        }
-
-
-        catch (
-          error
-        ) {
-
-
-          createdAt =
-
-            "Not available";
-
-        }
-
-      }
-
-
-
-      card.innerHTML = `
-
-
-        <div class="booking-header">
-
-
-          <div>
-
-
-            <div class="booking-reference">
-
-
-              ${escapeHtml(
-
-                booking.bookingReference ||
-
-                "No Reference"
-
-              )}
-
-
-            </div>
-
-
-            <div class="booking-date">
-
-
-              Submitted:
-
-              ${escapeHtml(
-
-                createdAt
-
-              )}
-
-
-            </div>
-
-
-          </div>
-
-
-        </div>
-
-
-
-        <div class="booking-grid">
-
-
-          <div class="info-box">
-
-            <strong>CLIENT</strong>
-
-            <span>
-
-              ${escapeHtml(
-
-                booking.clientName ||
-
-                ""
-
-              )}
-
-            </span>
-
-          </div>
-
-
-
-          <div class="info-box">
-
-            <strong>COMPANY</strong>
-
-            <span>
-
-              ${escapeHtml(
-
-                booking.company ||
-
-                "N/A"
-
-              )}
-
-            </span>
-
-          </div>
-
-
-
-          <div class="info-box">
-
-            <strong>MOBILE</strong>
-
-            <span>
-
-              ${escapeHtml(
-
-                booking.mobile ||
-
-                ""
-
-              )}
-
-            </span>
-
-          </div>
-
-
-
-          <div class="info-box">
-
-            <strong>EMAIL</strong>
-
-            <span>
-
-              ${escapeHtml(
-
-                booking.email ||
-
-                ""
-
-              )}
-
-            </span>
-
-          </div>
-
-
-
-          <div class="info-box">
-
-            <strong>PROJECT LOCATION</strong>
-
-            <span>
-
-              ${escapeHtml(
-
-                booking.location ||
-
-                ""
-
-              )}
-
-            </span>
-
-          </div>
-
-
-
-          <div class="info-box">
-
-            <strong>PROJECT DATE</strong>
-
-            <span>
-
-              ${escapeHtml(
-
-                booking.date ||
-
-                ""
-
-              )}
-
-            </span>
-
-          </div>
-
-
-
-          <div class="info-box">
-
-            <strong>TIME</strong>
-
-            <span>
-
-              ${escapeHtml(
-
-                booking.time ||
-
-                "Not specified"
-
-              )}
-
-            </span>
-
-          </div>
-
-
-
-          <div class="info-box">
-
-            <strong>DRONE</strong>
-
-            <span>
-
-              ${escapeHtml(
-
-                booking.drone ||
-
-                "Recommend equipment"
-
-              )}
-
-            </span>
-
-          </div>
-
-
-
-          <div class="info-box">
-
-            <strong>PAYMENT METHOD</strong>
-
-            <span>
-
-              ${escapeHtml(
-
-                booking.paymentMethod ||
-
-                ""
-
-              )}
-
-            </span>
-
-          </div>
-
-
-
-          <div class="info-box">
-
-            <strong>DOWN PAYMENT</strong>
-
-            <span>
-
-              ₱${Number(
-
-                booking.amountPaid ||
-
-                0
-
-              ).toLocaleString()}
-
-            </span>
-
-          </div>
-
-
-
-          <div class="info-box">
-
-            <strong>TRANSACTION REFERENCE</strong>
-
-            <span>
-
-              ${escapeHtml(
-
-                booking.transactionReference ||
-
-                "N/A"
-
-              )}
-
-            </span>
-
-          </div>
-
-
-
-          <div class="info-box">
-
-            <strong>DESCRIPTION</strong>
-
-            <span>
-
-              ${escapeHtml(
-
-                booking.description ||
-
-                ""
-
-              )}
-
-            </span>
-
-          </div>
-
-
-        </div>
-
-
-
-        <div class="services">
-
-
-          <strong>
-
-            SELECTED SERVICES
-
-          </strong>
-
-
-          ${escapeHtml(
-
-            services
-
-          )}
-
-
-        </div>
-
-
-
-        <div class="status-area">
-
-
-          <strong>
-
-            Status:
-
-          </strong>
-
-
-          <select
-
-            id="status-${booking.id}"
-
-          >
-
-
-            <option
-
-              value="Pending Verification"
-
-              ${
-
-                booking.status ===
-
-                "Pending Verification"
-
-                ?
-
-                "selected"
-
-                :
-
-                ""
-
-              }
-
-            >
-
-              Pending Verification
-
-            </option>
-
-
-
-            <option
-
-              value="Confirmed"
-
-              ${
-
-                booking.status ===
-
-                "Confirmed"
-
-                ?
-
-                "selected"
-
-                :
-
-                ""
-
-              }
-
-            >
-
-              Confirmed
-
-            </option>
-
-
-
-            <option
-
-              value="Completed"
-
-              ${
-
-                booking.status ===
-
-                "Completed"
-
-                ?
-
-                "selected"
-
-                :
-
-                ""
-
-              }
-
-            >
-
-              Completed
-
-            </option>
-
-
-
-            <option
-
-              value="Cancelled"
-
-              ${
-
-                booking.status ===
-
-                "Cancelled"
-
-                ?
-
-                "selected"
-
-                :
-
-                ""
-
-              }
-
-            >
-
-              Cancelled
-
-            </option>
-
-
-          </select>
-
-
-
-          <button
-
-            class="update-btn"
-
-            onclick=
-
-            "updateStatus('${
-
-              booking.id
-
-            }')"
-
-          >
-
-            Update Status
-
-          </button>
-
-
-        </div>
-
-
-      `;
-
-
-
-      bookingsContainer.appendChild(
-
-        card
-
-      );
-
-
-    }
-
-  );
+}
 
 }
 
 
 
-/* =================================
-   UPDATE STATUS
-================================= */
+card.innerHTML = `
 
+<div class="booking-header">
+
+<div>
+
+<div class="booking-reference">
+
+${escapeHtml(
+
+booking.bookingReference ||
+
+"No Reference"
+
+)}
+
+</div>
+
+<div class="booking-date">
+
+Submitted:
+
+${escapeHtml(
+createdAt
+)}
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="booking-grid">
+
+
+<div class="info-box">
+
+<strong>
+CLIENT
+</strong>
+
+<span>
+
+${escapeHtml(
+
+booking.clientName ||
+""
+
+)}
+
+</span>
+
+</div>
+
+
+<div class="info-box">
+
+<strong>
+COMPANY
+</strong>
+
+<span>
+
+${escapeHtml(
+
+booking.company ||
+"N/A"
+
+)}
+
+</span>
+
+</div>
+
+
+<div class="info-box">
+
+<strong>
+MOBILE
+</strong>
+
+<span>
+
+${escapeHtml(
+
+booking.mobile ||
+""
+
+)}
+
+</span>
+
+</div>
+
+
+<div class="info-box">
+
+<strong>
+EMAIL
+</strong>
+
+<span>
+
+${escapeHtml(
+
+booking.email ||
+""
+
+)}
+
+</span>
+
+</div>
+
+
+<div class="info-box">
+
+<strong>
+PROJECT LOCATION
+</strong>
+
+<span>
+
+${escapeHtml(
+
+booking.location ||
+""
+
+)}
+
+</span>
+
+</div>
+
+
+<div class="info-box">
+
+<strong>
+PROJECT DATE
+</strong>
+
+<span>
+
+${escapeHtml(
+
+booking.date ||
+""
+
+)}
+
+</span>
+
+</div>
+
+
+<div class="info-box">
+
+<strong>
+TIME
+</strong>
+
+<span>
+
+${escapeHtml(
+
+booking.time ||
+"Not specified"
+
+)}
+
+</span>
+
+</div>
+
+
+<div class="info-box">
+
+<strong>
+DRONE
+</strong>
+
+<span>
+
+${escapeHtml(
+
+booking.drone ||
+
+"Recommend equipment"
+
+)}
+
+</span>
+
+</div>
+
+
+<div class="info-box">
+
+<strong>
+PAYMENT METHOD
+</strong>
+
+<span>
+
+${escapeHtml(
+
+booking.paymentMethod ||
+""
+
+)}
+
+</span>
+
+</div>
+
+
+<div class="info-box">
+
+<strong>
+DOWN PAYMENT
+</strong>
+
+<span>
+
+₱${Number(
+
+booking.amountPaid ||
+0
+
+).toLocaleString()}
+
+</span>
+
+</div>
+
+
+<div class="info-box">
+
+<strong>
+TRANSACTION REFERENCE
+</strong>
+
+<span>
+
+${escapeHtml(
+
+booking.transactionReference ||
+
+"N/A"
+
+)}
+
+</span>
+
+</div>
+
+
+<div class="info-box">
+
+<strong>
+DESCRIPTION
+</strong>
+
+<span>
+
+${escapeHtml(
+
+booking.description ||
+""
+
+)}
+
+</span>
+
+</div>
+
+
+</div>
+
+
+<div class="services">
+
+<strong>
+SELECTED SERVICES
+</strong>
+
+${escapeHtml(
+services
+)}
+
+</div>
+
+
+<div class="status-area">
+
+<strong>
+Status:
+</strong>
+
+
+<select
+id="status-${booking.id}"
+>
+
+<option
+value="Pending Verification"
+
+${booking.status ===
+"Pending Verification"
+?
+"selected"
+:
+""}
+
+>
+
+Pending Verification
+
+</option>
+
+
+<option
+value="Confirmed"
+
+${booking.status ===
+"Confirmed"
+?
+"selected"
+:
+""}
+
+>
+
+Confirmed
+
+</option>
+
+
+<option
+value="Completed"
+
+${booking.status ===
+"Completed"
+?
+"selected"
+:
+""}
+
+>
+
+Completed
+
+</option>
+
+
+<option
+value="Cancelled"
+
+${booking.status ===
+"Cancelled"
+?
+"selected"
+:
+""}
+
+>
+
+Cancelled
+
+</option>
+
+</select>
+
+
+<button
+
+class="update-btn"
+
+onclick=
+
+"updateStatus('${booking.id}')"
+
+>
+
+Update Status
+
+</button>
+
+
+</div>
+
+`;
+
+
+bookingsContainer.appendChild(
+card
+);
+
+}
+
+);
+
+}
+
+
+
+/*
+==================================================
+UPDATE STATUS
+==================================================
+*/
 
 window.updateStatus =
 
-  async function(
+async function(
+bookingId
+){
 
-    bookingId
 
-  ) {
+const select =
 
+document.getElementById(
 
-    const select =
+"status-" +
 
-      document.getElementById(
+bookingId
 
-        "status-" +
+);
 
-        bookingId
 
-      );
+const newStatus =
 
+select.value;
 
 
-    if (
-      !select
-    ) {
+const booking =
 
+allBookings.find(
 
-      alert(
+function(item){
 
-        "Status selector not found."
+return item.id ===
+bookingId;
 
-      );
+}
 
+);
 
-      return;
 
-    }
+if(
+!booking
+){
 
+alert(
+"Booking not found."
+);
 
+return;
 
-    const newStatus =
+}
 
-      select.value;
 
+const oldStatus =
 
+booking.status ||
+"Pending Verification";
 
-    const booking =
 
-      allBookings.find(
+/*
+==================================================
+CONFIRMATION
+==================================================
+*/
 
-        function(
-          item
-        ) {
+if(
+newStatus ===
+"Confirmed"
 
+&&
 
-          return (
+oldStatus !==
+"Confirmed"
 
-            item.id ===
+){
 
-            bookingId
+const confirmAction =
 
-          );
+confirm(
 
+"Confirm this booking?\n\n" +
 
-        }
+"Booking Reference: " +
 
-      );
+(booking.bookingReference ||
+"N/A") +
 
+"\n\n" +
 
+"Client: " +
 
-    if (
-      !booking
-    ) {
+(booking.clientName ||
+"N/A") +
 
+"\n\n" +
 
-      alert(
+"An email confirmation will be sent to:\n" +
 
-        "Booking not found."
+(booking.email ||
+"N/A")
 
-      );
+);
 
 
-      return;
+if(
+!confirmAction
+){
 
-    }
+select.value =
+oldStatus;
 
+return;
 
+}
 
-    const buttons =
+}
 
-      document.querySelectorAll(
 
-        ".update-btn"
 
-      );
+const buttons =
 
+document.querySelectorAll(
+".update-btn"
+);
 
 
-    try {
+buttons.forEach(
 
+function(button){
 
-      buttons.forEach(
+button.disabled =
+true;
 
-        function(
-          button
-        ) {
+}
 
+);
 
-          button.disabled =
-            true;
 
+showGlobalMessage(
 
-        }
+"Updating booking status... Please wait.",
 
-      );
+"success"
 
+);
 
 
-      /* ============================
-         UPDATE FIREBASE STATUS
-      ============================ */
+try{
 
 
-      await updateDoc(
+/*
+==================================================
+STEP 1
+UPDATE FIREBASE
+==================================================
+*/
 
-        doc(
+await updateDoc(
 
-          db,
+doc(
 
-          "bookings",
+db,
 
-          bookingId
+"bookings",
 
-        ),
+bookingId
 
-        {
+),
 
+{
 
-          status:
+status:
+newStatus
 
-            newStatus
+}
 
+);
 
-        }
 
-      );
 
+/*
+==================================================
+STEP 2
+SEND EMAIL THROUGH GOOGLE APPS SCRIPT
+==================================================
+*/
 
+if(
 
-      /* ============================
-         UPDATE LOCAL DATA
-      ============================ */
+newStatus ===
+"Confirmed"
 
+&&
 
-      const oldStatus =
+oldStatus !==
+"Confirmed"
 
-        booking.status;
+){
 
 
+showGlobalMessage(
 
-      booking.status =
+"Booking confirmed. Sending confirmation email to client...",
 
-        newStatus;
+"success"
 
+);
 
 
-      updateStatistics();
+const emailData = {
 
+action:
+"confirmBooking",
 
+bookingId:
+bookingId,
 
-      displayBookings(
+bookingReference:
 
-        allBookings
+booking.bookingReference ||
+"",
 
-      );
+clientName:
 
+booking.clientName ||
+"",
 
+email:
 
-      /* ============================
-         SUCCESS MESSAGE
-      ============================ */
+booking.email ||
+"",
 
+company:
 
-      if (
+booking.company ||
+"",
 
-        newStatus ===
+mobile:
 
-        "Confirmed"
+booking.mobile ||
+"",
 
-        &&
+location:
 
-        oldStatus !==
+booking.location ||
+"",
 
-        "Confirmed"
+date:
 
-      ) {
+booking.date ||
+"",
 
+time:
 
-        alert(
+booking.time ||
+"",
 
-          "Booking confirmed successfully!\n\n" +
+description:
 
-          "The Firebase booking status is now Confirmed.\n\n" +
+booking.description ||
+"",
 
-          "IMPORTANT: The client confirmation email will be sent once the Google Apps Script email notification function is connected."
+services:
 
-        );
+Array.isArray(
+booking.services
+)
 
+?
 
-      }
+booking.services
 
+:
 
-      else {
+[
 
+String(
+booking.services ||
+""
 
-        alert(
+)
 
-          "Booking status updated successfully!"
+],
 
-        );
+drone:
 
+booking.drone ||
+"",
 
-      }
+paymentMethod:
 
+booking.paymentMethod ||
+"",
 
-    }
+amountPaid:
 
+Number(
 
-    catch (
-      error
-    ) {
+booking.amountPaid ||
+0
 
+),
 
-      console.error(
+transactionReference:
 
-        "Update Status Error:",
+booking.transactionReference ||
+"",
 
-        error
+status:
 
-      );
+"Confirmed"
 
+};
 
-      alert(
 
-        "Error updating booking:\n\n" +
 
-        error.message
+try{
 
-      );
 
+const response =
 
-      buttons.forEach(
+await fetch(
 
-        function(
-          button
-        ) {
+APPS_SCRIPT_URL,
 
+{
 
-          button.disabled =
-            false;
+method:
+"POST",
 
+headers:{
 
-        }
+"Content-Type":
 
-      );
+"text/plain;charset=utf-8"
 
-    }
+},
 
-  };
+body:
 
+JSON.stringify(
+emailData
+)
 
+}
 
-/* =================================
-   SEARCH
-================================= */
+);
 
+
+const result =
+
+await response.json();
+
+
+if(
+result.success
+){
+
+showGlobalMessage(
+
+"✅ Booking confirmed successfully! Confirmation email has been sent to the client.",
+
+"success"
+
+);
+
+}
+
+else{
+
+showGlobalMessage(
+
+"⚠️ Booking was confirmed in Firebase, but the email could not be sent. " +
+
+(
+
+result.error ||
+
+"Unknown error."
+
+),
+
+"error"
+
+);
+
+}
+
+}
+
+catch(
+emailError
+){
+
+console.error(
+emailError
+);
+
+
+showGlobalMessage(
+
+"⚠️ Booking was confirmed in Firebase, but there was an error sending the client email.",
+
+"error"
+
+);
+
+}
+
+}
+
+
+else{
+
+
+showGlobalMessage(
+
+"✅ Booking status updated successfully!",
+
+"success"
+
+);
+
+}
+
+
+/*
+==================================================
+RELOAD BOOKINGS
+==================================================
+*/
+
+await loadBookings();
+
+
+}
+
+catch(error){
+
+console.error(
+error
+);
+
+
+showGlobalMessage(
+
+"❌ Error updating booking: " +
+
+error.message,
+
+"error"
+
+);
+
+}
+
+
+buttons.forEach(
+
+function(button){
+
+button.disabled =
+false;
+
+}
+
+);
+
+};
+
+
+
+/*
+==================================================
+GLOBAL MESSAGE
+==================================================
+*/
+
+function showGlobalMessage(
+
+message,
+
+type
+
+){
+
+globalStatusMessage.textContent =
+message;
+
+
+globalStatusMessage.className =
+
+"status-message " +
+
+(
+
+type ===
+"error"
+
+?
+
+"status-error"
+
+:
+
+"status-success"
+
+);
+
+
+globalStatusMessage.style.display =
+"block";
+
+
+setTimeout(
+
+function(){
+
+globalStatusMessage.style.display =
+"none";
+
+},
+
+10000
+
+);
+
+}
+
+
+
+/*
+==================================================
+SEARCH
+==================================================
+*/
 
 searchInput.addEventListener(
 
-  "input",
+"input",
 
-  function() {
+function(){
 
+displayBookings(
+allBookings
+);
 
-    displayBookings(
-
-      allBookings
-
-    );
-
-
-  }
+}
 
 );
 
 
 
-/* =================================
-   FILTER
-================================= */
-
+/*
+==================================================
+FILTER
+==================================================
+*/
 
 statusFilter.addEventListener(
 
-  "change",
+"change",
 
-  function() {
+function(){
 
+displayBookings(
+allBookings
+);
 
-    displayBookings(
-
-      allBookings
-
-    );
-
-
-  }
+}
 
 );
 
 
 
-/* =================================
-   ESCAPE HTML
-================================= */
-
+/*
+==================================================
+ESCAPE HTML
+==================================================
+*/
 
 function escapeHtml(
+text
+){
 
-  text
+return String(
+text
+)
 
-) {
+.replace(
+/&/g,
+"&amp;"
+)
 
+.replace(
+/</g,
+"&lt;"
+)
 
-  return String(
+.replace(
+/>/g,
+"&gt;"
+)
 
-    text
+.replace(
+/"/g,
+"&quot;"
+)
 
-  )
-
-
-    .replace(
-
-      /&/g,
-
-      "&amp;"
-
-    )
-
-
-    .replace(
-
-      /</g,
-
-      "&lt;"
-
-    )
-
-
-    .replace(
-
-      />/g,
-
-      "&gt;"
-
-    )
-
-
-    .replace(
-
-      /"/g,
-
-      "&quot;"
-
-    )
-
-
-    .replace(
-
-      /'/g,
-
-      "&#039;"
-
-    );
-
+.replace(
+/'/g,
+"&#039;"
+);
 
 }
 
 
 </script>
-
 
 </body>
 
