@@ -28,6 +28,10 @@ body {
   color: #222;
 }
 
+/* ================================
+   LOGIN
+================================ */
+
 .login-page {
   min-height: 100vh;
   display: flex;
@@ -93,6 +97,10 @@ body {
   font-size: 14px;
 }
 
+/* ================================
+   DASHBOARD
+================================ */
+
 .dashboard {
   display: none;
 }
@@ -127,6 +135,10 @@ body {
   padding: 25px;
 }
 
+/* ================================
+   STATS
+================================ */
+
 .stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -151,6 +163,10 @@ body {
   font-size: 28px;
 }
 
+/* ================================
+   CONTROLS
+================================ */
+
 .controls {
   background: white;
   padding: 20px;
@@ -173,6 +189,10 @@ body {
   flex: 1;
   min-width: 250px;
 }
+
+/* ================================
+   BOOKING CARD
+================================ */
 
 .booking-card {
   background: white;
@@ -241,6 +261,10 @@ body {
   margin-bottom: 5px;
 }
 
+/* ================================
+   STATUS
+================================ */
+
 .status-area {
   margin-top: 18px;
   display: flex;
@@ -265,10 +289,18 @@ body {
   font-weight: bold;
 }
 
+.update-btn:hover {
+  background: #e66d00;
+}
+
 .update-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+/* ================================
+   MESSAGES
+================================ */
 
 .empty {
   text-align: center;
@@ -307,6 +339,10 @@ body {
   color: #a00000;
 }
 
+/* ================================
+   MOBILE
+================================ */
+
 @media (max-width: 900px) {
 
   .stats {
@@ -344,9 +380,13 @@ body {
 
 </head>
 
+
 <body>
 
-<!-- LOGIN -->
+
+<!-- ==================================================
+     LOGIN PAGE
+================================================== -->
 
 <div
   class="login-page"
@@ -391,7 +431,9 @@ body {
 </div>
 
 
-<!-- DASHBOARD -->
+<!-- ==================================================
+     DASHBOARD
+================================================== -->
 
 <div
   class="dashboard"
@@ -417,6 +459,9 @@ body {
 
 
   <div class="dashboard-container">
+
+
+    <!-- STATS -->
 
     <div class="stats">
 
@@ -474,6 +519,8 @@ body {
     </div>
 
 
+    <!-- SEARCH / FILTER -->
+
     <div class="controls">
 
       <input
@@ -509,6 +556,8 @@ body {
     </div>
 
 
+    <!-- BOOKINGS -->
+
     <div id="bookingsContainer">
 
       <div class="loading">
@@ -517,14 +566,22 @@ body {
 
     </div>
 
+
   </div>
 
 </div>
 
 
-<!-- FIREBASE -->
+<!-- ==================================================
+     FIREBASE
+================================================== -->
 
 <script type="module">
+
+
+/* ==================================================
+   FIREBASE IMPORTS
+================================================== */
 
 import {
   initializeApp
@@ -556,21 +613,18 @@ from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/*
-==================================================
-APPS SCRIPT WEB APP URL
-==================================================
-*/
+/* ==================================================
+   GOOGLE APPS SCRIPT WEB APP URL
+   FINAL DEPLOYMENT
+================================================== */
 
 const APPS_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbxr0zxaVlWllozsodxGowNEAthp4QLOYKZEsSw32-bn5ZKHzFATRN2k7cTzbpQnbXN8/exec";
+"https://script.google.com/macros/s/AKfycbzwtnTfkInVXwEaPY-899CRxA0YcH2nW474ShsecxRIpIXeYfKKcKHA8byM-A5T2kgj/exec";
 
 
-/*
-==================================================
-FIREBASE CONFIG
-==================================================
-*/
+/* ==================================================
+   FIREBASE CONFIG
+================================================== */
 
 const firebaseConfig = {
 
@@ -598,6 +652,10 @@ const firebaseConfig = {
 };
 
 
+/* ==================================================
+   INITIALIZE FIREBASE
+================================================== */
+
 const app =
 initializeApp(firebaseConfig);
 
@@ -610,45 +668,57 @@ const db =
 getFirestore(app);
 
 
-/*
-==================================================
-ELEMENTS
-==================================================
-*/
+/* ==================================================
+   ELEMENTS
+================================================== */
 
 const loginPage =
-document.getElementById("loginPage");
+document.getElementById(
+  "loginPage"
+);
 
 const dashboard =
-document.getElementById("dashboard");
+document.getElementById(
+  "dashboard"
+);
 
 const loginButton =
-document.getElementById("loginButton");
+document.getElementById(
+  "loginButton"
+);
 
 const logoutButton =
-document.getElementById("logoutButton");
+document.getElementById(
+  "logoutButton"
+);
 
 const loginError =
-document.getElementById("loginError");
+document.getElementById(
+  "loginError"
+);
 
 const bookingsContainer =
-document.getElementById("bookingsContainer");
+document.getElementById(
+  "bookingsContainer"
+);
 
 const searchInput =
-document.getElementById("searchInput");
+document.getElementById(
+  "searchInput"
+);
 
 const statusFilter =
-document.getElementById("statusFilter");
+document.getElementById(
+  "statusFilter"
+);
 
 
 let allBookings = [];
 
 
-/*
-==================================================
-LOGIN
-==================================================
-*/
+/* ==================================================
+   LOGIN
+================================================== */
 
 loginButton.addEventListener(
 "click",
@@ -656,20 +726,29 @@ async function() {
 
   const email =
   document
-  .getElementById("adminEmail")
+  .getElementById(
+    "adminEmail"
+  )
   .value
   .trim();
 
+
   const password =
   document
-  .getElementById("adminPassword")
+  .getElementById(
+    "adminPassword"
+  )
   .value;
+
 
   loginError.style.display =
   "none";
 
 
-  if (!email || !password) {
+  if (
+    !email ||
+    !password
+  ) {
 
     loginError.textContent =
     "Please enter your email and password.";
@@ -701,16 +780,22 @@ async function() {
 
   catch (error) {
 
-    console.error(error);
+    console.error(
+      error
+    );
+
 
     loginError.textContent =
     error.message;
 
+
     loginError.style.display =
     "block";
 
+
     loginButton.disabled =
     false;
+
 
     loginButton.textContent =
     "Admin Login";
@@ -720,26 +805,24 @@ async function() {
 });
 
 
-/*
-==================================================
-LOGOUT
-==================================================
-*/
+/* ==================================================
+   LOGOUT
+================================================== */
 
 logoutButton.addEventListener(
 "click",
 async function() {
 
-  await signOut(auth);
+  await signOut(
+    auth
+  );
 
 });
 
 
-/*
-==================================================
-AUTH STATE
-==================================================
-*/
+/* ==================================================
+   AUTH STATE
+================================================== */
 
 onAuthStateChanged(
 auth,
@@ -750,8 +833,10 @@ function(user) {
     loginPage.style.display =
     "none";
 
+
     dashboard.style.display =
     "block";
+
 
     loadBookings();
 
@@ -762,6 +847,7 @@ function(user) {
     loginPage.style.display =
     "flex";
 
+
     dashboard.style.display =
     "none";
 
@@ -770,11 +856,9 @@ function(user) {
 });
 
 
-/*
-==================================================
-LOAD BOOKINGS
-==================================================
-*/
+/* ==================================================
+   LOAD BOOKINGS FROM FIREBASE
+================================================== */
 
 async function loadBookings() {
 
@@ -786,13 +870,24 @@ async function loadBookings() {
 
     const bookingsQuery =
     query(
-      collection(db, "bookings"),
-      orderBy("createdAt", "desc")
+
+      collection(
+        db,
+        "bookings"
+      ),
+
+      orderBy(
+        "createdAt",
+        "desc"
+      )
+
     );
 
 
     const snapshot =
-    await getDocs(bookingsQuery);
+    await getDocs(
+      bookingsQuery
+    );
 
 
     allBookings = [];
@@ -815,19 +910,30 @@ async function loadBookings() {
 
     updateStatistics();
 
-    displayBookings(allBookings);
+
+    displayBookings(
+      allBookings
+    );
 
   }
 
   catch (error) {
 
-    console.error(error);
+    console.error(
+      error
+    );
 
 
     bookingsContainer.innerHTML =
+
     '<div class="empty">' +
+
     'Error loading bookings:<br><br>' +
-    escapeHtml(error.message) +
+
+    escapeHtml(
+      error.message
+    ) +
+
     '</div>';
 
   }
@@ -835,68 +941,72 @@ async function loadBookings() {
 }
 
 
-/*
-==================================================
-STATISTICS
-==================================================
-*/
+/* ==================================================
+   STATISTICS
+================================================== */
 
 function updateStatistics() {
 
   document.getElementById(
-  "totalBookings"
+    "totalBookings"
   ).textContent =
   allBookings.length;
 
 
   document.getElementById(
-  "pendingBookings"
+    "pendingBookings"
   ).textContent =
 
   allBookings.filter(
   function(item) {
 
-    return item.status ===
-    "Pending Verification";
+    return (
+      item.status ===
+      "Pending Verification"
+    );
 
   }).length;
 
 
   document.getElementById(
-  "confirmedBookings"
+    "confirmedBookings"
   ).textContent =
 
   allBookings.filter(
   function(item) {
 
-    return item.status ===
-    "Confirmed";
+    return (
+      item.status ===
+      "Confirmed"
+    );
 
   }).length;
 
 
   document.getElementById(
-  "completedBookings"
+    "completedBookings"
   ).textContent =
 
   allBookings.filter(
   function(item) {
 
-    return item.status ===
-    "Completed";
+    return (
+      item.status ===
+      "Completed"
+    );
 
   }).length;
 
 }
 
 
-/*
-==================================================
-DISPLAY BOOKINGS
-==================================================
-*/
+/* ==================================================
+   DISPLAY BOOKINGS
+================================================== */
 
-function displayBookings(bookings) {
+function displayBookings(
+  bookings
+) {
 
   const search =
   searchInput
@@ -913,29 +1023,39 @@ function displayBookings(bookings) {
   bookings.filter(
   function(booking) {
 
+
     const matchesSearch =
 
     String(
-      booking.bookingReference || ""
+      booking.bookingReference ||
+      ""
     )
     .toLowerCase()
-    .includes(search)
+    .includes(
+      search
+    )
 
     ||
 
     String(
-      booking.clientName || ""
+      booking.clientName ||
+      ""
     )
     .toLowerCase()
-    .includes(search)
+    .includes(
+      search
+    )
 
     ||
 
     String(
-      booking.company || ""
+      booking.company ||
+      ""
     )
     .toLowerCase()
-    .includes(search);
+    .includes(
+      search
+    );
 
 
     const matchesStatus =
@@ -944,22 +1064,31 @@ function displayBookings(bookings) {
 
     ||
 
-    booking.status === filter;
+    booking.status ===
+    filter;
 
 
     return (
+
       matchesSearch &&
+
       matchesStatus
+
     );
 
   });
 
 
-  if (filtered.length === 0) {
+  if (
+    filtered.length === 0
+  ) {
 
     bookingsContainer.innerHTML =
+
     '<div class="empty">' +
+
     'No bookings found.' +
+
     '</div>';
 
     return;
@@ -974,8 +1103,11 @@ function displayBookings(bookings) {
   filtered.forEach(
   function(booking) {
 
+
     const card =
-    document.createElement("div");
+    document.createElement(
+      "div"
+    );
 
 
     card.className =
@@ -983,14 +1115,20 @@ function displayBookings(bookings) {
 
 
     const services =
-    Array.isArray(booking.services)
+
+    Array.isArray(
+      booking.services
+    )
 
     ?
 
-    booking.services.join(", ")
+    booking.services.join(
+      ", "
+    )
 
     :
 
+    booking.services ||
     "Not specified";
 
 
@@ -998,7 +1136,9 @@ function displayBookings(bookings) {
     "Not available";
 
 
-    if (booking.createdAt) {
+    if (
+      booking.createdAt
+    ) {
 
       try {
 
@@ -1012,7 +1152,9 @@ function displayBookings(bookings) {
       catch (error) {
 
         createdAt =
-        String(booking.createdAt);
+        String(
+          booking.createdAt
+        );
 
       }
 
@@ -1021,6 +1163,7 @@ function displayBookings(bookings) {
 
     card.innerHTML = `
 
+
       <div class="booking-header">
 
         <div>
@@ -1028,16 +1171,23 @@ function displayBookings(bookings) {
           <div class="booking-reference">
 
             ${escapeHtml(
+
               booking.bookingReference ||
+
               "No Reference"
+
             )}
 
           </div>
 
+
           <div class="booking-date">
 
             Submitted:
-            ${escapeHtml(createdAt)}
+
+            ${escapeHtml(
+              createdAt
+            )}
 
           </div>
 
@@ -1051,12 +1201,18 @@ function displayBookings(bookings) {
 
         <div class="info-box">
 
-          <strong>CLIENT</strong>
+          <strong>
+            CLIENT
+          </strong>
 
           <span>
 
             ${escapeHtml(
-              booking.clientName || ""
+
+              booking.clientName ||
+
+              ""
+
             )}
 
           </span>
@@ -1066,12 +1222,18 @@ function displayBookings(bookings) {
 
         <div class="info-box">
 
-          <strong>COMPANY</strong>
+          <strong>
+            COMPANY
+          </strong>
 
           <span>
 
             ${escapeHtml(
-              booking.company || "N/A"
+
+              booking.company ||
+
+              "N/A"
+
             )}
 
           </span>
@@ -1081,12 +1243,18 @@ function displayBookings(bookings) {
 
         <div class="info-box">
 
-          <strong>MOBILE</strong>
+          <strong>
+            MOBILE
+          </strong>
 
           <span>
 
             ${escapeHtml(
-              booking.mobile || ""
+
+              booking.mobile ||
+
+              ""
+
             )}
 
           </span>
@@ -1096,12 +1264,18 @@ function displayBookings(bookings) {
 
         <div class="info-box">
 
-          <strong>EMAIL</strong>
+          <strong>
+            EMAIL
+          </strong>
 
           <span>
 
             ${escapeHtml(
-              booking.email || ""
+
+              booking.email ||
+
+              ""
+
             )}
 
           </span>
@@ -1111,12 +1285,18 @@ function displayBookings(bookings) {
 
         <div class="info-box">
 
-          <strong>PROJECT LOCATION</strong>
+          <strong>
+            PROJECT LOCATION
+          </strong>
 
           <span>
 
             ${escapeHtml(
-              booking.location || ""
+
+              booking.location ||
+
+              ""
+
             )}
 
           </span>
@@ -1126,12 +1306,18 @@ function displayBookings(bookings) {
 
         <div class="info-box">
 
-          <strong>PROJECT DATE</strong>
+          <strong>
+            PROJECT DATE
+          </strong>
 
           <span>
 
             ${escapeHtml(
-              booking.date || ""
+
+              booking.date ||
+
+              ""
+
             )}
 
           </span>
@@ -1141,13 +1327,18 @@ function displayBookings(bookings) {
 
         <div class="info-box">
 
-          <strong>TIME</strong>
+          <strong>
+            TIME
+          </strong>
 
           <span>
 
             ${escapeHtml(
+
               booking.time ||
+
               "Not specified"
+
             )}
 
           </span>
@@ -1157,13 +1348,18 @@ function displayBookings(bookings) {
 
         <div class="info-box">
 
-          <strong>DRONE</strong>
+          <strong>
+            DRONE
+          </strong>
 
           <span>
 
             ${escapeHtml(
+
               booking.drone ||
+
               "Recommend equipment"
+
             )}
 
           </span>
@@ -1173,12 +1369,18 @@ function displayBookings(bookings) {
 
         <div class="info-box">
 
-          <strong>PAYMENT METHOD</strong>
+          <strong>
+            PAYMENT METHOD
+          </strong>
 
           <span>
 
             ${escapeHtml(
-              booking.paymentMethod || ""
+
+              booking.paymentMethod ||
+
+              ""
+
             )}
 
           </span>
@@ -1188,12 +1390,18 @@ function displayBookings(bookings) {
 
         <div class="info-box">
 
-          <strong>DOWN PAYMENT</strong>
+          <strong>
+            DOWN PAYMENT
+          </strong>
 
           <span>
 
             ₱${Number(
-              booking.amountPaid || 0
+
+              booking.amountPaid ||
+
+              0
+
             ).toLocaleString()}
 
           </span>
@@ -1203,13 +1411,18 @@ function displayBookings(bookings) {
 
         <div class="info-box">
 
-          <strong>TRANSACTION REFERENCE</strong>
+          <strong>
+            TRANSACTION REFERENCE
+          </strong>
 
           <span>
 
             ${escapeHtml(
+
               booking.transactionReference ||
+
               "N/A"
+
             )}
 
           </span>
@@ -1219,12 +1432,18 @@ function displayBookings(bookings) {
 
         <div class="info-box">
 
-          <strong>DESCRIPTION</strong>
+          <strong>
+            DESCRIPTION
+          </strong>
 
           <span>
 
             ${escapeHtml(
-              booking.description || ""
+
+              booking.description ||
+
+              ""
+
             )}
 
           </span>
@@ -1241,7 +1460,9 @@ function displayBookings(bookings) {
           SELECTED SERVICES
         </strong>
 
-        ${escapeHtml(services)}
+        ${escapeHtml(
+          services
+        )}
 
       </div>
 
@@ -1254,15 +1475,19 @@ function displayBookings(bookings) {
 
 
         <select
-          id="status-${booking.id}"
+          id="status-${escapeHtml(
+            booking.id
+          )}"
         >
 
           <option
             value="Pending Verification"
-            ${booking.status ===
-            "Pending Verification"
-            ? "selected"
-            : ""}
+            ${
+              booking.status ===
+              "Pending Verification"
+              ? "selected"
+              : ""
+            }
           >
             Pending Verification
           </option>
@@ -1270,10 +1495,12 @@ function displayBookings(bookings) {
 
           <option
             value="Confirmed"
-            ${booking.status ===
-            "Confirmed"
-            ? "selected"
-            : ""}
+            ${
+              booking.status ===
+              "Confirmed"
+              ? "selected"
+              : ""
+            }
           >
             Confirmed
           </option>
@@ -1281,10 +1508,12 @@ function displayBookings(bookings) {
 
           <option
             value="Completed"
-            ${booking.status ===
-            "Completed"
-            ? "selected"
-            : ""}
+            ${
+              booking.status ===
+              "Completed"
+              ? "selected"
+              : ""
+            }
           >
             Completed
           </option>
@@ -1292,10 +1521,12 @@ function displayBookings(bookings) {
 
           <option
             value="Cancelled"
-            ${booking.status ===
-            "Cancelled"
-            ? "selected"
-            : ""}
+            ${
+              booking.status ===
+              "Cancelled"
+              ? "selected"
+              : ""
+            }
           >
             Cancelled
           </option>
@@ -1305,21 +1536,20 @@ function displayBookings(bookings) {
 
         <button
           class="update-btn"
-          data-booking-id="${escapeHtml(
-            booking.id
-          )}"
         >
           Update Status
         </button>
-
 
       </div>
 
 
       <div
         class="status-message"
-        id="message-${booking.id}"
+        id="message-${escapeHtml(
+          booking.id
+        )}"
       ></div>
+
 
     `;
 
@@ -1335,40 +1565,53 @@ function displayBookings(bookings) {
     function() {
 
       updateStatus(
+
         booking.id,
+
         updateButton
+
       );
 
     });
 
 
-    bookingsContainer.appendChild(card);
+    bookingsContainer.appendChild(
+      card
+    );
 
   });
 
 }
 
 
-/*
-==================================================
-UPDATE STATUS
-==================================================
-*/
+/* ==================================================
+   UPDATE STATUS
+   FIREBASE + EMAIL CLIENT
+================================================== */
 
 async function updateStatus(
   bookingId,
   button
 ) {
 
+
   const select =
   document.getElementById(
-    "status-" + bookingId
+
+    "status-" +
+
+    bookingId
+
   );
 
 
   const messageBox =
   document.getElementById(
-    "message-" + bookingId
+
+    "message-" +
+
+    bookingId
+
   );
 
 
@@ -1380,8 +1623,10 @@ async function updateStatus(
   allBookings.find(
   function(item) {
 
-    return item.id ===
-    bookingId;
+    return (
+      item.id ===
+      bookingId
+    );
 
   });
 
@@ -1398,15 +1643,46 @@ async function updateStatus(
 
 
   const oldStatus =
-  booking.status;
+  booking.status ||
+  "Pending Verification";
 
 
-  if (oldStatus === newStatus) {
+  if (
+    oldStatus ===
+    newStatus
+  ) {
 
     alert(
+
       "Booking is already " +
+
       newStatus
+
     );
+
+    return;
+
+  }
+
+
+  const confirmed =
+  confirm(
+
+    "Update this booking status to " +
+
+    newStatus +
+
+    "?\n\n" +
+
+    "The client will receive an email notification."
+
+  );
+
+
+  if (!confirmed) {
+
+    select.value =
+    oldStatus;
 
     return;
 
@@ -1428,39 +1704,82 @@ async function updateStatus(
   try {
 
 
-    /*
-    ==============================================
-    CALL GOOGLE APPS SCRIPT
-    ==============================================
-    */
+    /* ==========================================
+       STEP 1
+       UPDATE FIREBASE FIRST
+    ========================================== */
+
+    await updateDoc(
+
+      doc(
+
+        db,
+
+        "bookings",
+
+        bookingId
+
+      ),
+
+      {
+
+        status:
+        newStatus
+
+      }
+
+    );
+
+
+    /* ==========================================
+       STEP 2
+       SEND EMAIL THROUGH APPS SCRIPT
+    ========================================== */
 
     const response =
     await fetch(
+
       APPS_SCRIPT_URL,
+
       {
+
         method:
         "POST",
 
+
         headers:
         {
+
           "Content-Type":
           "text/plain;charset=utf-8"
+
         },
 
+
         body:
+
         JSON.stringify({
 
           action:
           "updateBookingStatus",
 
+
           bookingId:
+
+          booking.bookingReference ||
+
+
           bookingId,
 
+
           newStatus:
+
           newStatus
 
         })
+
       }
+
     );
 
 
@@ -1469,69 +1788,86 @@ async function updateStatus(
 
 
     console.log(
+
       "Apps Script Response:",
+
       result
+
     );
 
 
-    if (!result.success) {
+    /* ==========================================
+       CHECK EMAIL RESULT
+    ========================================== */
 
-      throw new Error(
-        result.error ||
-        "Failed to update booking."
-      );
-
-    }
+    if (
+      result.success
+    ) {
 
 
-    /*
-    ==============================================
-    REFRESH FIREBASE DASHBOARD
-    ==============================================
-    */
+      if (
+        result.emailSent
+      ) {
 
-    await updateDoc(
+        messageBox.textContent =
 
-      doc(
-        db,
-        "bookings",
-        bookingId
-      ),
+        "SUCCESS! Booking status updated to " +
 
-      {
-        status:
-        newStatus
+        newStatus +
+
+        ". Confirmation email sent to the client.";
+
+        messageBox.className =
+
+        "status-message status-success";
+
       }
 
-    );
 
+      else {
 
-    /*
-    ==============================================
-    SHOW RESULT
-    ==============================================
-    */
+        messageBox.textContent =
 
-    if (result.emailSent) {
+        "Booking status updated to " +
 
-      messageBox.textContent =
-      "Booking status updated successfully. Client confirmation email sent.";
+        newStatus +
 
-      messageBox.className =
-      "status-message status-success";
+        ", but the client email was not sent. " +
+
+        (
+
+          result.emailError ||
+
+          "Please check the client email address."
+
+        );
+
+        messageBox.className =
+
+        "status-message status-warning";
+
+      }
 
     }
+
 
     else {
 
       messageBox.textContent =
-      "Booking status updated in dashboard, but confirmation email could not be sent. " +
+
+      "Booking status was updated, but Apps Script returned an error: " +
+
       (
-        result.emailError ||
-        "Please check Apps Script execution logs."
+
+        result.error ||
+
+        "Unknown error"
+
       );
 
+
       messageBox.className =
+
       "status-message status-warning";
 
     }
@@ -1541,6 +1877,10 @@ async function updateStatus(
     "block";
 
 
+    /* ==========================================
+       REFRESH DASHBOARD
+    ========================================== */
+
     await loadBookings();
 
 
@@ -1549,22 +1889,35 @@ async function updateStatus(
   catch (error) {
 
     console.error(
+
       "Update Status Error:",
+
       error
+
     );
 
 
     messageBox.textContent =
+
     "Error updating booking: " +
+
     error.message;
 
 
     messageBox.className =
+
     "status-message status-error";
 
 
     messageBox.style.display =
     "block";
+
+
+    /* ==========================================
+       REFRESH TO RESTORE REAL FIREBASE STATUS
+    ========================================== */
+
+    await loadBookings();
 
   }
 
@@ -1579,11 +1932,9 @@ async function updateStatus(
 }
 
 
-/*
-==================================================
-SEARCH
-==================================================
-*/
+/* ==================================================
+   SEARCH
+================================================== */
 
 searchInput.addEventListener(
 "input",
@@ -1596,11 +1947,9 @@ function() {
 });
 
 
-/*
-==================================================
-FILTER
-==================================================
-*/
+/* ==================================================
+   FILTER
+================================================== */
 
 statusFilter.addEventListener(
 "change",
@@ -1613,15 +1962,17 @@ function() {
 });
 
 
-/*
-==================================================
-ESCAPE HTML
-==================================================
-*/
+/* ==================================================
+   ESCAPE HTML
+================================================== */
 
-function escapeHtml(text) {
+function escapeHtml(
+  text
+) {
 
-  return String(text)
+  return String(
+    text
+  )
 
   .replace(
     /&/g,
@@ -1649,6 +2000,7 @@ function escapeHtml(text) {
   );
 
 }
+
 
 </script>
 
