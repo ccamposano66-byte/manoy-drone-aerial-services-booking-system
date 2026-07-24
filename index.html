@@ -58,7 +58,7 @@
       color: #555;
     }
 
-    /* CONTACT CARD */
+    /* CONTACT */
 
     .contact-card {
       margin-top: 22px;
@@ -112,7 +112,7 @@
       word-break: break-word;
     }
 
-    /* RATES SECTION */
+    /* RATES */
 
     .rates-section {
       margin-top: 25px;
@@ -224,6 +224,8 @@
       line-height: 1.6;
     }
 
+    /* FORM */
+
     h2 {
       margin-top: 30px;
       margin-bottom: 15px;
@@ -289,6 +291,8 @@
       accent-color: #ff7a00;
     }
 
+    /* PAYMENT */
+
     .payment-box {
       background: #fff7ef;
       padding: 18px;
@@ -306,6 +310,8 @@
       font-size: 14px;
       line-height: 1.6;
     }
+
+    /* BUTTON */
 
     button {
       width: 100%;
@@ -328,6 +334,8 @@
       background: #999;
       cursor: not-allowed;
     }
+
+    /* SUCCESS */
 
     .result {
       display: none;
@@ -353,6 +361,8 @@
       color: #856404;
       font-weight: bold;
     }
+
+    /* ERROR */
 
     .error {
       display: none;
@@ -1069,6 +1079,8 @@
   "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
+  /* FIREBASE CONFIG */
+
   const firebaseConfig = {
 
     apiKey:
@@ -1095,13 +1107,25 @@
   };
 
 
+  /* INITIALIZE FIREBASE */
+
   const app =
     initializeApp(firebaseConfig);
 
 
+  /* FIRESTORE */
+
   const db =
     getFirestore(app);
 
+
+  /* GOOGLE APPS SCRIPT WEB APP */
+
+  const EMAIL_WEB_APP_URL =
+    "https://script.google.com/macros/s/AKfycbyGbX7dv99QhzvXOIq_zbI2mfjiMdxmkioTfEU_GnQJpvp6Ytbn0hVQdkeBPVeRX97e/exec";
+
+
+  /* BOOKING FORM */
 
   const bookingForm =
     document.getElementById(
@@ -1144,7 +1168,7 @@
         "none";
 
 
-      // GET SERVICES
+      /* GET SERVICES */
 
       const services = [];
 
@@ -1183,7 +1207,7 @@
       }
 
 
-      // GENERATE BOOKING REFERENCE
+      /* GENERATE BOOKING REFERENCE */
 
       const bookingReference =
         "MDAVS-" +
@@ -1194,7 +1218,7 @@
         );
 
 
-      // BOOKING DATA
+      /* BOOKING DATA */
 
       const bookingData = {
 
@@ -1303,17 +1327,17 @@
       try {
 
 
-        // DISABLE BUTTON
+        /* DISABLE BUTTON */
 
         submitButton.disabled =
           true;
 
 
         submitButton.textContent =
-          "Saving Booking...";
+          "Submitting Booking...";
 
 
-        // SAVE TO FIRESTORE
+        /* SAVE TO FIREBASE */
 
         const docRef =
           await addDoc(
@@ -1329,12 +1353,119 @@
 
 
         console.log(
-          "Booking saved successfully:",
+          "Booking saved to Firebase:",
           docRef.id
         );
 
 
-        // SHOW BOOKING REFERENCE
+        /*
+          SEND EMAIL NOTIFICATION
+
+          This sends the same booking
+          information to Google Apps Script.
+        */
+
+
+        try {
+
+          await fetch(
+
+            EMAIL_WEB_APP_URL,
+
+            {
+
+              method:
+                "POST",
+
+              mode:
+                "no-cors",
+
+              headers: {
+
+                "Content-Type":
+                  "text/plain;charset=utf-8"
+
+              },
+
+              body:
+                JSON.stringify({
+
+                  bookingReference:
+                    bookingReference,
+
+                  clientName:
+                    bookingData.clientName,
+
+                  company:
+                    bookingData.company,
+
+                  mobile:
+                    bookingData.mobile,
+
+                  email:
+                    bookingData.email,
+
+                  location:
+                    bookingData.location,
+
+                  date:
+                    bookingData.date,
+
+                  time:
+                    bookingData.time,
+
+                  description:
+                    bookingData.description,
+
+                  services:
+                    bookingData.services,
+
+                  drone:
+                    bookingData.drone,
+
+                  paymentMethod:
+                    bookingData.paymentMethod,
+
+                  amountPaid:
+                    bookingData.amountPaid,
+
+                  transactionReference:
+                    bookingData.transactionReference,
+
+                  status:
+                    bookingData.status
+
+                })
+
+            }
+
+          );
+
+          console.log(
+            "Email notification request sent."
+          );
+
+        }
+
+        catch(emailError) {
+
+          /*
+            IMPORTANT:
+
+            Even if email notification
+            fails, the Firebase booking
+            is already saved.
+          */
+
+          console.error(
+            "Email notification error:",
+            emailError
+          );
+
+        }
+
+
+        /* SHOW SUCCESS */
 
         document
           .getElementById(
@@ -1358,12 +1489,12 @@
         });
 
 
-        // RESET FORM
+        /* RESET FORM */
 
         bookingForm.reset();
 
 
-        // RESET BUTTON
+        /* RESET BUTTON */
 
         submitButton.disabled =
           false;
@@ -1386,10 +1517,10 @@
 
         errorMessage.innerHTML =
 
-          "<strong>Firebase Error</strong><br>" +
+          "<strong>Booking Error</strong><br>" +
 
           "Code: " +
-          error.code +
+          (error.code || "Unknown") +
 
           "<br><br>" +
 
@@ -1407,7 +1538,6 @@
 
         submitButton.textContent =
           "Submit Booking";
-
 
       }
 
