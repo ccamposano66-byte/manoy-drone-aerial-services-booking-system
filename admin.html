@@ -14,7 +14,6 @@
 Manoy Drone Aerial Services - Admin Dashboard
 </title>
 
-
 <style>
 
 * {
@@ -23,791 +22,320 @@ Manoy Drone Aerial Services - Admin Dashboard
   padding: 0;
 }
 
-
 body {
-
-  font-family:
-    Arial,
-    sans-serif;
-
-  background:
-    #f4f4f4;
-
-  color:
-    #222;
-
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  color: #222;
 }
-
 
 .login-page {
-
-  min-height:
-    100vh;
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-  background:
-    linear-gradient(
-      135deg,
-      #ff7a00,
-      #ff9d2e
-    );
-
-  padding:
-    20px;
-
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ff7a00, #ff9d2e);
+  padding: 20px;
 }
-
 
 .login-box {
-
-  background:
-    white;
-
-  width:
-    100%;
-
-  max-width:
-    420px;
-
-  padding:
-    30px;
-
-  border-radius:
-    18px;
-
-  box-shadow:
-    0 10px 30px
-    rgba(
-      0,
-      0,
-      0,
-      0.2
-    );
-
+  background: white;
+  width: 100%;
+  max-width: 420px;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
-
 
 .login-box h1 {
-
-  text-align:
-    center;
-
-  font-size:
-    24px;
-
-  margin-bottom:
-    8px;
-
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 8px;
 }
-
 
 .login-box p {
-
-  text-align:
-    center;
-
-  color:
-    #666;
-
-  margin-bottom:
-    25px;
-
+  text-align: center;
+  color: #666;
+  margin-bottom: 25px;
 }
-
 
 .login-box input {
-
-  width:
-    100%;
-
-  padding:
-    14px;
-
-  margin-bottom:
-    15px;
-
-  border:
-    1px solid #ccc;
-
-  border-radius:
-    8px;
-
-  font-size:
-    15px;
-
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
 }
-
 
 .login-box button {
-
-  width:
-    100%;
-
-  padding:
-    14px;
-
-  background:
-    #ff7a00;
-
-  color:
-    white;
-
-  border:
-    none;
-
-  border-radius:
-    8px;
-
-  font-size:
-    16px;
-
-  font-weight:
-    bold;
-
-  cursor:
-    pointer;
-
+  width: 100%;
+  padding: 14px;
+  background: #ff7a00;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
 }
-
 
 .login-box button:hover {
-
-  background:
-    #e66d00;
-
+  background: #e66d00;
 }
-
 
 .login-error {
-
-  display:
-    none;
-
-  margin-top:
-    15px;
-
-  padding:
-    12px;
-
-  background:
-    #ffe5e5;
-
-  color:
-    #a00000;
-
-  border-radius:
-    8px;
-
-  font-size:
-    14px;
-
+  display: none;
+  margin-top: 15px;
+  padding: 12px;
+  background: #ffe5e5;
+  color: #a00000;
+  border-radius: 8px;
+  font-size: 14px;
 }
-
 
 .dashboard {
-
-  display:
-    none;
-
+  display: none;
 }
-
 
 .topbar {
-
-  background:
-    #ff7a00;
-
-  color:
-    white;
-
-  padding:
-    18px 25px;
-
-  display:
-    flex;
-
-  justify-content:
-    space-between;
-
-  align-items:
-    center;
-
-  gap:
-    15px;
-
+  background: #ff7a00;
+  color: white;
+  padding: 18px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
 }
-
 
 .topbar h1 {
-
-  font-size:
-    22px;
-
+  font-size: 22px;
 }
-
 
 .logout-btn {
-
-  background:
-    white;
-
-  color:
-    #ff7a00;
-
-  border:
-    none;
-
-  padding:
-    10px 16px;
-
-  border-radius:
-    7px;
-
-  font-weight:
-    bold;
-
-  cursor:
-    pointer;
-
+  background: white;
+  color: #ff7a00;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 7px;
+  font-weight: bold;
+  cursor: pointer;
 }
-
 
 .dashboard-container {
-
-  max-width:
-    1400px;
-
-  margin:
-    auto;
-
-  padding:
-    25px;
-
+  max-width: 1400px;
+  margin: auto;
+  padding: 25px;
 }
-
 
 .stats {
-
-  display:
-    grid;
-
-  grid-template-columns:
-    repeat(
-      4,
-      1fr
-    );
-
-  gap:
-    15px;
-
-  margin-bottom:
-    25px;
-
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 25px;
 }
-
 
 .stat-card {
-
-  background:
-    white;
-
-  padding:
-    20px;
-
-  border-radius:
-    12px;
-
-  box-shadow:
-    0 3px 10px
-    rgba(
-      0,
-      0,
-      0,
-      0.08
-    );
-
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
 }
-
 
 .stat-card h3 {
-
-  font-size:
-    14px;
-
-  color:
-    #666;
-
-  margin-bottom:
-    10px;
-
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
 }
-
 
 .stat-card strong {
-
-  font-size:
-    28px;
-
+  font-size: 28px;
 }
-
 
 .controls {
-
-  background:
-    white;
-
-  padding:
-    20px;
-
-  border-radius:
-    12px;
-
-  margin-bottom:
-    20px;
-
-  display:
-    flex;
-
-  gap:
-    10px;
-
-  flex-wrap:
-    wrap;
-
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
-
 
 .controls input,
 .controls select {
-
-  padding:
-    12px;
-
-  border:
-    1px solid #ccc;
-
-  border-radius:
-    7px;
-
-  font-size:
-    14px;
-
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  font-size: 14px;
 }
-
 
 .controls input {
-
-  flex:
-    1;
-
-  min-width:
-    250px;
-
+  flex: 1;
+  min-width: 250px;
 }
-
 
 .booking-card {
-
-  background:
-    white;
-
-  border-radius:
-    12px;
-
-  margin-bottom:
-    18px;
-
-  padding:
-    20px;
-
-  box-shadow:
-    0 3px 10px
-    rgba(
-      0,
-      0,
-      0,
-      0.08
-    );
-
+  background: white;
+  border-radius: 12px;
+  margin-bottom: 18px;
+  padding: 20px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
 }
-
 
 .booking-header {
-
-  display:
-    flex;
-
-  justify-content:
-    space-between;
-
-  align-items:
-    center;
-
-  gap:
-    15px;
-
-  flex-wrap:
-    wrap;
-
-  border-bottom:
-    1px solid #eee;
-
-  padding-bottom:
-    15px;
-
-  margin-bottom:
-    15px;
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
 }
-
 
 .booking-reference {
-
-  font-size:
-    20px;
-
-  font-weight:
-    bold;
-
-  color:
-    #ff7a00;
-
+  font-size: 20px;
+  font-weight: bold;
+  color: #ff7a00;
 }
-
 
 .booking-date {
-
-  color:
-    #666;
-
-  font-size:
-    13px;
-
+  color: #666;
+  font-size: 13px;
 }
-
 
 .booking-grid {
-
-  display:
-    grid;
-
-  grid-template-columns:
-    repeat(
-      3,
-      1fr
-    );
-
-  gap:
-    15px;
-
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
 }
-
 
 .info-box {
-
-  background:
-    #f8f8f8;
-
-  padding:
-    12px;
-
-  border-radius:
-    8px;
-
+  background: #f8f8f8;
+  padding: 12px;
+  border-radius: 8px;
 }
-
 
 .info-box strong {
-
-  display:
-    block;
-
-  font-size:
-    12px;
-
-  color:
-    #777;
-
-  margin-bottom:
-    5px;
-
+  display: block;
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 5px;
 }
-
 
 .info-box span {
-
-  font-size:
-    14px;
-
-  word-break:
-    break-word;
-
+  font-size: 14px;
+  word-break: break-word;
 }
-
 
 .services {
-
-  margin-top:
-    15px;
-
-  padding:
-    15px;
-
-  background:
-    #fff7ef;
-
-  border-left:
-    4px solid #ff7a00;
-
-  border-radius:
-    7px;
-
+  margin-top: 15px;
+  padding: 15px;
+  background: #fff7ef;
+  border-left: 4px solid #ff7a00;
+  border-radius: 7px;
 }
-
 
 .services strong {
-
-  display:
-    block;
-
-  margin-bottom:
-    5px;
-
+  display: block;
+  margin-bottom: 5px;
 }
-
 
 .status-area {
-
-  margin-top:
-    18px;
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  gap:
-    10px;
-
-  flex-wrap:
-    wrap;
-
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
-
 
 .status-area select {
-
-  padding:
-    10px;
-
-  border:
-    1px solid #ccc;
-
-  border-radius:
-    7px;
-
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
 }
-
 
 .update-btn {
-
-  padding:
-    10px 15px;
-
-  background:
-    #ff7a00;
-
-  color:
-    white;
-
-  border:
-    none;
-
-  border-radius:
-    7px;
-
-  cursor:
-    pointer;
-
-  font-weight:
-    bold;
-
+  padding: 10px 15px;
+  background: #ff7a00;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: bold;
 }
-
 
 .update-btn:disabled {
-
-  opacity:
-    0.6;
-
-  cursor:
-    not-allowed;
-
+  opacity: 0.6;
+  cursor: not-allowed;
 }
-
 
 .empty {
-
-  text-align:
-    center;
-
-  background:
-    white;
-
-  padding:
-    40px;
-
-  border-radius:
-    12px;
-
-  color:
-    #777;
-
+  text-align: center;
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  color: #777;
 }
-
 
 .loading {
-
-  text-align:
-    center;
-
-  padding:
-    30px;
-
-  color:
-    #777;
-
+  text-align: center;
+  padding: 30px;
+  color: #777;
 }
-
 
 .status-message {
-
-  margin-top:
-    15px;
-
-  padding:
-    12px;
-
-  border-radius:
-    8px;
-
-  font-size:
-    14px;
-
-  display:
-    none;
-
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  display: none;
 }
-
 
 .status-success {
-
-  background:
-    #e7f7e7;
-
-  color:
-    #176b17;
-
+  background: #e7f7e7;
+  color: #176b17;
 }
-
 
 .status-warning {
-
-  background:
-    #fff3cd;
-
-  color:
-    #856404;
-
+  background: #fff3cd;
+  color: #856404;
 }
-
 
 .status-error {
-
-  background:
-    #ffe5e5;
-
-  color:
-    #a00000;
-
+  background: #ffe5e5;
+  color: #a00000;
 }
 
-
-@media (
-  max-width:
-  900px
-) {
+@media (max-width: 900px) {
 
   .stats {
-
-    grid-template-columns:
-      repeat(
-        2,
-        1fr
-      );
-
+    grid-template-columns: repeat(2, 1fr);
   }
 
-
   .booking-grid {
-
-    grid-template-columns:
-      repeat(
-        2,
-        1fr
-      );
-
+    grid-template-columns: repeat(2, 1fr);
   }
 
 }
 
-
-@media (
-  max-width:
-  600px
-) {
+@media (max-width: 600px) {
 
   .topbar {
-
-    flex-direction:
-      column;
-
-    text-align:
-      center;
-
+    flex-direction: column;
+    text-align: center;
   }
-
 
   .stats {
-
-    grid-template-columns:
-      1fr 1fr;
-
+    grid-template-columns: 1fr 1fr;
   }
-
 
   .booking-grid {
-
-    grid-template-columns:
-      1fr;
-
+    grid-template-columns: 1fr;
   }
 
-
   .dashboard-container {
-
-    padding:
-      15px;
-
+    padding: 15px;
   }
 
 }
@@ -816,9 +344,7 @@ body {
 
 </head>
 
-
 <body>
-
 
 <!-- LOGIN -->
 
@@ -827,46 +353,40 @@ body {
   id="loginPage"
 >
 
-<div
-  class="login-box"
->
+  <div class="login-box">
 
-<h1>
-Manoy Drone Aerial Services
-</h1>
+    <h1>
+      Manoy Drone Aerial Services
+    </h1>
 
-<p>
-Admin Dashboard
-</p>
+    <p>
+      Admin Dashboard
+    </p>
 
+    <input
+      type="email"
+      id="adminEmail"
+      placeholder="Admin Email"
+    >
 
-<input
-  type="email"
-  id="adminEmail"
-  placeholder="Admin Email"
->
+    <input
+      type="password"
+      id="adminPassword"
+      placeholder="Password"
+    >
 
+    <button
+      id="loginButton"
+    >
+      Admin Login
+    </button>
 
-<input
-  type="password"
-  id="adminPassword"
-  placeholder="Password"
->
+    <div
+      class="login-error"
+      id="loginError"
+    ></div>
 
-
-<button
-  id="loginButton"
->
-Admin Login
-</button>
-
-
-<div
-  class="login-error"
-  id="loginError"
-></div>
-
-</div>
+  </div>
 
 </div>
 
@@ -878,226 +398,161 @@ Admin Login
   id="dashboard"
 >
 
+  <div class="topbar">
 
-<div
-  class="topbar"
->
+    <h1>
+      Manoy Drone Aerial Services
+      <br>
+      Admin Dashboard
+    </h1>
 
-<h1>
+    <button
+      class="logout-btn"
+      id="logoutButton"
+    >
+      Logout
+    </button>
 
-Manoy Drone Aerial Services
-
-<br>
-
-Admin Dashboard
-
-</h1>
-
-
-<button
-  class="logout-btn"
-  id="logoutButton"
->
-
-Logout
-
-</button>
-
-</div>
+  </div>
 
 
-<div
-  class="dashboard-container"
->
+  <div class="dashboard-container">
+
+    <div class="stats">
+
+      <div class="stat-card">
+
+        <h3>
+          Total Bookings
+        </h3>
+
+        <strong id="totalBookings">
+          0
+        </strong>
+
+      </div>
 
 
-<div
-  class="stats"
->
+      <div class="stat-card">
+
+        <h3>
+          Pending Verification
+        </h3>
+
+        <strong id="pendingBookings">
+          0
+        </strong>
+
+      </div>
 
 
-<div
-  class="stat-card"
->
+      <div class="stat-card">
 
-<h3>
-Total Bookings
-</h3>
+        <h3>
+          Confirmed
+        </h3>
 
-<strong
-  id="totalBookings"
->
-0
-</strong>
+        <strong id="confirmedBookings">
+          0
+        </strong>
 
-</div>
+      </div>
 
 
-<div
-  class="stat-card"
->
+      <div class="stat-card">
 
-<h3>
-Pending Verification
-</h3>
+        <h3>
+          Completed
+        </h3>
 
-<strong
-  id="pendingBookings"
->
-0
-</strong>
+        <strong id="completedBookings">
+          0
+        </strong>
 
-</div>
+      </div>
+
+    </div>
 
 
-<div
-  class="stat-card"
->
+    <div class="controls">
 
-<h3>
-Confirmed
-</h3>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search booking reference, client, company..."
+      >
 
-<strong
-  id="confirmedBookings"
->
-0
-</strong>
+      <select id="statusFilter">
 
-</div>
+        <option value="All">
+          All Status
+        </option>
 
+        <option value="Pending Verification">
+          Pending Verification
+        </option>
 
-<div
-  class="stat-card"
->
+        <option value="Confirmed">
+          Confirmed
+        </option>
 
-<h3>
-Completed
-</h3>
+        <option value="Completed">
+          Completed
+        </option>
 
-<strong
-  id="completedBookings"
->
-0
-</strong>
+        <option value="Cancelled">
+          Cancelled
+        </option>
 
-</div>
+      </select>
 
-
-</div>
+    </div>
 
 
-<div
-  class="controls"
->
+    <div id="bookingsContainer">
 
-<input
-  type="text"
-  id="searchInput"
-  placeholder="Search booking reference, client, company..."
->
+      <div class="loading">
+        Loading bookings...
+      </div>
 
+    </div>
 
-<select
-  id="statusFilter"
->
-
-<option value="All">
-All Status
-</option>
-
-<option value="Pending Verification">
-Pending Verification
-</option>
-
-<option value="Confirmed">
-Confirmed
-</option>
-
-<option value="Completed">
-Completed
-</option>
-
-<option value="Cancelled">
-Cancelled
-</option>
-
-</select>
-
-</div>
-
-
-<div
-  id="bookingsContainer"
->
-
-<div
-  class="loading"
->
-Loading bookings...
-</div>
-
-</div>
-
-
-</div>
+  </div>
 
 </div>
 
 
 <!-- FIREBASE -->
 
-<script
-  type="module"
->
-
+<script type="module">
 
 import {
   initializeApp
 }
-
 from
-
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 
 import {
-
   getAuth,
-
   signInWithEmailAndPassword,
-
   onAuthStateChanged,
-
   signOut
-
 }
-
 from
-
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 
 import {
-
   getFirestore,
-
   collection,
-
   getDocs,
-
   doc,
-
   updateDoc,
-
   query,
-
   orderBy
-
 }
-
 from
-
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
@@ -1108,8 +563,7 @@ APPS SCRIPT WEB APP URL
 */
 
 const APPS_SCRIPT_URL =
-
-"https://script.google.com/macros/s/AKfycbyIm-01W97plZSRCWsNFwGa9Clesu-4VGImQFWiLQqZKz3MaWxOpLtK0e5b6xFBWDGu/exec";
+"https://script.google.com/macros/s/AKfycbzP6dLe-fqKRvi1w6P562IarVnBEq-DBkkXrvc5a0jgeiPgl0HGPDPvOjluUezoKe42/exec";
 
 
 /*
@@ -1120,62 +574,40 @@ FIREBASE CONFIG
 
 const firebaseConfig = {
 
-apiKey:
+  apiKey:
+  "AIzaSyDKX2ZsfE8VRlwL38wjzBF-immeyh5CvwQ",
 
-"AIzaSyDKX2ZsfE8VRlwL38wjzBF-immeyh5CvwQ",
+  authDomain:
+  "manoy-drone-booking-system.firebaseapp.com",
 
-authDomain:
+  projectId:
+  "manoy-drone-booking-system",
 
-"manoy-drone-booking-system.firebaseapp.com",
+  storageBucket:
+  "manoy-drone-booking-system.firebasestorage.app",
 
-projectId:
+  messagingSenderId:
+  "1046234143737",
 
-"manoy-drone-booking-system",
+  appId:
+  "1:1046234143737:web:5642929f7b189e0a8fbb28",
 
-storageBucket:
-
-"manoy-drone-booking-system.firebasestorage.app",
-
-messagingSenderId:
-
-"1046234143737",
-
-appId:
-
-"1:1046234143737:web:5642929f7b189e0a8fbb28",
-
-measurementId:
-
-"G-BMVTT7JNLM"
+  measurementId:
+  "G-BMVTT7JNLM"
 
 };
 
 
 const app =
-
-initializeApp(
-
-firebaseConfig
-
-);
+initializeApp(firebaseConfig);
 
 
 const auth =
-
-getAuth(
-
-app
-
-);
+getAuth(app);
 
 
 const db =
-
-getFirestore(
-
-app
-
-);
+getFirestore(app);
 
 
 /*
@@ -1185,59 +617,28 @@ ELEMENTS
 */
 
 const loginPage =
-
-document.getElementById(
-"loginPage"
-);
-
+document.getElementById("loginPage");
 
 const dashboard =
-
-document.getElementById(
-"dashboard"
-);
-
+document.getElementById("dashboard");
 
 const loginButton =
-
-document.getElementById(
-"loginButton"
-);
-
+document.getElementById("loginButton");
 
 const logoutButton =
-
-document.getElementById(
-"logoutButton"
-);
-
+document.getElementById("logoutButton");
 
 const loginError =
-
-document.getElementById(
-"loginError"
-);
-
+document.getElementById("loginError");
 
 const bookingsContainer =
-
-document.getElementById(
-"bookingsContainer"
-);
-
+document.getElementById("bookingsContainer");
 
 const searchInput =
-
-document.getElementById(
-"searchInput"
-);
-
+document.getElementById("searchInput");
 
 const statusFilter =
-
-document.getElementById(
-"statusFilter"
-);
+document.getElementById("statusFilter");
 
 
 let allBookings = [];
@@ -1250,119 +651,73 @@ LOGIN
 */
 
 loginButton.addEventListener(
-
 "click",
-
 async function() {
 
+  const email =
+  document
+  .getElementById("adminEmail")
+  .value
+  .trim();
 
-const email =
+  const password =
+  document
+  .getElementById("adminPassword")
+  .value;
 
-document
-
-.getElementById(
-"adminEmail"
-)
-
-.value
-
-.trim();
-
-
-const password =
-
-document
-
-.getElementById(
-"adminPassword"
-)
-
-.value;
+  loginError.style.display =
+  "none";
 
 
-loginError.style.display =
+  if (!email || !password) {
 
-"none";
+    loginError.textContent =
+    "Please enter your email and password.";
 
+    loginError.style.display =
+    "block";
 
-if (
-!email ||
-!password
-) {
+    return;
 
-loginError.textContent =
-
-"Please enter your email and password.";
-
-loginError.style.display =
-
-"block";
-
-return;
-
-}
+  }
 
 
-try {
+  try {
+
+    loginButton.disabled =
+    true;
+
+    loginButton.textContent =
+    "Logging in...";
 
 
-loginButton.disabled =
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
 
-true;
+  }
 
+  catch (error) {
 
-loginButton.textContent =
+    console.error(error);
 
-"Logging in...";
+    loginError.textContent =
+    error.message;
 
+    loginError.style.display =
+    "block";
 
-await signInWithEmailAndPassword(
+    loginButton.disabled =
+    false;
 
-auth,
+    loginButton.textContent =
+    "Admin Login";
 
-email,
+  }
 
-password
-
-);
-
-
-}
-
-catch (
-error
-) {
-
-
-console.error(
-error
-);
-
-
-loginError.textContent =
-
-error.message;
-
-
-loginError.style.display =
-
-"block";
-
-
-loginButton.disabled =
-
-false;
-
-
-loginButton.textContent =
-
-"Admin Login";
-
-}
-
-}
-
-);
+});
 
 
 /*
@@ -1372,20 +727,12 @@ LOGOUT
 */
 
 logoutButton.addEventListener(
-
 "click",
-
 async function() {
 
-await signOut(
+  await signOut(auth);
 
-auth
-
-);
-
-}
-
-);
+});
 
 
 /*
@@ -1395,49 +742,32 @@ AUTH STATE
 */
 
 onAuthStateChanged(
-
 auth,
-
 function(user) {
 
+  if (user) {
 
-if (
-user
-) {
+    loginPage.style.display =
+    "none";
 
+    dashboard.style.display =
+    "block";
 
-loginPage.style.display =
+    loadBookings();
 
-"none";
+  }
 
+  else {
 
-dashboard.style.display =
+    loginPage.style.display =
+    "flex";
 
-"block";
+    dashboard.style.display =
+    "none";
 
+  }
 
-loadBookings();
-
-
-}
-
-else {
-
-
-loginPage.style.display =
-
-"flex";
-
-
-dashboard.style.display =
-
-"none";
-
-}
-
-}
-
-);
+});
 
 
 /*
@@ -1448,110 +778,59 @@ LOAD BOOKINGS
 
 async function loadBookings() {
 
-
-bookingsContainer.innerHTML =
-
-'<div class="loading">Loading bookings...</div>';
+  bookingsContainer.innerHTML =
+  '<div class="loading">Loading bookings...</div>';
 
 
-try {
+  try {
+
+    const bookingsQuery =
+    query(
+      collection(db, "bookings"),
+      orderBy("createdAt", "desc")
+    );
 
 
-const bookingsQuery =
-
-query(
-
-collection(
-
-db,
-
-"bookings"
-
-),
-
-orderBy(
-
-"createdAt",
-
-"desc"
-
-)
-
-);
+    const snapshot =
+    await getDocs(bookingsQuery);
 
 
-const snapshot =
-
-await getDocs(
-
-bookingsQuery
-
-);
+    allBookings = [];
 
 
-allBookings = [];
+    snapshot.forEach(
+    function(documentSnapshot) {
+
+      allBookings.push({
+
+        id:
+        documentSnapshot.id,
+
+        ...documentSnapshot.data()
+
+      });
+
+    });
 
 
-snapshot.forEach(
+    updateStatistics();
 
-function(
-documentSnapshot
-) {
+    displayBookings(allBookings);
 
+  }
 
-allBookings.push({
+  catch (error) {
 
-id:
-
-documentSnapshot.id,
-
-...documentSnapshot.data()
-
-});
+    console.error(error);
 
 
-}
+    bookingsContainer.innerHTML =
+    '<div class="empty">' +
+    'Error loading bookings:<br><br>' +
+    escapeHtml(error.message) +
+    '</div>';
 
-);
-
-
-updateStatistics();
-
-
-displayBookings(
-
-allBookings
-
-);
-
-
-}
-
-catch (
-error
-) {
-
-
-console.error(
-error
-);
-
-
-bookingsContainer.innerHTML =
-
-'<div class="empty">' +
-
-'Error loading bookings:<br><br>' +
-
-escapeHtml(
-
-error.message
-
-) +
-
-'</div>';
-
-}
+  }
 
 }
 
@@ -1564,77 +843,49 @@ STATISTICS
 
 function updateStatistics() {
 
-
-document.getElementById(
-
-"totalBookings"
-
-).textContent =
-
-allBookings.length;
+  document.getElementById(
+  "totalBookings"
+  ).textContent =
+  allBookings.length;
 
 
-document.getElementById(
+  document.getElementById(
+  "pendingBookings"
+  ).textContent =
 
-"pendingBookings"
+  allBookings.filter(
+  function(item) {
 
-).textContent =
+    return item.status ===
+    "Pending Verification";
 
-allBookings.filter(
-
-function(
-item
-) {
-
-return item.status ===
-
-"Pending Verification";
-
-}
-
-).length;
+  }).length;
 
 
-document.getElementById(
+  document.getElementById(
+  "confirmedBookings"
+  ).textContent =
 
-"confirmedBookings"
+  allBookings.filter(
+  function(item) {
 
-).textContent =
+    return item.status ===
+    "Confirmed";
 
-allBookings.filter(
-
-function(
-item
-) {
-
-return item.status ===
-
-"Confirmed";
-
-}
-
-).length;
+  }).length;
 
 
-document.getElementById(
+  document.getElementById(
+  "completedBookings"
+  ).textContent =
 
-"completedBookings"
+  allBookings.filter(
+  function(item) {
 
-).textContent =
+    return item.status ===
+    "Completed";
 
-allBookings.filter(
-
-function(
-item
-) {
-
-return item.status ===
-
-"Completed";
-
-}
-
-).length;
+  }).length;
 
 }
 
@@ -1645,674 +896,455 @@ DISPLAY BOOKINGS
 ==================================================
 */
 
-function displayBookings(
+function displayBookings(bookings) {
 
-bookings
+  const search =
+  searchInput
+  .value
+  .toLowerCase()
+  .trim();
 
-) {
 
+  const filter =
+  statusFilter.value;
 
-const search =
 
-searchInput
+  const filtered =
+  bookings.filter(
+  function(booking) {
 
-.value
+    const matchesSearch =
 
-.toLowerCase()
+    String(
+      booking.bookingReference || ""
+    )
+    .toLowerCase()
+    .includes(search)
 
-.trim();
+    ||
 
+    String(
+      booking.clientName || ""
+    )
+    .toLowerCase()
+    .includes(search)
 
-const filter =
+    ||
 
-statusFilter.value;
+    String(
+      booking.company || ""
+    )
+    .toLowerCase()
+    .includes(search);
 
 
-const filtered =
+    const matchesStatus =
 
-bookings.filter(
+    filter === "All"
 
-function(
-booking
-) {
+    ||
 
+    booking.status === filter;
 
-const matchesSearch =
 
-String(
+    return (
+      matchesSearch &&
+      matchesStatus
+    );
 
-booking.bookingReference ||
+  });
 
-""
 
-)
+  if (filtered.length === 0) {
 
-.toLowerCase()
+    bookingsContainer.innerHTML =
+    '<div class="empty">' +
+    'No bookings found.' +
+    '</div>';
 
-.includes(
+    return;
 
-search
+  }
 
-)
 
-||
+  bookingsContainer.innerHTML =
+  "";
 
-String(
 
-booking.clientName ||
+  filtered.forEach(
+  function(booking) {
 
-""
+    const card =
+    document.createElement("div");
 
-)
 
-.toLowerCase()
+    card.className =
+    "booking-card";
 
-.includes(
 
-search
+    const services =
+    Array.isArray(booking.services)
 
-)
+    ?
 
-||
+    booking.services.join(", ")
 
-String(
+    :
 
-booking.company ||
+    "Not specified";
 
-""
 
-)
+    let createdAt =
+    "Not available";
 
-.toLowerCase()
 
-.includes(
+    if (booking.createdAt) {
 
-search
+      try {
 
-);
+        createdAt =
+        booking.createdAt
+        .toDate()
+        .toLocaleString();
 
+      }
 
-const matchesStatus =
+      catch (error) {
 
-filter ===
+        createdAt =
+        String(booking.createdAt);
 
-"All"
+      }
 
-||
+    }
 
-booking.status ===
 
-filter;
+    card.innerHTML = `
 
+      <div class="booking-header">
 
-return (
+        <div>
 
-matchesSearch &&
+          <div class="booking-reference">
 
-matchesStatus
+            ${escapeHtml(
+              booking.bookingReference ||
+              "No Reference"
+            )}
 
-);
+          </div>
 
-}
+          <div class="booking-date">
 
-);
+            Submitted:
+            ${escapeHtml(createdAt)}
 
+          </div>
 
-if (
-filtered.length === 0
-) {
+        </div>
 
+      </div>
 
-bookingsContainer.innerHTML =
 
-'<div class="empty">' +
+      <div class="booking-grid">
 
-'No bookings found.' +
 
-'</div>';
+        <div class="info-box">
 
+          <strong>CLIENT</strong>
 
-return;
+          <span>
 
-}
+            ${escapeHtml(
+              booking.clientName || ""
+            )}
 
+          </span>
 
-bookingsContainer.innerHTML = "";
+        </div>
 
 
-filtered.forEach(
+        <div class="info-box">
 
-function(
-booking
-) {
+          <strong>COMPANY</strong>
 
+          <span>
 
-const card =
+            ${escapeHtml(
+              booking.company || "N/A"
+            )}
 
-document.createElement(
+          </span>
 
-"div"
+        </div>
 
-);
 
+        <div class="info-box">
 
-card.className =
+          <strong>MOBILE</strong>
 
-"booking-card";
+          <span>
 
+            ${escapeHtml(
+              booking.mobile || ""
+            )}
 
-const services =
+          </span>
 
-Array.isArray(
+        </div>
 
-booking.services
 
-)
+        <div class="info-box">
 
-?
+          <strong>EMAIL</strong>
 
-booking.services.join(
+          <span>
 
-", "
+            ${escapeHtml(
+              booking.email || ""
+            )}
 
-)
+          </span>
 
-:
+        </div>
 
-"Not specified";
 
+        <div class="info-box">
 
-let createdAt =
+          <strong>PROJECT LOCATION</strong>
 
-"Not available";
+          <span>
 
+            ${escapeHtml(
+              booking.location || ""
+            )}
 
-if (
-booking.createdAt
-) {
+          </span>
 
-try {
+        </div>
 
-createdAt =
 
-booking.createdAt
-.toDate()
-.toLocaleString();
+        <div class="info-box">
 
-}
+          <strong>PROJECT DATE</strong>
 
-catch (
-error
-) {
+          <span>
 
-createdAt =
+            ${escapeHtml(
+              booking.date || ""
+            )}
 
-String(
+          </span>
 
-booking.createdAt
+        </div>
 
-);
 
-}
+        <div class="info-box">
 
-}
+          <strong>TIME</strong>
 
+          <span>
 
-card.innerHTML = `
+            ${escapeHtml(
+              booking.time ||
+              "Not specified"
+            )}
 
-<div class="booking-header">
+          </span>
 
-<div>
+        </div>
 
-<div class="booking-reference">
 
-${escapeHtml(
+        <div class="info-box">
 
-booking.bookingReference ||
+          <strong>DRONE</strong>
 
-"No Reference"
+          <span>
 
-)}
+            ${escapeHtml(
+              booking.drone ||
+              "Recommend equipment"
+            )}
 
-</div>
+          </span>
 
-<div class="booking-date">
+        </div>
 
-Submitted:
 
-${escapeHtml(
+        <div class="info-box">
 
-createdAt
+          <strong>PAYMENT METHOD</strong>
 
-)}
+          <span>
 
-</div>
+            ${escapeHtml(
+              booking.paymentMethod || ""
+            )}
 
-</div>
+          </span>
 
-</div>
+        </div>
 
 
-<div class="booking-grid">
+        <div class="info-box">
 
+          <strong>DOWN PAYMENT</strong>
 
-<div class="info-box">
+          <span>
 
-<strong>CLIENT</strong>
+            ₱${Number(
+              booking.amountPaid || 0
+            ).toLocaleString()}
 
-<span>
+          </span>
 
-${escapeHtml(
+        </div>
 
-booking.clientName ||
 
-""
+        <div class="info-box">
 
-)}
+          <strong>TRANSACTION REFERENCE</strong>
 
-</span>
+          <span>
 
-</div>
+            ${escapeHtml(
+              booking.transactionReference ||
+              "N/A"
+            )}
 
+          </span>
 
-<div class="info-box">
+        </div>
 
-<strong>COMPANY</strong>
 
-<span>
+        <div class="info-box">
 
-${escapeHtml(
+          <strong>DESCRIPTION</strong>
 
-booking.company ||
+          <span>
 
-"N/A"
+            ${escapeHtml(
+              booking.description || ""
+            )}
 
-)}
+          </span>
 
-</span>
+        </div>
 
-</div>
 
+      </div>
 
-<div class="info-box">
 
-<strong>MOBILE</strong>
+      <div class="services">
 
-<span>
+        <strong>
+          SELECTED SERVICES
+        </strong>
 
-${escapeHtml(
+        ${escapeHtml(services)}
 
-booking.mobile ||
+      </div>
 
-""
 
-)}
+      <div class="status-area">
 
-</span>
+        <strong>
+          Status:
+        </strong>
 
-</div>
 
+        <select
+          id="status-${booking.id}"
+        >
 
-<div class="info-box">
+          <option
+            value="Pending Verification"
+            ${booking.status ===
+            "Pending Verification"
+            ? "selected"
+            : ""}
+          >
+            Pending Verification
+          </option>
 
-<strong>EMAIL</strong>
 
-<span>
+          <option
+            value="Confirmed"
+            ${booking.status ===
+            "Confirmed"
+            ? "selected"
+            : ""}
+          >
+            Confirmed
+          </option>
 
-${escapeHtml(
 
-booking.email ||
+          <option
+            value="Completed"
+            ${booking.status ===
+            "Completed"
+            ? "selected"
+            : ""}
+          >
+            Completed
+          </option>
 
-""
 
-)}
+          <option
+            value="Cancelled"
+            ${booking.status ===
+            "Cancelled"
+            ? "selected"
+            : ""}
+          >
+            Cancelled
+          </option>
 
-</span>
+        </select>
 
-</div>
 
+        <button
+          class="update-btn"
+          data-booking-id="${escapeHtml(
+            booking.id
+          )}"
+        >
+          Update Status
+        </button>
 
-<div class="info-box">
 
-<strong>PROJECT LOCATION</strong>
+      </div>
 
-<span>
 
-${escapeHtml(
+      <div
+        class="status-message"
+        id="message-${booking.id}"
+      ></div>
 
-booking.location ||
+    `;
 
-""
 
-)}
+    const updateButton =
+    card.querySelector(
+      ".update-btn"
+    );
 
-</span>
 
-</div>
+    updateButton.addEventListener(
+    "click",
+    function() {
 
+      updateStatus(
+        booking.id,
+        updateButton
+      );
 
-<div class="info-box">
+    });
 
-<strong>PROJECT DATE</strong>
 
-<span>
+    bookingsContainer.appendChild(card);
 
-${escapeHtml(
-
-booking.date ||
-
-""
-
-)}
-
-</span>
-
-</div>
-
-
-<div class="info-box">
-
-<strong>TIME</strong>
-
-<span>
-
-${escapeHtml(
-
-booking.time ||
-
-"Not specified"
-
-)}
-
-</span>
-
-</div>
-
-
-<div class="info-box">
-
-<strong>DRONE</strong>
-
-<span>
-
-${escapeHtml(
-
-booking.drone ||
-
-"Recommend equipment"
-
-)}
-
-</span>
-
-</div>
-
-
-<div class="info-box">
-
-<strong>PAYMENT METHOD</strong>
-
-<span>
-
-${escapeHtml(
-
-booking.paymentMethod ||
-
-""
-
-)}
-
-</span>
-
-</div>
-
-
-<div class="info-box">
-
-<strong>DOWN PAYMENT</strong>
-
-<span>
-
-₱${Number(
-
-booking.amountPaid ||
-
-0
-
-).toLocaleString()}
-
-</span>
-
-</div>
-
-
-<div class="info-box">
-
-<strong>TRANSACTION REFERENCE</strong>
-
-<span>
-
-${escapeHtml(
-
-booking.transactionReference ||
-
-"N/A"
-
-)}
-
-</span>
-
-</div>
-
-
-<div class="info-box">
-
-<strong>DESCRIPTION</strong>
-
-<span>
-
-${escapeHtml(
-
-booking.description ||
-
-""
-
-)}
-
-</span>
-
-</div>
-
-
-</div>
-
-
-<div class="services">
-
-<strong>
-
-SELECTED SERVICES
-
-</strong>
-
-${escapeHtml(
-
-services
-
-)}
-
-</div>
-
-
-<div class="status-area">
-
-<strong>
-
-Status:
-
-</strong>
-
-
-<select
-
-id="status-${booking.id}"
-
->
-
-<option
-
-value="Pending Verification"
-
-${booking.status === "Pending Verification"
-
-?
-
-"selected"
-
-:
-
-""}
-
->
-
-Pending Verification
-
-</option>
-
-
-<option
-
-value="Confirmed"
-
-${booking.status === "Confirmed"
-
-?
-
-"selected"
-
-:
-
-""}
-
->
-
-Confirmed
-
-</option>
-
-
-<option
-
-value="Completed"
-
-${booking.status === "Completed"
-
-?
-
-"selected"
-
-:
-
-""}
-
->
-
-Completed
-
-</option>
-
-
-<option
-
-value="Cancelled"
-
-${booking.status === "Cancelled"
-
-?
-
-"selected"
-
-:
-
-""}
-
->
-
-Cancelled
-
-</option>
-
-</select>
-
-
-<button
-
-class="update-btn"
-
-data-booking-id="${escapeHtml(
-
-booking.id
-
-)}"
-
->
-
-Update Status
-
-</button>
-
-
-</div>
-
-<div
-
-class="status-message"
-
-id="message-${booking.id}"
-
-></div>
-
-`;
-
-
-const updateButton =
-
-card.querySelector(
-
-".update-btn"
-
-);
-
-
-updateButton.addEventListener(
-
-"click",
-
-function() {
-
-
-updateStatus(
-
-booking.id,
-
-updateButton
-
-);
-
-}
-
-);
-
-
-bookingsContainer.appendChild(
-
-card
-
-);
-
-}
-
-);
+  });
 
 }
 
@@ -2324,321 +1356,225 @@ UPDATE STATUS
 */
 
 async function updateStatus(
-
-bookingId,
-
-button
-
+  bookingId,
+  button
 ) {
 
+  const select =
+  document.getElementById(
+    "status-" + bookingId
+  );
 
-const select =
 
-document.getElementById(
+  const messageBox =
+  document.getElementById(
+    "message-" + bookingId
+  );
 
-"status-" +
 
-bookingId
+  const newStatus =
+  select.value;
 
-);
 
+  const booking =
+  allBookings.find(
+  function(item) {
 
-const messageBox =
+    return item.id ===
+    bookingId;
 
-document.getElementById(
+  });
 
-"message-" +
 
-bookingId
+  if (!booking) {
 
-);
+    alert(
+      "Booking not found."
+    );
 
+    return;
 
-const newStatus =
+  }
 
-select.value;
 
+  const oldStatus =
+  booking.status;
 
-const booking =
 
-allBookings.find(
+  if (oldStatus === newStatus) {
 
-function(
-item
-) {
+    alert(
+      "Booking is already " +
+      newStatus
+    );
 
-return item.id ===
+    return;
 
-bookingId;
+  }
 
-}
 
-);
+  button.disabled =
+  true;
 
 
-if (
-!booking
-) {
+  button.textContent =
+  "Updating...";
 
-alert(
 
-"Booking not found."
+  messageBox.style.display =
+  "none";
 
-);
 
-return;
+  try {
 
-}
 
+    /*
+    ==============================================
+    CALL GOOGLE APPS SCRIPT
+    ==============================================
+    */
 
-const oldStatus =
+    const response =
+    await fetch(
+      APPS_SCRIPT_URL,
+      {
+        method:
+        "POST",
 
-booking.status;
+        headers:
+        {
+          "Content-Type":
+          "text/plain;charset=utf-8"
+        },
 
+        body:
+        JSON.stringify({
 
-if (
-oldStatus ===
-newStatus
-) {
+          action:
+          "updateBookingStatus",
 
-alert(
+          bookingId:
+          bookingId,
 
-"Booking is already " +
+          newStatus:
+          newStatus
 
-newStatus
+        })
+      }
+    );
 
-);
 
-return;
+    const result =
+    await response.json();
 
-}
 
+    console.log(
+      "Apps Script Response:",
+      result
+    );
 
-button.disabled =
 
-true;
+    if (!result.success) {
 
+      throw new Error(
+        result.error ||
+        "Failed to update booking."
+      );
 
-button.textContent =
+    }
 
-"Updating...";
 
+    /*
+    ==============================================
+    REFRESH FIREBASE DASHBOARD
+    ==============================================
+    */
 
-messageBox.style.display =
+    await updateDoc(
 
-"none";
+      doc(
+        db,
+        "bookings",
+        bookingId
+      ),
 
+      {
+        status:
+        newStatus
+      }
 
-try {
+    );
 
 
-/*
-==============================================
-CALL GOOGLE APPS SCRIPT
-==============================================
-*/
+    /*
+    ==============================================
+    SHOW RESULT
+    ==============================================
+    */
 
+    if (result.emailSent) {
 
-const response =
+      messageBox.textContent =
+      "Booking status updated successfully. Client confirmation email sent.";
 
-await fetch(
+      messageBox.className =
+      "status-message status-success";
 
-APPS_SCRIPT_URL,
+    }
 
-{
+    else {
 
-method:
+      messageBox.textContent =
+      "Booking status updated in dashboard, but confirmation email could not be sent. " +
+      (
+        result.emailError ||
+        "Please check Apps Script execution logs."
+      );
 
-"POST",
+      messageBox.className =
+      "status-message status-warning";
 
-headers:
+    }
 
-{
 
-"Content-Type":
+    messageBox.style.display =
+    "block";
 
-"text/plain;charset=utf-8"
 
-},
+    await loadBookings();
 
-body:
 
-JSON.stringify({
+  }
 
-action:
+  catch (error) {
 
-"updateBookingStatus",
+    console.error(
+      "Update Status Error:",
+      error
+    );
 
-bookingId:
 
-bookingId,
+    messageBox.textContent =
+    "Error updating booking: " +
+    error.message;
 
-newStatus:
 
-newStatus
+    messageBox.className =
+    "status-message status-error";
 
-})
 
-}
+    messageBox.style.display =
+    "block";
 
-);
+  }
 
 
-const result =
+  button.disabled =
+  false;
 
-await response.json();
 
-
-console.log(
-
-"Apps Script Response:",
-
-result
-
-);
-
-
-if (
-!result.success
-) {
-
-throw new Error(
-
-result.error ||
-
-"Failed to update booking."
-
-);
-
-}
-
-
-/*
-==============================================
-REFRESH FIREBASE DASHBOARD
-==============================================
-*/
-
-await updateDoc(
-
-doc(
-
-db,
-
-"bookings",
-
-bookingId
-
-),
-
-{
-
-status:
-
-newStatus
-
-}
-
-);
-
-
-/*
-==============================================
-SHOW RESULT
-==============================================
-*/
-
-if (
-result.emailSent
-) {
-
-
-messageBox.textContent =
-
-"Booking status updated successfully. Client confirmation email sent.";
-
-messageBox.className =
-
-"status-message status-success";
-
-
-}
-
-else {
-
-
-messageBox.textContent =
-
-"Booking status updated in dashboard, but confirmation email could not be sent. " +
-
-(
-
-result.emailError ||
-
-"Please check Apps Script execution logs."
-
-);
-
-
-messageBox.className =
-
-"status-message status-warning";
-
-}
-
-
-messageBox.style.display =
-
-"block";
-
-
-await loadBookings();
-
-
-}
-
-catch (
-error
-) {
-
-
-console.error(
-
-"Update Status Error:",
-
-error
-
-);
-
-
-messageBox.textContent =
-
-"Error updating booking: " +
-
-error.message;
-
-
-messageBox.className =
-
-"status-message status-error";
-
-
-messageBox.style.display =
-
-"block";
-
-
-}
-
-
-button.disabled =
-
-false;
-
-
-button.textContent =
-
-"Update Status";
+  button.textContent =
+  "Update Status";
 
 }
 
@@ -2650,20 +1586,14 @@ SEARCH
 */
 
 searchInput.addEventListener(
-
 "input",
-
 function() {
 
-displayBookings(
+  displayBookings(
+    allBookings
+  );
 
-allBookings
-
-);
-
-}
-
-);
+});
 
 
 /*
@@ -2673,20 +1603,14 @@ FILTER
 */
 
 statusFilter.addEventListener(
-
 "change",
-
 function() {
 
-displayBookings(
+  displayBookings(
+    allBookings
+  );
 
-allBookings
-
-);
-
-}
-
-);
+});
 
 
 /*
@@ -2695,61 +1619,36 @@ ESCAPE HTML
 ==================================================
 */
 
-function escapeHtml(
+function escapeHtml(text) {
 
-text
+  return String(text)
 
-) {
+  .replace(
+    /&/g,
+    "&amp;"
+  )
 
+  .replace(
+    /</g,
+    "&lt;"
+  )
 
-return String(
+  .replace(
+    />/g,
+    "&gt;"
+  )
 
-text
+  .replace(
+    /"/g,
+    "&quot;"
+  )
 
-)
-
-.replace(
-
-/&/g,
-
-"&amp;"
-
-)
-
-.replace(
-
-/</g,
-
-"&lt;"
-
-)
-
-.replace(
-
-/>/g,
-
-"&gt;"
-
-)
-
-.replace(
-
-/"/g,
-
-"&quot;"
-
-)
-
-.replace(
-
-/'/g,
-
-"&#039;"
-
-);
+  .replace(
+    /'/g,
+    "&#039;"
+  );
 
 }
-
 
 </script>
 
