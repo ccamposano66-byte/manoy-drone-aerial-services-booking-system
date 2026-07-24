@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -13,395 +14,801 @@
 Manoy Drone Aerial Services - Admin Dashboard
 </title>
 
+
 <style>
 
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-body{
-font-family:Arial,sans-serif;
-background:#f4f4f4;
-color:#222;
+
+body {
+
+  font-family:
+    Arial,
+    sans-serif;
+
+  background:
+    #f4f4f4;
+
+  color:
+    #222;
+
 }
 
-/* =========================
-LOGIN
-========================= */
 
-.login-page{
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-background:linear-gradient(135deg,#ff7a00,#ff9d2e);
-padding:20px;
+.login-page {
+
+  min-height:
+    100vh;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff7a00,
+      #ff9d2e
+    );
+
+  padding:
+    20px;
+
 }
 
-.login-box{
-background:white;
-width:100%;
-max-width:420px;
-padding:30px;
-border-radius:18px;
-box-shadow:0 10px 30px rgba(0,0,0,.2);
+
+.login-box {
+
+  background:
+    white;
+
+  width:
+    100%;
+
+  max-width:
+    420px;
+
+  padding:
+    30px;
+
+  border-radius:
+    18px;
+
+  box-shadow:
+    0 10px 30px
+    rgba(
+      0,
+      0,
+      0,
+      0.2
+    );
+
 }
 
-.login-box h1{
-text-align:center;
-font-size:24px;
-margin-bottom:8px;
+
+.login-box h1 {
+
+  text-align:
+    center;
+
+  font-size:
+    24px;
+
+  margin-bottom:
+    8px;
+
 }
 
-.login-box p{
-text-align:center;
-color:#666;
-margin-bottom:25px;
+
+.login-box p {
+
+  text-align:
+    center;
+
+  color:
+    #666;
+
+  margin-bottom:
+    25px;
+
 }
 
-.login-box input{
-width:100%;
-padding:14px;
-margin-bottom:15px;
-border:1px solid #ccc;
-border-radius:8px;
-font-size:15px;
+
+.login-box input {
+
+  width:
+    100%;
+
+  padding:
+    14px;
+
+  margin-bottom:
+    15px;
+
+  border:
+    1px solid #ccc;
+
+  border-radius:
+    8px;
+
+  font-size:
+    15px;
+
 }
 
-.login-box button{
-width:100%;
-padding:14px;
-background:#ff7a00;
-color:white;
-border:none;
-border-radius:8px;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
+
+.login-box button {
+
+  width:
+    100%;
+
+  padding:
+    14px;
+
+  background:
+    #ff7a00;
+
+  color:
+    white;
+
+  border:
+    none;
+
+  border-radius:
+    8px;
+
+  font-size:
+    16px;
+
+  font-weight:
+    bold;
+
+  cursor:
+    pointer;
+
 }
 
-.login-box button:hover{
-background:#e66d00;
+
+.login-box button:hover {
+
+  background:
+    #e66d00;
+
 }
 
-.login-error{
-display:none;
-margin-top:15px;
-padding:12px;
-background:#ffe5e5;
-color:#a00000;
-border-radius:8px;
-font-size:14px;
+
+.login-error {
+
+  display:
+    none;
+
+  margin-top:
+    15px;
+
+  padding:
+    12px;
+
+  background:
+    #ffe5e5;
+
+  color:
+    #a00000;
+
+  border-radius:
+    8px;
+
+  font-size:
+    14px;
+
 }
 
-/* =========================
-DASHBOARD
-========================= */
 
-.dashboard{
-display:none;
+.dashboard {
+
+  display:
+    none;
+
 }
 
-.topbar{
-background:#ff7a00;
-color:white;
-padding:18px 25px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:15px;
+
+.topbar {
+
+  background:
+    #ff7a00;
+
+  color:
+    white;
+
+  padding:
+    18px 25px;
+
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    center;
+
+  gap:
+    15px;
+
 }
 
-.topbar h1{
-font-size:22px;
+
+.topbar h1 {
+
+  font-size:
+    22px;
+
 }
 
-.logout-btn{
-background:white;
-color:#ff7a00;
-border:none;
-padding:10px 16px;
-border-radius:7px;
-font-weight:bold;
-cursor:pointer;
+
+.logout-btn {
+
+  background:
+    white;
+
+  color:
+    #ff7a00;
+
+  border:
+    none;
+
+  padding:
+    10px 16px;
+
+  border-radius:
+    7px;
+
+  font-weight:
+    bold;
+
+  cursor:
+    pointer;
+
 }
 
-.dashboard-container{
-max-width:1400px;
-margin:auto;
-padding:25px;
+
+.dashboard-container {
+
+  max-width:
+    1400px;
+
+  margin:
+    auto;
+
+  padding:
+    25px;
+
 }
 
-/* =========================
-STATISTICS
-========================= */
 
-.stats{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:15px;
-margin-bottom:25px;
+.stats {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      1fr
+    );
+
+  gap:
+    15px;
+
+  margin-bottom:
+    25px;
+
 }
 
-.stat-card{
-background:white;
-padding:20px;
-border-radius:12px;
-box-shadow:0 3px 10px rgba(0,0,0,.08);
+
+.stat-card {
+
+  background:
+    white;
+
+  padding:
+    20px;
+
+  border-radius:
+    12px;
+
+  box-shadow:
+    0 3px 10px
+    rgba(
+      0,
+      0,
+      0,
+      0.08
+    );
+
 }
 
-.stat-card h3{
-font-size:14px;
-color:#666;
-margin-bottom:10px;
+
+.stat-card h3 {
+
+  font-size:
+    14px;
+
+  color:
+    #666;
+
+  margin-bottom:
+    10px;
+
 }
 
-.stat-card strong{
-font-size:28px;
+
+.stat-card strong {
+
+  font-size:
+    28px;
+
 }
 
-/* =========================
-CONTROLS
-========================= */
 
-.controls{
-background:white;
-padding:20px;
-border-radius:12px;
-margin-bottom:20px;
-display:flex;
-gap:10px;
-flex-wrap:wrap;
+.controls {
+
+  background:
+    white;
+
+  padding:
+    20px;
+
+  border-radius:
+    12px;
+
+  margin-bottom:
+    20px;
+
+  display:
+    flex;
+
+  gap:
+    10px;
+
+  flex-wrap:
+    wrap;
+
 }
+
 
 .controls input,
-.controls select{
-padding:12px;
-border:1px solid #ccc;
-border-radius:7px;
-font-size:14px;
-}
+.controls select {
 
-.controls input{
-flex:1;
-min-width:250px;
-}
+  padding:
+    12px;
 
-/* =========================
-BOOKING CARD
-========================= */
+  border:
+    1px solid #ccc;
 
-.booking-card{
-background:white;
-border-radius:12px;
-margin-bottom:18px;
-padding:20px;
-box-shadow:0 3px 10px rgba(0,0,0,.08);
-}
+  border-radius:
+    7px;
 
-.booking-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:15px;
-flex-wrap:wrap;
-border-bottom:1px solid #eee;
-padding-bottom:15px;
-margin-bottom:15px;
-}
-
-.booking-reference{
-font-size:20px;
-font-weight:bold;
-color:#ff7a00;
-}
-
-.booking-date{
-color:#666;
-font-size:13px;
-margin-top:5px;
-}
-
-.booking-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:15px;
-}
-
-.info-box{
-background:#f8f8f8;
-padding:12px;
-border-radius:8px;
-}
-
-.info-box strong{
-display:block;
-font-size:12px;
-color:#777;
-margin-bottom:5px;
-}
-
-.info-box span{
-font-size:14px;
-word-break:break-word;
-}
-
-.services{
-margin-top:15px;
-padding:15px;
-background:#fff7ef;
-border-left:4px solid #ff7a00;
-border-radius:7px;
-}
-
-.services strong{
-display:block;
-margin-bottom:5px;
-}
-
-.status-area{
-margin-top:18px;
-display:flex;
-align-items:center;
-gap:10px;
-flex-wrap:wrap;
-}
-
-.status-area select{
-padding:10px;
-border:1px solid #ccc;
-border-radius:7px;
-}
-
-.update-btn{
-padding:10px 15px;
-background:#ff7a00;
-color:white;
-border:none;
-border-radius:7px;
-cursor:pointer;
-font-weight:bold;
-}
-
-.update-btn:hover{
-background:#e66d00;
-}
-
-.update-btn:disabled{
-background:#999;
-cursor:not-allowed;
-}
-
-/* =========================
-STATUS BADGE
-========================= */
-
-.status-badge{
-display:inline-block;
-padding:7px 12px;
-border-radius:20px;
-font-size:12px;
-font-weight:bold;
-margin-top:10px;
-}
-
-.status-pending{
-background:#fff3cd;
-color:#856404;
-}
-
-.status-confirmed{
-background:#d4edda;
-color:#155724;
-}
-
-.status-completed{
-background:#cce5ff;
-color:#004085;
-}
-
-.status-cancelled{
-background:#f8d7da;
-color:#721c24;
-}
-
-/* =========================
-NOTIFICATION
-========================= */
-
-.notification{
-display:none;
-position:fixed;
-top:20px;
-right:20px;
-z-index:9999;
-max-width:400px;
-padding:18px 20px;
-background:#155724;
-color:white;
-border-radius:10px;
-box-shadow:0 5px 20px rgba(0,0,0,.25);
-font-weight:bold;
-}
-
-.notification.error{
-background:#a00000;
-}
-
-/* =========================
-EMPTY / LOADING
-========================= */
-
-.empty{
-text-align:center;
-background:white;
-padding:40px;
-border-radius:12px;
-color:#777;
-}
-
-.loading{
-text-align:center;
-padding:30px;
-color:#777;
-}
-
-/* =========================
-MOBILE
-========================= */
-
-@media(max-width:900px){
-
-.stats{
-grid-template-columns:repeat(2,1fr);
-}
-
-.booking-grid{
-grid-template-columns:repeat(2,1fr);
-}
+  font-size:
+    14px;
 
 }
 
-@media(max-width:600px){
 
-.topbar{
-flex-direction:column;
-text-align:center;
+.controls input {
+
+  flex:
+    1;
+
+  min-width:
+    250px;
+
 }
 
-.stats{
-grid-template-columns:1fr 1fr;
+
+.booking-card {
+
+  background:
+    white;
+
+  border-radius:
+    12px;
+
+  margin-bottom:
+    18px;
+
+  padding:
+    20px;
+
+  box-shadow:
+    0 3px 10px
+    rgba(
+      0,
+      0,
+      0,
+      0.08
+    );
+
 }
 
-.booking-grid{
-grid-template-columns:1fr;
+
+.booking-header {
+
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    center;
+
+  gap:
+    15px;
+
+  flex-wrap:
+    wrap;
+
+  border-bottom:
+    1px solid #eee;
+
+  padding-bottom:
+    15px;
+
+  margin-bottom:
+    15px;
+
 }
 
-.dashboard-container{
-padding:15px;
+
+.booking-reference {
+
+  font-size:
+    20px;
+
+  font-weight:
+    bold;
+
+  color:
+    #ff7a00;
+
 }
+
+
+.booking-date {
+
+  color:
+    #666;
+
+  font-size:
+    13px;
+
+}
+
+
+.booking-grid {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      1fr
+    );
+
+  gap:
+    15px;
+
+}
+
+
+.info-box {
+
+  background:
+    #f8f8f8;
+
+  padding:
+    12px;
+
+  border-radius:
+    8px;
+
+}
+
+
+.info-box strong {
+
+  display:
+    block;
+
+  font-size:
+    12px;
+
+  color:
+    #777;
+
+  margin-bottom:
+    5px;
+
+}
+
+
+.info-box span {
+
+  font-size:
+    14px;
+
+  word-break:
+    break-word;
+
+}
+
+
+.services {
+
+  margin-top:
+    15px;
+
+  padding:
+    15px;
+
+  background:
+    #fff7ef;
+
+  border-left:
+    4px solid #ff7a00;
+
+  border-radius:
+    7px;
+
+}
+
+
+.services strong {
+
+  display:
+    block;
+
+  margin-bottom:
+    5px;
+
+}
+
+
+.status-area {
+
+  margin-top:
+    18px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    10px;
+
+  flex-wrap:
+    wrap;
+
+}
+
+
+.status-area select {
+
+  padding:
+    10px;
+
+  border:
+    1px solid #ccc;
+
+  border-radius:
+    7px;
+
+}
+
+
+.update-btn {
+
+  padding:
+    10px 15px;
+
+  background:
+    #ff7a00;
+
+  color:
+    white;
+
+  border:
+    none;
+
+  border-radius:
+    7px;
+
+  cursor:
+    pointer;
+
+  font-weight:
+    bold;
+
+}
+
+
+.update-btn:disabled {
+
+  opacity:
+    0.6;
+
+  cursor:
+    not-allowed;
+
+}
+
+
+.empty {
+
+  text-align:
+    center;
+
+  background:
+    white;
+
+  padding:
+    40px;
+
+  border-radius:
+    12px;
+
+  color:
+    #777;
+
+}
+
+
+.loading {
+
+  text-align:
+    center;
+
+  padding:
+    30px;
+
+  color:
+    #777;
+
+}
+
+
+.status-message {
+
+  margin-top:
+    15px;
+
+  padding:
+    12px;
+
+  border-radius:
+    8px;
+
+  font-size:
+    14px;
+
+  display:
+    none;
+
+}
+
+
+.status-success {
+
+  background:
+    #e7f7e7;
+
+  color:
+    #176b17;
+
+}
+
+
+.status-warning {
+
+  background:
+    #fff3cd;
+
+  color:
+    #856404;
+
+}
+
+
+.status-error {
+
+  background:
+    #ffe5e5;
+
+  color:
+    #a00000;
+
+}
+
+
+@media (
+  max-width:
+  900px
+) {
+
+  .stats {
+
+    grid-template-columns:
+      repeat(
+        2,
+        1fr
+      );
+
+  }
+
+
+  .booking-grid {
+
+    grid-template-columns:
+      repeat(
+        2,
+        1fr
+      );
+
+  }
+
+}
+
+
+@media (
+  max-width:
+  600px
+) {
+
+  .topbar {
+
+    flex-direction:
+      column;
+
+    text-align:
+      center;
+
+  }
+
+
+  .stats {
+
+    grid-template-columns:
+      1fr 1fr;
+
+  }
+
+
+  .booking-grid {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .dashboard-container {
+
+    padding:
+      15px;
+
+  }
 
 }
 
@@ -409,19 +816,20 @@ padding:15px;
 
 </head>
 
+
 <body>
 
 
-<!-- =========================
-LOGIN PAGE
-========================= -->
+<!-- LOGIN -->
 
 <div
-class="login-page"
-id="loginPage"
+  class="login-page"
+  id="loginPage"
 >
 
-<div class="login-box">
+<div
+  class="login-box"
+>
 
 <h1>
 Manoy Drone Aerial Services
@@ -431,27 +839,31 @@ Manoy Drone Aerial Services
 Admin Dashboard
 </p>
 
-<input
-type="email"
-id="adminEmail"
-placeholder="Admin Email"
->
 
 <input
-type="password"
-id="adminPassword"
-placeholder="Password"
+  type="email"
+  id="adminEmail"
+  placeholder="Admin Email"
 >
+
+
+<input
+  type="password"
+  id="adminPassword"
+  placeholder="Password"
+>
+
 
 <button
-id="loginButton"
+  id="loginButton"
 >
 Admin Login
 </button>
 
+
 <div
-class="login-error"
-id="loginError"
+  class="login-error"
+  id="loginError"
 ></div>
 
 </div>
@@ -459,110 +871,135 @@ id="loginError"
 </div>
 
 
-<!-- =========================
-DASHBOARD
-========================= -->
+<!-- DASHBOARD -->
 
 <div
-class="dashboard"
-id="dashboard"
+  class="dashboard"
+  id="dashboard"
 >
 
-<div class="topbar">
+
+<div
+  class="topbar"
+>
 
 <h1>
+
 Manoy Drone Aerial Services
+
 <br>
+
 Admin Dashboard
+
 </h1>
 
+
 <button
-class="logout-btn"
-id="logoutButton"
+  class="logout-btn"
+  id="logoutButton"
 >
+
 Logout
+
 </button>
 
 </div>
 
 
-<div class="dashboard-container">
+<div
+  class="dashboard-container"
+>
 
 
-<!-- =========================
-STATISTICS
-========================= -->
+<div
+  class="stats"
+>
 
-<div class="stats">
 
-<div class="stat-card">
+<div
+  class="stat-card"
+>
 
 <h3>
 Total Bookings
 </h3>
 
-<strong id="totalBookings">
+<strong
+  id="totalBookings"
+>
 0
 </strong>
 
 </div>
 
 
-<div class="stat-card">
+<div
+  class="stat-card"
+>
 
 <h3>
 Pending Verification
 </h3>
 
-<strong id="pendingBookings">
+<strong
+  id="pendingBookings"
+>
 0
 </strong>
 
 </div>
 
 
-<div class="stat-card">
+<div
+  class="stat-card"
+>
 
 <h3>
 Confirmed
 </h3>
 
-<strong id="confirmedBookings">
+<strong
+  id="confirmedBookings"
+>
 0
 </strong>
 
 </div>
 
 
-<div class="stat-card">
+<div
+  class="stat-card"
+>
 
 <h3>
 Completed
 </h3>
 
-<strong id="completedBookings">
+<strong
+  id="completedBookings"
+>
 0
 </strong>
 
 </div>
 
+
 </div>
 
 
-<!-- =========================
-SEARCH / FILTER
-========================= -->
-
-<div class="controls">
-
-<input
-type="text"
-id="searchInput"
-placeholder="Search booking reference, client, company..."
+<div
+  class="controls"
 >
 
+<input
+  type="text"
+  id="searchInput"
+  placeholder="Search booking reference, client, company..."
+>
+
+
 <select
-id="statusFilter"
+  id="statusFilter"
 >
 
 <option value="All">
@@ -590,15 +1027,13 @@ Cancelled
 </div>
 
 
-<!-- =========================
-BOOKINGS
-========================= -->
-
 <div
-id="bookingsContainer"
+  id="bookingsContainer"
 >
 
-<div class="loading">
+<div
+  class="loading"
+>
 Loading bookings...
 </div>
 
@@ -610,27 +1045,15 @@ Loading bookings...
 </div>
 
 
-<!-- =========================
-NOTIFICATION
-========================= -->
+<!-- FIREBASE -->
 
-<div
-id="notification"
-class="notification"
-></div>
-
-
-<!-- =========================
-FIREBASE
-========================= -->
-
-<script type="module">
+<script
+  type="module"
+>
 
 
 import {
-
-initializeApp
-
+  initializeApp
 }
 
 from
@@ -640,13 +1063,13 @@ from
 
 import {
 
-getAuth,
+  getAuth,
 
-signInWithEmailAndPassword,
+  signInWithEmailAndPassword,
 
-onAuthStateChanged,
+  onAuthStateChanged,
 
-signOut
+  signOut
 
 }
 
@@ -657,19 +1080,19 @@ from
 
 import {
 
-getFirestore,
+  getFirestore,
 
-collection,
+  collection,
 
-getDocs,
+  getDocs,
 
-doc,
+  doc,
 
-updateDoc,
+  updateDoc,
 
-query,
+  query,
 
-orderBy
+  orderBy
 
 }
 
@@ -678,207 +1101,201 @@ from
 "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
+/*
+==================================================
+APPS SCRIPT WEB APP URL
+==================================================
+*/
+
+const APPS_SCRIPT_URL =
+
+"https://script.google.com/macros/s/AKfycbyIm-01W97plZSRCWsNFwGa9Clesu-4VGImQFWiLQqZKz3MaWxOpLtK0e5b6xFBWDGu/exec";
+
 
 /*
-========================================
+==================================================
 FIREBASE CONFIG
-========================================
+==================================================
 */
 
 const firebaseConfig = {
 
 apiKey:
+
 "AIzaSyDKX2ZsfE8VRlwL38wjzBF-immeyh5CvwQ",
 
 authDomain:
+
 "manoy-drone-booking-system.firebaseapp.com",
 
 projectId:
+
 "manoy-drone-booking-system",
 
 storageBucket:
+
 "manoy-drone-booking-system.firebasestorage.app",
 
 messagingSenderId:
+
 "1046234143737",
 
 appId:
+
 "1:1046234143737:web:5642929f7b189e0a8fbb28",
 
 measurementId:
+
 "G-BMVTT7JNLM"
 
 };
 
 
-
-/*
-========================================
-GOOGLE APPS SCRIPT WEB APP
-========================================
-*/
-
-const APPS_SCRIPT_URL =
-
-"https://script.google.com/macros/s/AKfycbyy8WrtnUQaAvdqN1VB2nDl4tEN3fhjoLmx-Qg0GTjxI1UGpGIbgyqh_D9QQz4dZ0Kw/exec";
-
-
-
-/*
-========================================
-INITIALIZE FIREBASE
-========================================
-*/
-
 const app =
+
 initializeApp(
+
 firebaseConfig
+
 );
 
+
 const auth =
-getAuth(app);
+
+getAuth(
+
+app
+
+);
+
 
 const db =
-getFirestore(app);
 
+getFirestore(
+
+app
+
+);
 
 
 /*
-========================================
+==================================================
 ELEMENTS
-========================================
+==================================================
 */
 
 const loginPage =
+
 document.getElementById(
 "loginPage"
 );
 
+
 const dashboard =
+
 document.getElementById(
 "dashboard"
 );
 
+
 const loginButton =
+
 document.getElementById(
 "loginButton"
 );
 
+
 const logoutButton =
+
 document.getElementById(
 "logoutButton"
 );
 
+
 const loginError =
+
 document.getElementById(
 "loginError"
 );
 
+
 const bookingsContainer =
+
 document.getElementById(
 "bookingsContainer"
 );
 
+
 const searchInput =
+
 document.getElementById(
 "searchInput"
 );
 
+
 const statusFilter =
+
 document.getElementById(
 "statusFilter"
-);
-
-const notification =
-document.getElementById(
-"notification"
 );
 
 
 let allBookings = [];
 
 
-
 /*
-========================================
-SHOW NOTIFICATION
-========================================
-*/
-
-function showNotification(
-message,
-isError = false
-){
-
-notification.textContent =
-message;
-
-notification.classList.toggle(
-"error",
-isError
-);
-
-notification.style.display =
-"block";
-
-setTimeout(
-function(){
-
-notification.style.display =
-"none";
-
-},
-5000
-);
-
-}
-
-
-
-/*
-========================================
+==================================================
 LOGIN
-========================================
+==================================================
 */
 
 loginButton.addEventListener(
 
 "click",
 
-async function(){
+async function() {
+
 
 const email =
 
 document
+
 .getElementById(
 "adminEmail"
 )
+
 .value
+
 .trim();
 
 
 const password =
 
 document
+
 .getElementById(
 "adminPassword"
 )
+
 .value;
 
 
 loginError.style.display =
+
 "none";
 
 
-if(
+if (
 !email ||
 !password
-){
+) {
 
 loginError.textContent =
+
 "Please enter your email and password.";
 
 loginError.style.display =
+
 "block";
 
 return;
@@ -886,12 +1303,16 @@ return;
 }
 
 
-try{
+try {
+
 
 loginButton.disabled =
+
 true;
 
+
 loginButton.textContent =
+
 "Logging in...";
 
 
@@ -906,22 +1327,35 @@ password
 );
 
 
-}catch(error){
+}
+
+catch (
+error
+) {
+
 
 console.error(
 error
 );
 
+
 loginError.textContent =
+
 error.message;
 
+
 loginError.style.display =
+
 "block";
 
+
 loginButton.disabled =
+
 false;
 
+
 loginButton.textContent =
+
 "Admin Login";
 
 }
@@ -931,21 +1365,22 @@ loginButton.textContent =
 );
 
 
-
 /*
-========================================
+==================================================
 LOGOUT
-========================================
+==================================================
 */
 
 logoutButton.addEventListener(
 
 "click",
 
-async function(){
+async function() {
 
 await signOut(
+
 auth
+
 );
 
 }
@@ -953,35 +1388,49 @@ auth
 );
 
 
-
 /*
-========================================
+==================================================
 AUTH STATE
-========================================
+==================================================
 */
 
 onAuthStateChanged(
 
 auth,
 
-function(user){
+function(user) {
 
-if(user){
+
+if (
+user
+) {
+
 
 loginPage.style.display =
+
 "none";
 
+
 dashboard.style.display =
+
 "block";
+
 
 loadBookings();
 
-}else{
+
+}
+
+else {
+
 
 loginPage.style.display =
+
 "flex";
 
+
 dashboard.style.display =
+
 "none";
 
 }
@@ -991,34 +1440,41 @@ dashboard.style.display =
 );
 
 
-
 /*
-========================================
+==================================================
 LOAD BOOKINGS
-========================================
+==================================================
 */
 
-async function loadBookings(){
+async function loadBookings() {
+
 
 bookingsContainer.innerHTML =
 
 '<div class="loading">Loading bookings...</div>';
 
 
-try{
+try {
+
 
 const bookingsQuery =
 
 query(
 
 collection(
+
 db,
+
 "bookings"
+
 ),
 
 orderBy(
+
 "createdAt",
+
 "desc"
+
 )
 
 );
@@ -1027,7 +1483,9 @@ orderBy(
 const snapshot =
 
 await getDocs(
+
 bookingsQuery
+
 );
 
 
@@ -1038,16 +1496,19 @@ snapshot.forEach(
 
 function(
 documentSnapshot
-){
+) {
+
 
 allBookings.push({
 
 id:
+
 documentSnapshot.id,
 
 ...documentSnapshot.data()
 
 });
+
 
 }
 
@@ -1056,16 +1517,25 @@ documentSnapshot.id,
 
 updateStatistics();
 
+
 displayBookings(
+
 allBookings
+
 );
 
 
-}catch(error){
+}
+
+catch (
+error
+) {
+
 
 console.error(
 error
 );
+
 
 bookingsContainer.innerHTML =
 
@@ -1073,7 +1543,11 @@ bookingsContainer.innerHTML =
 
 'Error loading bookings:<br><br>' +
 
-error.message +
+escapeHtml(
+
+error.message
+
+) +
 
 '</div>';
 
@@ -1082,34 +1556,38 @@ error.message +
 }
 
 
-
 /*
-========================================
+==================================================
 STATISTICS
-========================================
+==================================================
 */
 
-function updateStatistics(){
+function updateStatistics() {
 
-document
-.getElementById(
+
+document.getElementById(
+
 "totalBookings"
-)
-.textContent =
+
+).textContent =
+
 allBookings.length;
 
 
-document
-.getElementById(
+document.getElementById(
+
 "pendingBookings"
-)
-.textContent =
+
+).textContent =
 
 allBookings.filter(
 
-function(item){
+function(
+item
+) {
 
 return item.status ===
+
 "Pending Verification";
 
 }
@@ -1117,17 +1595,20 @@ return item.status ===
 ).length;
 
 
-document
-.getElementById(
+document.getElementById(
+
 "confirmedBookings"
-)
-.textContent =
+
+).textContent =
 
 allBookings.filter(
 
-function(item){
+function(
+item
+) {
 
 return item.status ===
+
 "Confirmed";
 
 }
@@ -1135,17 +1616,20 @@ return item.status ===
 ).length;
 
 
-document
-.getElementById(
+document.getElementById(
+
 "completedBookings"
-)
-.textContent =
+
+).textContent =
 
 allBookings.filter(
 
-function(item){
+function(
+item
+) {
 
 return item.status ===
+
 "Completed";
 
 }
@@ -1155,76 +1639,113 @@ return item.status ===
 }
 
 
-
 /*
-========================================
+==================================================
 DISPLAY BOOKINGS
-========================================
+==================================================
 */
 
 function displayBookings(
+
 bookings
-){
+
+) {
+
 
 const search =
 
 searchInput
+
 .value
+
 .toLowerCase()
+
 .trim();
 
 
 const filter =
 
-statusFilter
-.value;
+statusFilter.value;
 
 
 const filtered =
 
 bookings.filter(
 
-function(booking){
+function(
+booking
+) {
+
 
 const matchesSearch =
 
 String(
+
 booking.bookingReference ||
+
 ""
+
 )
+
 .toLowerCase()
-.includes(search)
+
+.includes(
+
+search
+
+)
 
 ||
 
 String(
+
 booking.clientName ||
+
 ""
+
 )
+
 .toLowerCase()
-.includes(search)
+
+.includes(
+
+search
+
+)
 
 ||
 
 String(
+
 booking.company ||
+
 ""
+
 )
+
 .toLowerCase()
-.includes(search);
+
+.includes(
+
+search
+
+);
 
 
 const matchesStatus =
 
-filter === "All"
+filter ===
+
+"All"
 
 ||
 
 booking.status ===
+
 filter;
 
 
-return(
+return (
 
 matchesSearch &&
 
@@ -1237,9 +1758,10 @@ matchesStatus
 );
 
 
-if(
+if (
 filtered.length === 0
-){
+) {
+
 
 bookingsContainer.innerHTML =
 
@@ -1249,39 +1771,50 @@ bookingsContainer.innerHTML =
 
 '</div>';
 
+
 return;
 
 }
 
 
-bookingsContainer.innerHTML =
-"";
+bookingsContainer.innerHTML = "";
 
 
 filtered.forEach(
 
-function(booking){
+function(
+booking
+) {
+
 
 const card =
 
 document.createElement(
+
 "div"
+
 );
 
+
 card.className =
+
 "booking-card";
 
 
 const services =
 
 Array.isArray(
+
 booking.services
+
 )
 
 ?
 
 booking.services.join(
+
 ", "
+
 )
 
 :
@@ -1290,19 +1823,15 @@ booking.services.join(
 
 
 let createdAt =
+
 "Not available";
 
 
-if(
+if (
 booking.createdAt
-){
+) {
 
-try{
-
-if(
-typeof booking.createdAt.toDate ===
-"function"
-){
+try {
 
 createdAt =
 
@@ -1310,58 +1839,21 @@ booking.createdAt
 .toDate()
 .toLocaleString();
 
-}else{
+}
+
+catch (
+error
+) {
 
 createdAt =
 
-new Date(
+String(
+
 booking.createdAt
-)
-.toLocaleString();
+
+);
 
 }
-
-}catch(error){
-
-createdAt =
-"Not available";
-
-}
-
-}
-
-
-let statusClass =
-"status-pending";
-
-
-if(
-booking.status ===
-"Confirmed"
-){
-
-statusClass =
-"status-confirmed";
-
-}
-
-if(
-booking.status ===
-"Completed"
-){
-
-statusClass =
-"status-completed";
-
-}
-
-if(
-booking.status ===
-"Cancelled"
-){
-
-statusClass =
-"status-cancelled";
 
 }
 
@@ -1375,8 +1867,11 @@ card.innerHTML = `
 <div class="booking-reference">
 
 ${escapeHtml(
+
 booking.bookingReference ||
+
 "No Reference"
+
 )}
 
 </div>
@@ -1384,17 +1879,11 @@ booking.bookingReference ||
 <div class="booking-date">
 
 Submitted:
+
 ${escapeHtml(
+
 createdAt
-)}
 
-</div>
-
-<div class="status-badge ${statusClass}">
-
-${escapeHtml(
-booking.status ||
-"Pending Verification"
 )}
 
 </div>
@@ -1414,8 +1903,11 @@ booking.status ||
 <span>
 
 ${escapeHtml(
+
 booking.clientName ||
+
 ""
+
 )}
 
 </span>
@@ -1430,8 +1922,11 @@ booking.clientName ||
 <span>
 
 ${escapeHtml(
+
 booking.company ||
+
 "N/A"
+
 )}
 
 </span>
@@ -1446,8 +1941,11 @@ booking.company ||
 <span>
 
 ${escapeHtml(
+
 booking.mobile ||
+
 ""
+
 )}
 
 </span>
@@ -1462,8 +1960,11 @@ booking.mobile ||
 <span>
 
 ${escapeHtml(
+
 booking.email ||
+
 ""
+
 )}
 
 </span>
@@ -1478,8 +1979,11 @@ booking.email ||
 <span>
 
 ${escapeHtml(
+
 booking.location ||
+
 ""
+
 )}
 
 </span>
@@ -1494,8 +1998,11 @@ booking.location ||
 <span>
 
 ${escapeHtml(
+
 booking.date ||
+
 ""
+
 )}
 
 </span>
@@ -1510,8 +2017,11 @@ booking.date ||
 <span>
 
 ${escapeHtml(
+
 booking.time ||
+
 "Not specified"
+
 )}
 
 </span>
@@ -1526,8 +2036,11 @@ booking.time ||
 <span>
 
 ${escapeHtml(
+
 booking.drone ||
+
 "Recommend equipment"
+
 )}
 
 </span>
@@ -1542,8 +2055,11 @@ booking.drone ||
 <span>
 
 ${escapeHtml(
+
 booking.paymentMethod ||
+
 ""
+
 )}
 
 </span>
@@ -1558,8 +2074,11 @@ booking.paymentMethod ||
 <span>
 
 ₱${Number(
+
 booking.amountPaid ||
+
 0
+
 ).toLocaleString()}
 
 </span>
@@ -1574,8 +2093,11 @@ booking.amountPaid ||
 <span>
 
 ${escapeHtml(
+
 booking.transactionReference ||
+
 "N/A"
+
 )}
 
 </span>
@@ -1590,8 +2112,11 @@ booking.transactionReference ||
 <span>
 
 ${escapeHtml(
+
 booking.description ||
+
 ""
+
 )}
 
 </span>
@@ -1605,11 +2130,15 @@ booking.description ||
 <div class="services">
 
 <strong>
+
 SELECTED SERVICES
+
 </strong>
 
 ${escapeHtml(
+
 services
+
 )}
 
 </div>
@@ -1618,95 +2147,215 @@ services
 <div class="status-area">
 
 <strong>
+
 Status:
+
 </strong>
 
 
 <select
+
 id="status-${booking.id}"
+
 >
 
 <option
+
 value="Pending Verification"
-${booking.status === "Pending Verification" ? "selected" : ""}
+
+${booking.status === "Pending Verification"
+
+?
+
+"selected"
+
+:
+
+""}
+
 >
+
 Pending Verification
+
 </option>
 
 
 <option
+
 value="Confirmed"
-${booking.status === "Confirmed" ? "selected" : ""}
+
+${booking.status === "Confirmed"
+
+?
+
+"selected"
+
+:
+
+""}
+
 >
+
 Confirmed
+
 </option>
 
 
 <option
+
 value="Completed"
-${booking.status === "Completed" ? "selected" : ""}
+
+${booking.status === "Completed"
+
+?
+
+"selected"
+
+:
+
+""}
+
 >
+
 Completed
+
 </option>
 
 
 <option
+
 value="Cancelled"
-${booking.status === "Cancelled" ? "selected" : ""}
+
+${booking.status === "Cancelled"
+
+?
+
+"selected"
+
+:
+
+""}
+
 >
+
 Cancelled
+
 </option>
 
 </select>
 
 
 <button
+
 class="update-btn"
-onclick="updateStatus('${booking.id}')"
+
+data-booking-id="${escapeHtml(
+
+booking.id
+
+)}"
+
 >
 
 Update Status
 
 </button>
 
+
 </div>
+
+<div
+
+class="status-message"
+
+id="message-${booking.id}"
+
+></div>
 
 `;
 
 
+const updateButton =
+
+card.querySelector(
+
+".update-btn"
+
+);
+
+
+updateButton.addEventListener(
+
+"click",
+
+function() {
+
+
+updateStatus(
+
+booking.id,
+
+updateButton
+
+);
+
+}
+
+);
+
+
 bookingsContainer.appendChild(
+
 card
-);
-
-}
 
 );
 
 }
 
+);
+
+}
 
 
 /*
-========================================
+==================================================
 UPDATE STATUS
-========================================
+==================================================
 */
 
-window.updateStatus =
+async function updateStatus(
 
-async function(
-bookingId
-){
+bookingId,
+
+button
+
+) {
+
 
 const select =
 
 document.getElementById(
+
 "status-" +
+
 bookingId
+
+);
+
+
+const messageBox =
+
+document.getElementById(
+
+"message-" +
+
+bookingId
+
 );
 
 
 const newStatus =
+
 select.value;
 
 
@@ -1714,9 +2363,12 @@ const booking =
 
 allBookings.find(
 
-function(item){
+function(
+item
+) {
 
 return item.id ===
+
 bookingId;
 
 }
@@ -1724,12 +2376,14 @@ bookingId;
 );
 
 
-if(
+if (
 !booking
-){
+) {
 
 alert(
+
 "Booking not found."
+
 );
 
 return;
@@ -1738,112 +2392,51 @@ return;
 
 
 const oldStatus =
+
 booking.status;
 
 
-if(
+if (
 oldStatus ===
 newStatus
-){
+) {
 
 alert(
-"Booking status is already " +
+
+"Booking is already " +
+
 newStatus
+
 );
 
 return;
 
 }
 
-
-const confirmed =
-
-confirm(
-
-"Change booking status to " +
-
-newStatus +
-
-"?"
-
-);
-
-
-if(
-!confirmed
-){
-
-return;
-
-}
-
-
-const buttons =
-
-document.querySelectorAll(
-".update-btn"
-);
-
-
-buttons.forEach(
-
-function(button){
 
 button.disabled =
+
 true;
 
-}
 
-);
+button.textContent =
 
-
-try{
+"Updating...";
 
 
-/*
-========================================
-UPDATE FIREBASE STATUS
-========================================
-*/
+messageBox.style.display =
 
-await updateDoc(
+"none";
 
-doc(
-db,
-"bookings",
-bookingId
-),
 
-{
-
-status:
-newStatus
-
-}
-
-);
+try {
 
 
 /*
-========================================
-IF CONFIRMED
-SEND CONFIRMATION EMAIL
-========================================
+==============================================
+CALL GOOGLE APPS SCRIPT
+==============================================
 */
-
-if(
-newStatus ===
-"Confirmed"
-){
-
-showNotification(
-
-"Booking updated. Sending confirmation email to client..."
-
-);
-
-
-try{
 
 
 const response =
@@ -1855,12 +2448,16 @@ APPS_SCRIPT_URL,
 {
 
 method:
+
 "POST",
 
-headers:{
+headers:
+
+{
 
 "Content-Type":
-"application/json"
+
+"text/plain;charset=utf-8"
 
 },
 
@@ -1869,66 +2466,16 @@ body:
 JSON.stringify({
 
 action:
-"confirmBooking",
 
-bookingReference:
+"updateBookingStatus",
 
-booking.bookingReference,
+bookingId:
 
-clientName:
+bookingId,
 
-booking.clientName,
+newStatus:
 
-email:
-
-booking.email,
-
-company:
-
-booking.company,
-
-mobile:
-
-booking.mobile,
-
-location:
-
-booking.location,
-
-date:
-
-booking.date,
-
-time:
-
-booking.time,
-
-description:
-
-booking.description,
-
-services:
-
-booking.services,
-
-drone:
-
-booking.drone,
-
-paymentMethod:
-
-booking.paymentMethod,
-
-amountPaid:
-
-booking.amountPaid,
-
-transactionReference:
-
-booking.transactionReference,
-
-status:
-"Confirmed"
+newStatus
 
 })
 
@@ -1942,137 +2489,176 @@ const result =
 await response.json();
 
 
-if(
-result.success
-){
+console.log(
 
-showNotification(
+"Apps Script Response:",
 
-"Booking CONFIRMED successfully! Confirmation email sent to the client."
+result
 
 );
 
-}else{
 
-showNotification(
+if (
+!result.success
+) {
 
-"Booking confirmed in dashboard, but email failed: " +
+throw new Error(
 
-(result.error ||
-"Unknown error"),
+result.error ||
 
-true
-
-);
-
-}
-
-}catch(emailError){
-
-console.error(
-emailError
-);
-
-showNotification(
-
-"Booking confirmed in dashboard, but confirmation email could not be sent.",
-
-true
+"Failed to update booking."
 
 );
 
 }
 
-}else{
 
+/*
+==============================================
+REFRESH FIREBASE DASHBOARD
+==============================================
+*/
 
-if(
-newStatus ===
-"Cancelled"
-){
+await updateDoc(
 
-showNotification(
+doc(
 
-"Booking cancelled successfully."
+db,
 
-);
+"bookings",
 
-}else if(
-newStatus ===
-"Completed"
-){
+bookingId
 
-showNotification(
+),
 
-"Booking marked as completed."
+{
 
-);
+status:
 
-}else{
-
-showNotification(
-
-"Booking status updated successfully."
-
-);
+newStatus
 
 }
 
+);
+
+
+/*
+==============================================
+SHOW RESULT
+==============================================
+*/
+
+if (
+result.emailSent
+) {
+
+
+messageBox.textContent =
+
+"Booking status updated successfully. Client confirmation email sent.";
+
+messageBox.className =
+
+"status-message status-success";
+
+
 }
+
+else {
+
+
+messageBox.textContent =
+
+"Booking status updated in dashboard, but confirmation email could not be sent. " +
+
+(
+
+result.emailError ||
+
+"Please check Apps Script execution logs."
+
+);
+
+
+messageBox.className =
+
+"status-message status-warning";
+
+}
+
+
+messageBox.style.display =
+
+"block";
 
 
 await loadBookings();
 
 
-}catch(error){
+}
+
+catch (
+error
+) {
+
 
 console.error(
+
+"Update Status Error:",
+
 error
+
 );
 
-showNotification(
+
+messageBox.textContent =
 
 "Error updating booking: " +
 
-error.message,
+error.message;
 
-true
 
-);
+messageBox.className =
 
-}finally{
+"status-message status-error";
 
-buttons.forEach(
 
-function(button){
+messageBox.style.display =
+
+"block";
+
+
+}
+
 
 button.disabled =
+
 false;
 
+
+button.textContent =
+
+"Update Status";
+
 }
-
-);
-
-}
-
-};
-
 
 
 /*
-========================================
+==================================================
 SEARCH
-========================================
+==================================================
 */
 
 searchInput.addEventListener(
 
 "input",
 
-function(){
+function() {
 
 displayBookings(
+
 allBookings
+
 );
 
 }
@@ -2080,21 +2666,22 @@ allBookings
 );
 
 
-
 /*
-========================================
+==================================================
 FILTER
-========================================
+==================================================
 */
 
 statusFilter.addEventListener(
 
 "change",
 
-function(){
+function() {
 
 displayBookings(
+
 allBookings
+
 );
 
 }
@@ -2102,44 +2689,63 @@ allBookings
 );
 
 
-
 /*
-========================================
+==================================================
 ESCAPE HTML
-========================================
+==================================================
 */
 
 function escapeHtml(
+
 text
-){
+
+) {
+
 
 return String(
+
 text
+
 )
 
 .replace(
+
 /&/g,
+
 "&amp;"
+
 )
 
 .replace(
+
 /</g,
+
 "&lt;"
+
 )
 
 .replace(
+
 />/g,
+
 "&gt;"
+
 )
 
 .replace(
+
 /"/g,
+
 "&quot;"
+
 )
 
 .replace(
+
 /'/g,
+
 "&#039;"
+
 );
 
 }
