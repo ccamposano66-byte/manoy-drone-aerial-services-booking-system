@@ -1,1060 +1,1484 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Manoy Drone Aerial Services Booking System</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #ff7a00, #ff9d2e);
-      color: #222;
-      padding: 20px;
-      min-height: 100vh;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      background: #ffffff;
-      padding: 30px;
-      border-radius: 18px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.20);
-    }
-
-    .header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .logo {
-      width: 220px;
-      max-width: 75%;
-      height: auto;
-      display: block;
-      margin: 0 auto 15px;
-    }
-
-    h1 {
-      font-size: 26px;
-      margin-bottom: 8px;
-    }
-
-    .subtitle {
-      color: #666;
-      font-size: 15px;
-    }
-
-    .intro {
-      margin-top: 12px;
-      color: #555;
-    }
-
-    /* CONTACT */
-
-    .contact-card {
-      margin-top: 22px;
-      padding: 20px;
-      background: linear-gradient(135deg, #fff7ef, #ffffff);
-      border: 1px solid #ffd5ad;
-      border-radius: 14px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    }
-
-    .contact-title {
-      color: #ff7a00;
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 15px;
-      letter-spacing: 1px;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 13px;
-      background: #ffffff;
-      border-radius: 10px;
-      border-left: 4px solid #ff7a00;
-      text-align: left;
-    }
-
-    .contact-icon {
-      font-size: 22px;
-      min-width: 28px;
-    }
-
-    .contact-item strong {
-      display: block;
-      font-size: 13px;
-      color: #777;
-      margin-bottom: 3px;
-    }
-
-    .contact-item p {
-      font-size: 13px;
-      color: #222;
-      word-break: break-word;
-    }
-
-    /* RATES */
-
-    .rates-section {
-      margin-top: 25px;
-      padding: 25px;
-      background: linear-gradient(135deg, #fff7ef, #ffffff);
-      border: 1px solid #ffd5ad;
-      border-radius: 14px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    }
-
-    .rates-title {
-      text-align: center;
-      color: #ff7a00;
-      font-size: 22px;
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-
-    .rates-subtitle {
-      text-align: center;
-      color: #666;
-      font-size: 14px;
-      margin-bottom: 22px;
-    }
-
-    .rate-card {
-      background: #ffffff;
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 15px;
-      border-left: 5px solid #ff7a00;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.06);
-    }
-
-    .rate-card:last-child {
-      margin-bottom: 0;
-    }
-
-    .rate-card h3 {
-      color: #ff7a00;
-      font-size: 18px;
-      margin-bottom: 12px;
-    }
-
-    .rate-card p {
-      color: #555;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    .rate-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 10px;
-      font-size: 14px;
-    }
-
-    .rate-table th {
-      background: #ff7a00;
-      color: white;
-      padding: 10px;
-      text-align: left;
-    }
-
-    .rate-table td {
-      padding: 10px;
-      border-bottom: 1px solid #eee;
-    }
-
-    .rate-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    .rate-table tr:nth-child(even) {
-      background: #fff8f1;
-    }
-
-    .price-highlight {
-      font-size: 22px;
-      font-weight: bold;
-      color: #ff7a00;
-      margin: 8px 0;
-    }
-
-    .starting-label {
-      color: #666;
-      font-size: 13px;
-    }
-
-    .quote-box {
-      background: #fff7ef;
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 10px;
-      border: 1px solid #ffd5ad;
-      color: #555;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    .rate-note {
-      margin-top: 20px;
-      padding: 15px;
-      background: #f7f7f7;
-      border-radius: 8px;
-      text-align: center;
-      color: #666;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    /* FORM */
-
-    h2 {
-      margin-top: 30px;
-      margin-bottom: 15px;
-      font-size: 20px;
-      border-bottom: 2px solid #eee;
-      padding-bottom: 8px;
-    }
-
-    label {
-      display: block;
-      font-weight: bold;
-      margin-top: 15px;
-      margin-bottom: 6px;
-    }
-
-    input,
-    select,
-    textarea {
-      width: 100%;
-      padding: 13px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 15px;
-    }
-
-    input:focus,
-    select:focus,
-    textarea:focus {
-      outline: none;
-      border-color: #ff7a00;
-      box-shadow: 0 0 0 2px rgba(255,122,0,0.15);
-    }
-
-    textarea {
-      min-height: 110px;
-      resize: vertical;
-    }
-
-    .checkbox-group {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .checkbox-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px;
-      background: #f7f7f7;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: normal;
-      margin: 0;
-    }
-
-    .checkbox-item:hover {
-      background: #fff1e5;
-    }
-
-    .checkbox-item input {
-      width: auto;
-      accent-color: #ff7a00;
-    }
-
-    /* PAYMENT */
-
-    .payment-box {
-      background: #fff7ef;
-      padding: 18px;
-      border-radius: 10px;
-      margin-top: 10px;
-      border: 1px solid #ffd5ad;
-    }
-
-    .payment-info {
-      margin-top: 15px;
-      padding: 15px;
-      background: white;
-      border-left: 4px solid #ff7a00;
-      border-radius: 6px;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    /* BUTTON */
-
-    button {
-      width: 100%;
-      margin-top: 30px;
-      padding: 16px;
-      background: #ff7a00;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 17px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #e66d00;
-    }
-
-    button:disabled {
-      background: #999;
-      cursor: not-allowed;
-    }
-
-    /* SUCCESS */
-
-    .result {
-      display: none;
-      margin-top: 25px;
-      padding: 20px;
-      background: #eef8ee;
-      border-radius: 10px;
-      border: 1px solid #b7d9b7;
-    }
-
-    .reference {
-      font-size: 22px;
-      font-weight: bold;
-      margin: 12px 0;
-    }
-
-    .status {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 8px 12px;
-      border-radius: 20px;
-      background: #fff3cd;
-      color: #856404;
-      font-weight: bold;
-    }
-
-    /* ERROR */
-
-    .error {
-      display: none;
-      margin-top: 20px;
-      padding: 15px;
-      background: #ffe5e5;
-      color: #a00000;
-      border-radius: 8px;
-      line-height: 1.5;
-      word-break: break-word;
-    }
-
-    .success-message {
-      color: #176b2c;
-      font-weight: bold;
-      margin-top: 10px;
-    }
-
-    .footer {
-      text-align: center;
-      margin-top: 25px;
-      color: #777;
-      font-size: 12px;
-      line-height: 1.6;
-    }
-
-    @media (max-width: 700px) {
-
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .rate-table {
-        font-size: 12px;
-      }
-
-      .rate-table th,
-      .rate-table td {
-        padding: 8px;
-      }
-
-    }
-
-    @media (max-width: 600px) {
-
-      body {
-        padding: 10px;
-      }
-
-      .container {
-        padding: 20px;
-      }
-
-      .checkbox-group {
-        grid-template-columns: 1fr;
-      }
-
-      h1 {
-        font-size: 21px;
-      }
-
-      .logo {
-        width: 180px;
-      }
-
-      .rates-section {
-        padding: 18px;
-      }
-
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Manoy Drone Aerial Services Booking System</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#ff7a00,#ff9d2e);
+color:#222;
+padding:20px;
+min-height:100vh;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+background:white;
+padding:30px;
+border-radius:18px;
+box-shadow:0 10px 30px rgba(0,0,0,.20);
+}
+
+.header{
+text-align:center;
+margin-bottom:30px;
+}
+
+.logo{
+width:220px;
+max-width:75%;
+display:block;
+margin:0 auto 15px;
+}
+
+h1{
+font-size:26px;
+margin-bottom:8px;
+}
+
+.subtitle{
+color:#666;
+font-size:15px;
+}
+
+.intro{
+margin-top:12px;
+color:#555;
+}
+
+/* CONTACT */
+
+.contact-card{
+margin-top:22px;
+padding:20px;
+background:linear-gradient(135deg,#fff7ef,#fff);
+border:1px solid #ffd5ad;
+border-radius:14px;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.contact-title{
+color:#ff7a00;
+font-size:18px;
+font-weight:bold;
+margin-bottom:15px;
+}
+
+.contact-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+}
+
+.contact-item{
+display:flex;
+align-items:center;
+gap:10px;
+padding:13px;
+background:white;
+border-radius:10px;
+border-left:4px solid #ff7a00;
+}
+
+.contact-icon{
+font-size:22px;
+}
+
+.contact-item strong{
+display:block;
+font-size:13px;
+color:#777;
+margin-bottom:3px;
+}
+
+.contact-item p{
+font-size:13px;
+word-break:break-word;
+}
+
+/* RATES */
+
+.rates-section{
+margin-top:25px;
+padding:25px;
+background:linear-gradient(135deg,#fff7ef,#fff);
+border:1px solid #ffd5ad;
+border-radius:14px;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.rates-title{
+text-align:center;
+color:#ff7a00;
+font-size:22px;
+font-weight:bold;
+margin-bottom:8px;
+}
+
+.rates-subtitle{
+text-align:center;
+color:#666;
+font-size:14px;
+margin-bottom:22px;
+}
+
+.rate-card{
+background:white;
+border-radius:12px;
+padding:20px;
+margin-bottom:15px;
+border-left:5px solid #ff7a00;
+box-shadow:0 3px 10px rgba(0,0,0,.06);
+}
+
+.rate-card h3{
+color:#ff7a00;
+font-size:18px;
+margin-bottom:12px;
+}
+
+.rate-card p{
+color:#555;
+font-size:14px;
+line-height:1.6;
+}
+
+.rate-table{
+width:100%;
+border-collapse:collapse;
+margin-top:10px;
+font-size:14px;
+}
+
+.rate-table th{
+background:#ff7a00;
+color:white;
+padding:10px;
+text-align:left;
+}
+
+.rate-table td{
+padding:10px;
+border-bottom:1px solid #eee;
+}
+
+.rate-table tr:nth-child(even){
+background:#fff8f1;
+}
+
+.price-highlight{
+font-size:22px;
+font-weight:bold;
+color:#ff7a00;
+margin:8px 0;
+}
+
+.starting-label{
+color:#666;
+font-size:13px;
+}
+
+.quote-box{
+background:#fff7ef;
+padding:15px;
+border-radius:8px;
+margin-top:10px;
+border:1px solid #ffd5ad;
+color:#555;
+font-size:14px;
+line-height:1.6;
+}
+
+.rate-note{
+margin-top:20px;
+padding:15px;
+background:#f7f7f7;
+border-radius:8px;
+text-align:center;
+color:#666;
+font-size:13px;
+line-height:1.6;
+}
+
+/* FORM */
+
+h2{
+margin-top:30px;
+margin-bottom:15px;
+font-size:20px;
+border-bottom:2px solid #eee;
+padding-bottom:8px;
+}
+
+label{
+display:block;
+font-weight:bold;
+margin-top:15px;
+margin-bottom:6px;
+}
+
+input,
+select,
+textarea{
+width:100%;
+padding:13px;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:15px;
+}
+
+textarea{
+min-height:110px;
+resize:vertical;
+}
+
+.checkbox-group{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+
+.checkbox-item{
+display:flex;
+align-items:center;
+gap:10px;
+padding:12px;
+background:#f7f7f7;
+border-radius:8px;
+cursor:pointer;
+font-weight:normal;
+margin:0;
+}
+
+.checkbox-item input{
+width:auto;
+accent-color:#ff7a00;
+}
+
+/* PAYMENT */
+
+.payment-box{
+background:#fff7ef;
+padding:18px;
+border-radius:10px;
+margin-top:10px;
+border:1px solid #ffd5ad;
+}
+
+.payment-info{
+margin-top:15px;
+padding:15px;
+background:white;
+border-left:4px solid #ff7a00;
+border-radius:6px;
+font-size:14px;
+line-height:1.6;
+}
+
+/* BUTTON */
+
+button{
+width:100%;
+margin-top:30px;
+padding:16px;
+background:#ff7a00;
+color:white;
+border:none;
+border-radius:8px;
+font-size:17px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+background:#e66d00;
+}
+
+button:disabled{
+background:#999;
+cursor:not-allowed;
+}
+
+/* RESULT */
+
+.result{
+display:none;
+margin-top:25px;
+padding:20px;
+background:#eef8ee;
+border-radius:10px;
+border:1px solid #b7d9b7;
+}
+
+.reference{
+font-size:22px;
+font-weight:bold;
+margin:12px 0;
+}
+
+.status{
+display:inline-block;
+margin-top:10px;
+padding:8px 12px;
+border-radius:20px;
+background:#fff3cd;
+color:#856404;
+font-weight:bold;
+}
+
+/* ERROR */
+
+.error{
+display:none;
+margin-top:20px;
+padding:15px;
+background:#ffe5e5;
+color:#a00000;
+border-radius:8px;
+line-height:1.5;
+}
+
+/* FOOTER */
+
+.footer{
+text-align:center;
+margin-top:25px;
+color:#777;
+font-size:12px;
+line-height:1.6;
+}
+
+@media(max-width:700px){
+
+.contact-grid{
+grid-template-columns:1fr;
+}
+
+.rate-table{
+font-size:12px;
+}
+
+}
+
+@media(max-width:600px){
+
+body{
+padding:10px;
+}
+
+.container{
+padding:20px;
+}
+
+.checkbox-group{
+grid-template-columns:1fr;
+}
+
+h1{
+font-size:21px;
+}
+
+.logo{
+width:180px;
+}
+
+.rates-section{
+padding:18px;
+}
+
+}
+
+</style>
 </head>
+
 
 <body>
 
+
 <div class="container">
 
-  <!-- HEADER -->
 
-  <div class="header">
+<!-- HEADER -->
 
-    <img
-      src="MY%20LOGO.png"
-      alt="Manoy Drone Aerial Services Logo"
-      class="logo"
-    >
+<div class="header">
 
-    <h1>Manoy Drone Aerial Services</h1>
+<img
+src="MY%20LOGO.png"
+alt="Manoy Drone Aerial Services Logo"
+class="logo"
+>
 
-    <div class="subtitle">
-      Booking System
-    </div>
+<h1>
+Manoy Drone Aerial Services
+</h1>
 
-    <p class="intro">
-      Book your professional drone services with us.
-    </p>
+<div class="subtitle">
+Booking System
+</div>
 
+<p class="intro">
+Book your professional drone services with us.
+</p>
 
-    <!-- CONTACT DETAILS -->
 
-    <div class="contact-card">
+<!-- CONTACT -->
 
-      <div class="contact-title">
-        📞 CONTACT US
-      </div>
+<div class="contact-card">
 
-      <div class="contact-grid">
+<div class="contact-title">
+📞 CONTACT US
+</div>
 
-        <div class="contact-item">
-          <span class="contact-icon">📱</span>
-          <div>
-            <strong>Mobile</strong>
-            <p>0926 616 6632</p>
-          </div>
-        </div>
+<div class="contact-grid">
 
-        <div class="contact-item">
-          <span class="contact-icon">📧</span>
-          <div>
-            <strong>Email</strong>
-            <p>ccamposano66@gmail.com</p>
-          </div>
-        </div>
 
-        <div class="contact-item">
-          <span class="contact-icon">📘</span>
-          <div>
-            <strong>Facebook</strong>
-            <p>Manoy Drone Aerial Videography Services</p>
-          </div>
-        </div>
+<div class="contact-item">
 
-        <div class="contact-item">
-          <span class="contact-icon">💬</span>
-          <div>
-            <strong>Viber</strong>
-            <p>0915 179 5584</p>
-          </div>
-        </div>
+<span class="contact-icon">
+📱
+</span>
 
-        <div class="contact-item">
-          <span class="contact-icon">💚</span>
-          <div>
-            <strong>WhatsApp</strong>
-            <p>0926 616 6632</p>
-          </div>
-        </div>
+<div>
 
-      </div>
+<strong>
+Mobile
+</strong>
 
-    </div>
+<p>
+0926 616 6632
+</p>
 
+</div>
 
-    <!-- OUR RATES -->
+</div>
 
-    <div class="rates-section">
 
-      <div class="rates-title">
-        💰 OUR RATES
-      </div>
+<div class="contact-item">
 
-      <div class="rates-subtitle">
-        Transparent starting rates for selected drone services
-      </div>
+<span class="contact-icon">
+📧
+</span>
 
+<div>
 
-      <!-- SOLAR THERMAL -->
+<strong>
+Email
+</strong>
 
-      <div class="rate-card">
+<p>
+ccamposano66@gmail.com
+</p>
 
-        <h3>
-          ☀️ Solar Farm Thermal Inspection
-        </h3>
+</div>
 
-        <p>
-          Professional thermal inspection using
-          <strong>DJI Matrice 4TD</strong>.
-        </p>
-
-        <table class="rate-table">
+</div>
 
-          <thead>
-            <tr>
-              <th>Project Area</th>
-              <th>Rate</th>
-            </tr>
-          </thead>
-
-          <tbody>
 
-            <tr>
-              <td>1–2 Hectares</td>
-              <td><strong>₱18,000</strong></td>
-            </tr>
-
-            <tr>
-              <td>2–5 Hectares</td>
-              <td><strong>₱28,000</strong></td>
-            </tr>
+<div class="contact-item">
 
-            <tr>
-              <td>5–10 Hectares</td>
-              <td><strong>₱36,000</strong></td>
-            </tr>
+<span class="contact-icon">
+📘
+</span>
 
-            <tr>
-              <td>10–20 Hectares</td>
-              <td><strong>₱49,000</strong></td>
-            </tr>
+<div>
 
-            <tr>
-              <td>20–50 Hectares</td>
-              <td><strong>₱95,000</strong></td>
-            </tr>
+<strong>
+Facebook
+</strong>
 
-            <tr>
-              <td>50–100 Hectares</td>
-              <td><strong>₱220,000</strong></td>
-            </tr>
+<p>
+Manoy Drone Aerial Videography Services
+</p>
 
-            <tr>
-              <td>100 Hectares & Above</td>
-              <td>
-                <strong>₱220,000 + ₱1,000</strong>
-                per additional hectare
-              </td>
-            </tr>
+</div>
 
-          </tbody>
+</div>
 
-        </table>
 
-      </div>
+<div class="contact-item">
 
+<span class="contact-icon">
+💬
+</span>
 
-      <!-- AERIAL MAPPING -->
+<div>
 
-      <div class="rate-card">
+<strong>
+Viber
+</strong>
 
-        <h3>
-          🗺️ Aerial Mapping & Surveying
-        </h3>
+<p>
+0915 179 5584
+</p>
 
-        <p>
-          Professional aerial mapping and surveying services.
-          Rates are based on project area.
-        </p>
+</div>
 
-        <table class="rate-table">
+</div>
 
-          <thead>
-            <tr>
-              <th>Project Area</th>
-              <th>Rate</th>
-            </tr>
-          </thead>
 
-          <tbody>
+<div class="contact-item">
 
-            <tr>
-              <td>1–10 Hectares</td>
-              <td><strong>₱5,000 / hectare</strong></td>
-            </tr>
+<span class="contact-icon">
+💚
+</span>
 
-            <tr>
-              <td>11–50 Hectares</td>
-              <td><strong>₱4,000 / hectare</strong></td>
-            </tr>
+<div>
 
-            <tr>
-              <td>51–100 Hectares</td>
-              <td><strong>₱3,000 / hectare</strong></td>
-            </tr>
+<strong>
+WhatsApp
+</strong>
 
-            <tr>
-              <td>101–200 Hectares</td>
-              <td><strong>₱2,000 / hectare</strong></td>
-            </tr>
+<p>
+0926 616 6632
+</p>
 
-            <tr>
-              <td>201–300 Hectares</td>
-              <td><strong>₱1,000 / hectare</strong></td>
-            </tr>
+</div>
 
-            <tr>
-              <td>301–1,000 Hectares</td>
-              <td><strong>₱800 / hectare</strong></td>
-            </tr>
+</div>
 
-            <tr>
-              <td>1,001+ Hectares</td>
-              <td><strong>₱500 / hectare</strong></td>
-            </tr>
 
-          </tbody>
+</div>
 
-        </table>
+</div>
 
-      </div>
 
+<!-- RATES -->
 
-      <!-- AERIAL PHOTO VIDEO -->
+<div class="rates-section">
 
-      <div class="rate-card">
 
-        <h3>
-          🎥 Aerial Videography & Photography
-        </h3>
+<div class="rates-title">
+💰 OUR RATES
+</div>
 
-        <div class="starting-label">
-          Starting at
-        </div>
 
-        <div class="price-highlight">
-          ₱8,000
-        </div>
+<div class="rates-subtitle">
+Transparent starting rates for selected drone services
+</div>
 
-        <p>
-          Final quotation depends on project scope,
-          location, flight duration, required equipment,
-          deliverables, and production requirements.
-        </p>
 
-      </div>
+<!-- SOLAR -->
 
+<div class="rate-card">
 
-      <!-- OTHER SERVICES -->
+<h3>
+☀️ Solar Farm Thermal Inspection
+</h3>
 
-      <div class="rate-card">
+<p>
+Professional thermal inspection using
+<strong>DJI Matrice 4TD</strong>.
+</p>
 
-        <h3>
-          📋 Other Drone Services
-        </h3>
 
-        <div class="quote-box">
+<table class="rate-table">
 
-          <strong>Request a Quote</strong><br>
+<thead>
 
-          Customized quotation available based on
-          project requirements, location, scope of work,
-          equipment, and deliverables.
+<tr>
 
-        </div>
+<th>
+Project Area
+</th>
 
-      </div>
+<th>
+Rate
+</th>
 
+</tr>
 
-      <div class="rate-note">
+</thead>
 
-        <strong>Note:</strong>
-        Published rates are for reference and may vary
-        depending on project requirements, location,
-        accessibility, flight conditions, permits,
-        equipment, and final deliverables.
 
-      </div>
+<tbody>
 
-    </div>
 
-  </div>
+<tr>
 
+<td>
+1–2 Hectares
+</td>
 
-  <!-- BOOKING FORM -->
+<td>
+<strong>
+₱18,000
+</strong>
+</td>
 
-  <form id="bookingForm">
+</tr>
 
-    <h2>Client Information</h2>
 
-    <label>Full Name *</label>
+<tr>
 
-    <input
-      type="text"
-      id="clientName"
-      placeholder="Enter your full name"
-      required
-    >
+<td>
+2–5 Hectares
+</td>
 
+<td>
+<strong>
+₱28,000
+</strong>
+</td>
 
-    <label>Company / Organization</label>
+</tr>
 
-    <input
-      type="text"
-      id="company"
-      placeholder="Company name"
-    >
 
+<tr>
 
-    <label>Mobile Number *</label>
+<td>
+5–10 Hectares
+</td>
 
-    <input
-      type="tel"
-      id="mobile"
-      placeholder="09XXXXXXXXX"
-      required
-    >
+<td>
+<strong>
+₱36,000
+</strong>
+</td>
 
+</tr>
 
-    <label>Email Address *</label>
 
-    <input
-      type="email"
-      id="email"
-      placeholder="your@email.com"
-      required
-    >
+<tr>
 
+<td>
+10–20 Hectares
+</td>
 
-    <h2>Project Details</h2>
+<td>
+<strong>
+₱49,000
+</strong>
+</td>
 
-    <label>Project Location *</label>
+</tr>
 
-    <input
-      type="text"
-      id="location"
-      placeholder="City / Municipality / Project Site"
-      required
-    >
 
+<tr>
 
-    <label>Preferred Date *</label>
+<td>
+20–50 Hectares
+</td>
 
-    <input
-      type="date"
-      id="date"
-      required
-    >
+<td>
+<strong>
+₱95,000
+</strong>
+</td>
 
+</tr>
 
-    <label>Preferred Time</label>
 
-    <input
-      type="time"
-      id="time"
-    >
+<tr>
 
+<td>
+50–100 Hectares
+</td>
 
-    <label>Project Description *</label>
+<td>
+<strong>
+₱220,000
+</strong>
+</td>
 
-    <textarea
-      id="description"
-      placeholder="Tell us about your project..."
-      required
-    ></textarea>
+</tr>
 
 
-    <h2>Select Drone Services</h2>
+<tr>
 
-    <div class="checkbox-group">
+<td>
+100 Hectares & Above
+</td>
 
-      <label class="checkbox-item">
-        <input type="checkbox" name="service" value="Aerial Videography">
-        Aerial Videography
-      </label>
+<td>
+<strong>
+₱220,000 + ₱1,000
+</strong>
+per additional hectare
+</td>
 
-      <label class="checkbox-item">
-        <input type="checkbox" name="service" value="Aerial Photography">
-        Aerial Photography
-      </label>
+</tr>
 
-      <label class="checkbox-item">
-        <input type="checkbox" name="service" value="Aerial Mapping & Surveying">
-        Aerial Mapping & Surveying
-      </label>
 
-      <label class="checkbox-item">
-        <input type="checkbox" name="service" value="Aerial Drone Thermal Inspection">
-        Aerial Drone Thermal Inspection
-      </label>
+</tbody>
 
-      <label class="checkbox-item">
-        <input type="checkbox" name="service" value="Drone Inspection">
-        Drone Inspection
-      </label>
+</table>
 
-      <label class="checkbox-item">
-        <input type="checkbox" name="service" value="Construction Monitoring">
-        Construction Monitoring
-      </label>
+</div>
 
-      <label class="checkbox-item">
-        <input type="checkbox" name="service" value="Real Estate Aerial Services">
-        Real Estate Aerial Services
-      </label>
 
-      <label class="checkbox-item">
-        <input type="checkbox" name="service" value="Event Aerial Coverage">
-        Event Aerial Coverage
-      </label>
+<!-- MAPPING -->
 
-      <label class="checkbox-item">
-        <input type="checkbox" name="service" value="Promotional Aerial Content">
-        Promotional Aerial Content
-      </label>
+<div class="rate-card">
 
-      <label class="checkbox-item">
-        <input type="checkbox" name="service" value="FPV Drone Services">
-        FPV Drone Services
-      </label>
+<h3>
+🗺️ Aerial Mapping & Surveying
+</h3>
 
-      <label class="checkbox-item">
-        <input type="checkbox" name="service" value="Drone Live Feed / Live Streaming">
-        Drone Live Feed / Live Streaming
-      </label>
+<p>
+Professional aerial mapping and surveying services.
+Rates are based on project area.
+</p>
 
-      <label class="checkbox-item">
-        <input type="checkbox" name="service" value="Infrastructure / Structural Inspection">
-        Infrastructure / Structural Inspection
-      </label>
 
-      <label class="checkbox-item">
-        <input type="checkbox" name="service" value="Solar Farm Thermal Inspection">
-        Solar Farm Thermal Inspection
-      </label>
+<table class="rate-table">
 
-      <label class="checkbox-item">
-        <input type="checkbox" name="service" value="Telecommunication / Cell Tower Inspection">
-        Telecommunication / Cell Tower Inspection
-      </label>
+<thead>
 
-      <label class="checkbox-item">
-        <input type="checkbox" name="service" value="Drone Capture Only">
-        Drone Capture Only
-      </label>
+<tr>
 
-      <label class="checkbox-item">
-        <input type="checkbox" name="service" value="Other Drone Services">
-        Other Drone Services
-      </label>
+<th>
+Project Area
+</th>
 
-    </div>
+<th>
+Rate
+</th>
 
+</tr>
 
-    <h2>Preferred Drone / Equipment</h2>
+</thead>
 
-    <select id="drone">
 
-      <option value="">
-        Recommend the best equipment
-      </option>
+<tbody>
 
-      <option value="DJI Matrice 4TD">
-        DJI Matrice 4TD
-      </option>
 
-      <option value="DJI Matrice 4E">
-        DJI Matrice 4E
-      </option>
+<tr>
 
-      <option value="DJI Mavic 5 Pro">
-        DJI Mavic 5 Pro
-      </option>
+<td>
+1–10 Hectares
+</td>
 
-      <option value="DJI Mavic 3 Pro">
-        DJI Mavic 3 Pro
-      </option>
+<td>
+<strong>
+₱5,000 / hectare
+</strong>
+</td>
 
-      <option value="DJI Air 3S">
-        DJI Air 3S
-      </option>
+</tr>
 
-      <option value="DJI Avata 2 (FPV)">
-        DJI Avata 2 (FPV)
-      </option>
 
-      <option value="DJI Flip">
-        DJI Flip
-      </option>
+<tr>
 
-    </select>
+<td>
+11–50 Hectares
+</td>
 
+<td>
+<strong>
+₱4,000 / hectare
+</strong>
+</td>
 
-    <h2>Down Payment</h2>
+</tr>
 
-    <div class="payment-box">
 
-      <label>Payment Method *</label>
+<tr>
 
-      <select id="paymentMethod" required>
+<td>
+51–100 Hectares
+</td>
 
-        <option value="">
-          Select Payment Method
-        </option>
+<td>
+<strong>
+₱3,000 / hectare
+</strong>
+</td>
 
-        <option value="GCash">
-          GCash
-        </option>
+</tr>
 
-        <option value="RCBC Bank Transfer">
-          RCBC Bank Transfer
-        </option>
 
-      </select>
+<tr>
 
+<td>
+101–200 Hectares
+</td>
 
-      <div class="payment-info">
+<td>
+<strong>
+₱2,000 / hectare
+</strong>
+</td>
 
-        <strong>GCash</strong><br>
-        Account Name: Carlos Diego Camposano<br>
-        GCash Number: 09266166632
+</tr>
 
-        <br><br>
 
-        <strong>RCBC Bank Transfer</strong><br>
-        Account Name: Carlos Diego Camposano<br>
-        Account Number: 0000009052660268
+<tr>
 
-      </div>
+<td>
+201–300 Hectares
+</td>
 
+<td>
+<strong>
+₱1,000 / hectare
+</strong>
+</td>
 
-      <label>Down Payment Amount</label>
+</tr>
 
-      <input
-        type="number"
-        id="amountPaid"
-        placeholder="₱ 0.00"
-        min="0"
-      >
 
+<tr>
 
-      <label>Transaction Reference Number</label>
+<td>
+301–1,000 Hectares
+</td>
 
-      <input
-        type="text"
-        id="transactionReference"
-        placeholder="Enter transaction reference number"
-      >
+<td>
+<strong>
+₱800 / hectare
+</strong>
+</td>
 
-    </div>
+</tr>
 
 
-    <button
-      type="submit"
-      id="submitButton"
-    >
-      Submit Booking
-    </button>
+<tr>
 
-  </form>
+<td>
+1,001+ Hectares
+</td>
 
+<td>
+<strong>
+₱500 / hectare
+</strong>
+</td>
 
-  <!-- ERROR -->
+</tr>
 
-  <div
-    class="error"
-    id="errorMessage"
-  ></div>
 
+</tbody>
 
-  <!-- SUCCESS -->
+</table>
 
-  <div
-    class="result"
-    id="result"
-  >
+</div>
 
-    <h2>
-      Booking Submitted!
-    </h2>
 
-    <p>
-      Your booking request has been received.
-    </p>
+<!-- VIDEO -->
 
-    <p
-      class="reference"
-      id="bookingReference"
-    ></p>
+<div class="rate-card">
 
-    <div class="status">
-      Pending Verification
-    </div>
+<h3>
+🎥 Aerial Videography & Photography
+</h3>
 
-    <p class="success-message">
-      Your booking has been successfully saved.
-    </p>
+<div class="starting-label">
+Starting at
+</div>
 
-    <p style="margin-top:15px;">
-      Please keep your booking reference number for future inquiries.
-    </p>
+<div class="price-highlight">
+₱8,000
+</div>
 
-  </div>
+<p>
+Final quotation depends on project scope,
+location, flight duration, equipment,
+deliverables, and production requirements.
+</p>
 
+</div>
 
-  <!-- FOOTER -->
 
-  <div class="footer">
+<!-- OTHER -->
 
-    © 2026 Manoy Drone Aerial Services<br>
+<div class="rate-card">
 
-    All Rights Reserved.
+<h3>
+📋 Other Drone Services
+</h3>
 
-  </div>
+<div class="quote-box">
+
+<strong>
+Request a Quote
+</strong>
+
+<br>
+
+Customized quotation available based on
+project requirements, location, scope of work,
+equipment, and deliverables.
+
+</div>
+
+</div>
+
+
+<div class="rate-note">
+
+<strong>
+Note:
+</strong>
+
+Published rates are for reference and may vary
+depending on project requirements, location,
+accessibility, flight conditions, permits,
+equipment, and final deliverables.
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<!-- BOOKING FORM -->
+
+
+<form id="bookingForm">
+
+
+<h2>
+Client Information
+</h2>
+
+
+<label>
+Full Name *
+</label>
+
+<input
+type="text"
+id="clientName"
+required
+>
+
+
+<label>
+Company / Organization
+</label>
+
+<input
+type="text"
+id="company"
+>
+
+
+<label>
+Mobile Number *
+</label>
+
+<input
+type="tel"
+id="mobile"
+required
+>
+
+
+<label>
+Email Address *
+</label>
+
+<input
+type="email"
+id="email"
+required
+>
+
+
+<h2>
+Project Details
+</h2>
+
+
+<label>
+Project Location *
+</label>
+
+<input
+type="text"
+id="location"
+placeholder="City / Municipality / Project Site"
+required
+>
+
+
+<label>
+Preferred Date *
+</label>
+
+<input
+type="date"
+id="date"
+required
+>
+
+
+<label>
+Preferred Time
+</label>
+
+<input
+type="time"
+id="time"
+>
+
+
+<label>
+Project Description *
+</label>
+
+<textarea
+id="description"
+placeholder="Tell us about your project..."
+required
+></textarea>
+
+
+<h2>
+Select Drone Services
+</h2>
+
+
+<div class="checkbox-group">
+
+
+<label class="checkbox-item">
+
+<input
+type="checkbox"
+name="service"
+value="Aerial Videography"
+>
+
+Aerial Videography
+
+</label>
+
+
+<label class="checkbox-item">
+
+<input
+type="checkbox"
+name="service"
+value="Aerial Photography"
+>
+
+Aerial Photography
+
+</label>
+
+
+<label class="checkbox-item">
+
+<input
+type="checkbox"
+name="service"
+value="Aerial Mapping & Surveying"
+>
+
+Aerial Mapping & Surveying
+
+</label>
+
+
+<label class="checkbox-item">
+
+<input
+type="checkbox"
+name="service"
+value="Aerial Drone Thermal Inspection"
+>
+
+Aerial Drone Thermal Inspection
+
+</label>
+
+
+<label class="checkbox-item">
+
+<input
+type="checkbox"
+name="service"
+value="Drone Inspection"
+>
+
+Drone Inspection
+
+</label>
+
+
+<label class="checkbox-item">
+
+<input
+type="checkbox"
+name="service"
+value="Construction Monitoring"
+>
+
+Construction Monitoring
+
+</label>
+
+
+<label class="checkbox-item">
+
+<input
+type="checkbox"
+name="service"
+value="Real Estate Aerial Services"
+>
+
+Real Estate Aerial Services
+
+</label>
+
+
+<label class="checkbox-item">
+
+<input
+type="checkbox"
+name="service"
+value="Event Aerial Coverage"
+>
+
+Event Aerial Coverage
+
+</label>
+
+
+<label class="checkbox-item">
+
+<input
+type="checkbox"
+name="service"
+value="Promotional Aerial Content"
+>
+
+Promotional Aerial Content
+
+</label>
+
+
+<label class="checkbox-item">
+
+<input
+type="checkbox"
+name="service"
+value="FPV Drone Services"
+>
+
+FPV Drone Services
+
+</label>
+
+
+<label class="checkbox-item">
+
+<input
+type="checkbox"
+name="service"
+value="Drone Live Feed / Live Streaming"
+>
+
+Drone Live Feed / Live Streaming
+
+</label>
+
+
+<label class="checkbox-item">
+
+<input
+type="checkbox"
+name="service"
+value="Infrastructure / Structural Inspection"
+>
+
+Infrastructure / Structural Inspection
+
+</label>
+
+
+<label class="checkbox-item">
+
+<input
+type="checkbox"
+name="service"
+value="Solar Farm Thermal Inspection"
+>
+
+Solar Farm Thermal Inspection
+
+</label>
+
+
+<label class="checkbox-item">
+
+<input
+type="checkbox"
+name="service"
+value="Telecommunication / Cell Tower Inspection"
+>
+
+Telecommunication / Cell Tower Inspection
+
+</label>
+
+
+<label class="checkbox-item">
+
+<input
+type="checkbox"
+name="service"
+value="Drone Capture Only"
+>
+
+Drone Capture Only
+
+</label>
+
+
+<label class="checkbox-item">
+
+<input
+type="checkbox"
+name="service"
+value="Other Drone Services"
+>
+
+Other Drone Services
+
+</label>
+
+
+</div>
+
+
+<h2>
+Preferred Drone / Equipment
+</h2>
+
+
+<select id="drone">
+
+
+<option value="">
+Recommend the best equipment
+</option>
+
+
+<option value="DJI Matrice 4TD">
+DJI Matrice 4TD
+</option>
+
+
+<option value="DJI Matrice 4E">
+DJI Matrice 4E
+</option>
+
+
+<option value="DJI Mavic 5 Pro">
+DJI Mavic 5 Pro
+</option>
+
+
+<option value="DJI Mavic 3 Pro">
+DJI Mavic 3 Pro
+</option>
+
+
+<option value="DJI Air 3S">
+DJI Air 3S
+</option>
+
+
+<option value="DJI Avata 2 (FPV)">
+DJI Avata 2 (FPV)
+</option>
+
+
+<option value="DJI Flip">
+DJI Flip
+</option>
+
+
+</select>
+
+
+<h2>
+Down Payment
+</h2>
+
+
+<div class="payment-box">
+
+
+<label>
+Payment Method *
+</label>
+
+
+<select
+id="paymentMethod"
+required
+>
+
+
+<option value="">
+Select Payment Method
+</option>
+
+
+<option value="GCash">
+GCash
+</option>
+
+
+<option value="RCBC Bank Transfer">
+RCBC Bank Transfer
+</option>
+
+
+</select>
+
+
+<div class="payment-info">
+
+
+<strong>
+GCash
+</strong>
+
+<br>
+
+Account Name:
+Carlos Diego Camposano
+
+<br>
+
+GCash Number:
+09266166632
+
+
+<br><br>
+
+
+<strong>
+RCBC Bank Transfer
+</strong>
+
+<br>
+
+Account Name:
+Carlos Diego Camposano
+
+<br>
+
+Account Number:
+0000009052660268
+
+
+</div>
+
+
+<label>
+Down Payment Amount
+</label>
+
+
+<input
+type="number"
+id="amountPaid"
+placeholder="₱ 0.00"
+min="0"
+>
+
+
+<label>
+Transaction Reference Number
+</label>
+
+
+<input
+type="text"
+id="transactionReference"
+placeholder="Enter transaction reference number"
+>
+
+
+</div>
+
+
+<button
+type="submit"
+id="submitButton"
+>
+
+Submit Booking
+
+</button>
+
+
+</form>
+
+
+<div
+class="error"
+id="errorMessage"
+></div>
+
+
+<div
+class="result"
+id="result"
+>
+
+
+<h2>
+Booking Submitted!
+</h2>
+
+
+<p>
+Your booking request has been received.
+</p>
+
+
+<p
+class="reference"
+id="bookingReference"
+></p>
+
+
+<div class="status">
+Pending Verification
+</div>
+
+
+<p style="margin-top:15px;">
+
+Please keep your booking reference number
+for future inquiries.
+
+</p>
+
+
+</div>
+
+
+<div class="footer">
+
+© 2026 Manoy Drone Aerial Services
+
+<br>
+
+All Rights Reserved.
+
+</div>
 
 
 </div>
@@ -1064,489 +1488,618 @@
 
 <script type="module">
 
-  import {
-    initializeApp
-  } from
-  "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
+import {
 
-  import {
-    getFirestore,
-    collection,
-    addDoc,
-    serverTimestamp
-  } from
-  "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
+initializeApp
 
+}
 
-  /* FIREBASE CONFIG */
+from
 
-  const firebaseConfig = {
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
-    apiKey:
-      "AIzaSyDKX2ZsfE8VRlwL38wjzBF-immeyh5CvwQ",
 
-    authDomain:
-      "manoy-drone-booking-system.firebaseapp.com",
+import {
 
-    projectId:
-      "manoy-drone-booking-system",
+getFirestore,
 
-    storageBucket:
-      "manoy-drone-booking-system.firebasestorage.app",
+collection,
 
-    messagingSenderId:
-      "1046234143737",
+addDoc,
 
-    appId:
-      "1:1046234143737:web:5642929f7b189e0a8fbb28",
+serverTimestamp
 
-    measurementId:
-      "G-BMVTT7JNLM"
+}
 
-  };
+from
 
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-  /* INITIALIZE FIREBASE */
 
-  const app =
-    initializeApp(firebaseConfig);
+/* FIREBASE CONFIG */
 
 
-  /* FIRESTORE */
+const firebaseConfig = {
 
-  const db =
-    getFirestore(app);
 
+apiKey:
 
-  /* GOOGLE APPS SCRIPT WEB APP */
+"AIzaSyDKX2ZsfE8VRlwL38wjzBF-immeyh5CvwQ",
 
-  const EMAIL_WEB_APP_URL =
-    "https://script.google.com/macros/s/AKfycbyGbX7dv99QhzvXOIq_zbI2mfjiMdxmkioTfEU_GnQJpvp6Ytbn0hVQdkeBPVeRX97e/exec";
 
+authDomain:
 
-  /* BOOKING FORM */
+"manoy-drone-booking-system.firebaseapp.com",
 
-  const bookingForm =
-    document.getElementById(
-      "bookingForm"
-    );
 
+projectId:
 
-  bookingForm.addEventListener(
+"manoy-drone-booking-system",
 
-    "submit",
 
-    async function(event) {
+storageBucket:
 
-      event.preventDefault();
+"manoy-drone-booking-system.firebasestorage.app",
 
 
-      const submitButton =
-        document.getElementById(
-          "submitButton"
-        );
+messagingSenderId:
 
+"1046234143737",
 
-      const errorMessage =
-        document.getElementById(
-          "errorMessage"
-        );
 
+appId:
 
-      const result =
-        document.getElementById(
-          "result"
-        );
+"1:1046234143737:web:5642929f7b189e0a8fbb28",
 
 
-      errorMessage.style.display =
-        "none";
+measurementId:
 
+"G-BMVTT7JNLM"
 
-      result.style.display =
-        "none";
 
+};
 
-      /* GET SERVICES */
 
-      const services = [];
+/* INITIALIZE */
 
 
-      document
-        .querySelectorAll(
-          'input[name="service"]:checked'
-        )
-        .forEach(
+const app =
+initializeApp(firebaseConfig);
 
-          function(item) {
 
-            services.push(
-              item.value
-            );
+const db =
+getFirestore(app);
 
-          }
 
-        );
+/* GOOGLE APPS SCRIPT */
 
 
-      if (
-        services.length === 0
-      ) {
+const EMAIL_WEB_APP_URL =
 
-        errorMessage.textContent =
-          "Please select at least one drone service.";
+"https://script.google.com/macros/s/AKfycbyGbX7dv99QhzvXOIq_zbI2mfjiMdxmkioTfEU_GnQJpvp6Ytbn0hVQdkeBPVeRX97e/exec";
 
 
-        errorMessage.style.display =
-          "block";
+/* FORM */
 
 
-        return;
+const bookingForm =
 
-      }
+document.getElementById(
 
+"bookingForm"
 
-      /* GENERATE BOOKING REFERENCE */
+);
 
-      const bookingReference =
-        "MDAVS-" +
-        Math.floor(
-          100000 +
-          Math.random() *
-          900000
-        );
 
-
-      /* BOOKING DATA */
+bookingForm.addEventListener(
 
-      const bookingData = {
+"submit",
 
-        bookingReference:
-          bookingReference,
+async function(event){
 
-        clientName:
-          document
-            .getElementById(
-              "clientName"
-            )
-            .value,
 
-        company:
-          document
-            .getElementById(
-              "company"
-            )
-            .value,
+event.preventDefault();
 
-        mobile:
-          document
-            .getElementById(
-              "mobile"
-            )
-            .value,
 
-        email:
-          document
-            .getElementById(
-              "email"
-            )
-            .value,
+const submitButton =
 
-        location:
-          document
-            .getElementById(
-              "location"
-            )
-            .value,
+document.getElementById(
 
-        date:
-          document
-            .getElementById(
-              "date"
-            )
-            .value,
+"submitButton"
 
-        time:
-          document
-            .getElementById(
-              "time"
-            )
-            .value,
+);
 
-        description:
-          document
-            .getElementById(
-              "description"
-            )
-            .value,
 
-        services:
-          services,
+const errorMessage =
 
-        drone:
-          document
-            .getElementById(
-              "drone"
-            )
-            .value,
+document.getElementById(
 
-        paymentMethod:
-          document
-            .getElementById(
-              "paymentMethod"
-            )
-            .value,
+"errorMessage"
 
-        amountPaid:
-          Number(
-            document
-              .getElementById(
-                "amountPaid"
-              )
-              .value ||
-            0
-          ),
+);
 
-        transactionReference:
-          document
-            .getElementById(
-              "transactionReference"
-            )
-            .value,
 
-        status:
-          "Pending Verification",
+errorMessage.style.display =
 
-        createdAt:
-          serverTimestamp()
+"none";
 
-      };
 
+/* SERVICES */
 
-      try {
 
+const services = [];
 
-        /* DISABLE BUTTON */
 
-        submitButton.disabled =
-          true;
+document
 
+.querySelectorAll(
 
-        submitButton.textContent =
-          "Submitting Booking...";
+'input[name="service"]:checked'
 
+)
 
-        /* SAVE TO FIREBASE */
+.forEach(
 
-        const docRef =
-          await addDoc(
+function(item){
 
-            collection(
-              db,
-              "bookings"
-            ),
+services.push(
 
-            bookingData
+item.value
 
-          );
+);
 
+}
 
-        console.log(
-          "Booking saved to Firebase:",
-          docRef.id
-        );
+);
 
 
-        /*
-          SEND EMAIL NOTIFICATION
+if(
 
-          This sends the same booking
-          information to Google Apps Script.
-        */
+services.length === 0
 
+){
 
-        try {
 
-          await fetch(
+errorMessage.textContent =
 
-            EMAIL_WEB_APP_URL,
+"Please select at least one drone service.";
 
-            {
 
-              method:
-                "POST",
+errorMessage.style.display =
 
-              mode:
-                "no-cors",
+"block";
 
-              headers: {
 
-                "Content-Type":
-                  "text/plain;charset=utf-8"
+return;
 
-              },
+}
 
-              body:
-                JSON.stringify({
 
-                  bookingReference:
-                    bookingReference,
+/* REFERENCE */
 
-                  clientName:
-                    bookingData.clientName,
 
-                  company:
-                    bookingData.company,
+const randomNumber =
 
-                  mobile:
-                    bookingData.mobile,
+Math.floor(
 
-                  email:
-                    bookingData.email,
+100000 +
 
-                  location:
-                    bookingData.location,
+Math.random() *
 
-                  date:
-                    bookingData.date,
+900000
 
-                  time:
-                    bookingData.time,
+);
 
-                  description:
-                    bookingData.description,
 
-                  services:
-                    bookingData.services,
+const bookingReference =
 
-                  drone:
-                    bookingData.drone,
+"MDAVS-" +
 
-                  paymentMethod:
-                    bookingData.paymentMethod,
+randomNumber;
 
-                  amountPaid:
-                    bookingData.amountPaid,
 
-                  transactionReference:
-                    bookingData.transactionReference,
+/* DATA */
 
-                  status:
-                    bookingData.status
 
-                })
+const bookingData = {
 
-            }
 
-          );
+bookingReference:
 
-          console.log(
-            "Email notification request sent."
-          );
+bookingReference,
 
-        }
 
-        catch(emailError) {
+clientName:
 
-          /*
-            IMPORTANT:
+document.getElementById(
 
-            Even if email notification
-            fails, the Firebase booking
-            is already saved.
-          */
+"clientName"
 
-          console.error(
-            "Email notification error:",
-            emailError
-          );
+).value,
 
-        }
 
+company:
 
-        /* SHOW SUCCESS */
+document.getElementById(
 
-        document
-          .getElementById(
-            "bookingReference"
-          )
-          .textContent =
+"company"
 
-          "Booking Reference: " +
-          bookingReference;
+).value,
 
 
-        result.style.display =
-          "block";
+mobile:
 
+document.getElementById(
 
-        result.scrollIntoView({
+"mobile"
 
-          behavior:
-            "smooth"
+).value,
 
-        });
 
+email:
 
-        /* RESET FORM */
+document.getElementById(
 
-        bookingForm.reset();
+"email"
 
+).value,
 
-        /* RESET BUTTON */
 
-        submitButton.disabled =
-          false;
+location:
 
+document.getElementById(
 
-        submitButton.textContent =
-          "Submit Booking";
+"location"
 
+).value,
 
-      }
 
-      catch(error) {
+date:
 
+document.getElementById(
 
-        console.error(
-          "FIREBASE ERROR:",
-          error
-        );
+"date"
 
+).value,
 
-        errorMessage.innerHTML =
 
-          "<strong>Booking Error</strong><br>" +
+time:
 
-          "Code: " +
-          (error.code || "Unknown") +
+document.getElementById(
 
-          "<br><br>" +
+"time"
 
-          "Message: " +
-          error.message;
+).value,
 
 
-        errorMessage.style.display =
-          "block";
+description:
 
+document.getElementById(
 
-        submitButton.disabled =
-          false;
+"description"
 
+).value,
 
-        submitButton.textContent =
-          "Submit Booking";
 
-      }
+services:
 
-    }
+services,
 
-  );
+
+drone:
+
+document.getElementById(
+
+"drone"
+
+).value,
+
+
+paymentMethod:
+
+document.getElementById(
+
+"paymentMethod"
+
+).value,
+
+
+amountPaid:
+
+Number(
+
+document.getElementById(
+
+"amountPaid"
+
+).value ||
+
+0
+
+),
+
+
+transactionReference:
+
+document.getElementById(
+
+"transactionReference"
+
+).value,
+
+
+status:
+
+"Pending Verification",
+
+
+createdAt:
+
+serverTimestamp()
+
+
+};
+
+
+try{
+
+
+submitButton.disabled =
+
+true;
+
+
+submitButton.textContent =
+
+"Submitting Booking...";
+
+
+/* SAVE FIREBASE */
+
+
+await addDoc(
+
+collection(
+
+db,
+
+"bookings"
+
+),
+
+bookingData
+
+);
+
+
+/* EMAIL NOTIFICATION */
+
+
+try{
+
+
+await fetch(
+
+EMAIL_WEB_APP_URL,
+
+{
+
+method:
+
+"POST",
+
+
+mode:
+
+"no-cors",
+
+
+headers:{
+
+"Content-Type":
+
+"text/plain;charset=utf-8"
+
+},
+
+
+body:
+
+JSON.stringify({
+
+bookingReference:
+
+bookingReference,
+
+
+clientName:
+
+bookingData.clientName,
+
+
+company:
+
+bookingData.company,
+
+
+mobile:
+
+bookingData.mobile,
+
+
+email:
+
+bookingData.email,
+
+
+location:
+
+bookingData.location,
+
+
+date:
+
+bookingData.date,
+
+
+time:
+
+bookingData.time,
+
+
+description:
+
+bookingData.description,
+
+
+services:
+
+bookingData.services,
+
+
+drone:
+
+bookingData.drone,
+
+
+paymentMethod:
+
+bookingData.paymentMethod,
+
+
+amountPaid:
+
+bookingData.amountPaid,
+
+
+transactionReference:
+
+bookingData.transactionReference,
+
+
+status:
+
+bookingData.status
+
+})
+
+}
+
+);
+
+
+}
+
+catch(emailError){
+
+console.error(
+
+"Email Error:",
+
+emailError
+
+);
+
+}
+
+
+/* SUCCESS */
+
+
+document.getElementById(
+
+"bookingReference"
+
+).textContent =
+
+"Booking Reference: " +
+
+bookingReference;
+
+
+document.getElementById(
+
+"result"
+
+).style.display =
+
+"block";
+
+
+document.getElementById(
+
+"result"
+
+).scrollIntoView({
+
+behavior:
+
+"smooth"
+
+});
+
+
+bookingForm.reset();
+
+
+submitButton.disabled =
+
+false;
+
+
+submitButton.textContent =
+
+"Submit Booking";
+
+
+}
+
+catch(error){
+
+
+console.error(
+
+"Booking Error:",
+
+error
+
+);
+
+
+errorMessage.innerHTML =
+
+"<strong>Booking Error</strong><br>" +
+
+error.message;
+
+
+errorMessage.style.display =
+
+"block";
+
+
+submitButton.disabled =
+
+false;
+
+
+submitButton.textContent =
+
+"Submit Booking";
+
+
+}
+
+
+}
+
+);
+
 
 </script>
 
 
 </body>
+
 </html>
