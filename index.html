@@ -24,7 +24,7 @@
     .container {
       max-width: 850px;
       margin: auto;
-      background: white;
+      background: #ffffff;
       padding: 30px;
       border-radius: 18px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.20);
@@ -58,6 +58,60 @@
       color: #555;
     }
 
+    /* CONTACT CARD */
+
+    .contact-card {
+      margin-top: 22px;
+      padding: 20px;
+      background: linear-gradient(135deg, #fff7ef, #ffffff);
+      border: 1px solid #ffd5ad;
+      border-radius: 14px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+
+    .contact-title {
+      color: #ff7a00;
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px;
+      background: #ffffff;
+      border-radius: 10px;
+      border-left: 4px solid #ff7a00;
+      text-align: left;
+    }
+
+    .contact-icon {
+      font-size: 22px;
+      min-width: 28px;
+    }
+
+    .contact-item strong {
+      display: block;
+      font-size: 13px;
+      color: #777;
+      margin-bottom: 3px;
+    }
+
+    .contact-item p {
+      font-size: 13px;
+      color: #222;
+      word-break: break-word;
+    }
+
     h2 {
       margin-top: 30px;
       margin-bottom: 15px;
@@ -83,6 +137,14 @@
       font-size: 15px;
     }
 
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #ff7a00;
+      box-shadow: 0 0 0 2px rgba(255,122,0,0.15);
+    }
+
     textarea {
       min-height: 110px;
       resize: vertical;
@@ -104,6 +166,10 @@
       cursor: pointer;
       font-weight: normal;
       margin: 0;
+    }
+
+    .checkbox-item:hover {
+      background: #fff1e5;
     }
 
     .checkbox-item input {
@@ -183,6 +249,14 @@
       background: #ffe5e5;
       color: #a00000;
       border-radius: 8px;
+      line-height: 1.5;
+      word-break: break-word;
+    }
+
+    .success-message {
+      color: #176b2c;
+      font-weight: bold;
+      margin-top: 10px;
     }
 
     .footer {
@@ -190,6 +264,15 @@
       margin-top: 25px;
       color: #777;
       font-size: 12px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 700px) {
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
     }
 
     @media (max-width: 600px) {
@@ -222,9 +305,10 @@
 
 <div class="container">
 
+  <!-- HEADER -->
+
   <div class="header">
 
-    <!-- MANOY DRONE LOGO -->
     <img
       src="MY%20LOGO.png"
       alt="Manoy Drone Aerial Services Logo"
@@ -241,24 +325,107 @@
       Book your professional drone services with us.
     </p>
 
+
+    <!-- CONTACT DETAILS -->
+
+    <div class="contact-card">
+
+      <div class="contact-title">
+        📞 CONTACT US
+      </div>
+
+      <div class="contact-grid">
+
+        <div class="contact-item">
+          <span class="contact-icon">📱</span>
+          <div>
+            <strong>Mobile</strong>
+            <p>0926 616 6632</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-icon">📧</span>
+          <div>
+            <strong>Email</strong>
+            <p>ccamposano66@gmail.com</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-icon">📘</span>
+          <div>
+            <strong>Facebook</strong>
+            <p>Manoy Drone Aerial Videography Services</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-icon">💬</span>
+          <div>
+            <strong>Viber</strong>
+            <p>0915 179 5584</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-icon">💚</span>
+          <div>
+            <strong>WhatsApp</strong>
+            <p>0926 616 6632</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
 
+
+  <!-- BOOKING FORM -->
 
   <form id="bookingForm">
 
     <h2>Client Information</h2>
 
     <label>Full Name *</label>
-    <input type="text" id="clientName" required>
+
+    <input
+      type="text"
+      id="clientName"
+      placeholder="Enter your full name"
+      required
+    >
+
 
     <label>Company / Organization</label>
-    <input type="text" id="company">
+
+    <input
+      type="text"
+      id="company"
+      placeholder="Company name"
+    >
+
 
     <label>Mobile Number *</label>
-    <input type="tel" id="mobile" required>
+
+    <input
+      type="tel"
+      id="mobile"
+      placeholder="09XXXXXXXXX"
+      required
+    >
+
 
     <label>Email Address *</label>
-    <input type="email" id="email" required>
+
+    <input
+      type="email"
+      id="email"
+      placeholder="your@email.com"
+      required
+    >
 
 
     <h2>Project Details</h2>
@@ -301,215 +468,166 @@
 
     <h2>Select Drone Services</h2>
 
-
     <div class="checkbox-group">
 
 
       <label class="checkbox-item">
-
         <input
           type="checkbox"
           name="service"
           value="Aerial Videography"
         >
-
         Aerial Videography
-
       </label>
 
 
       <label class="checkbox-item">
-
         <input
           type="checkbox"
           name="service"
           value="Aerial Photography"
         >
-
         Aerial Photography
-
       </label>
 
 
       <label class="checkbox-item">
-
         <input
           type="checkbox"
           name="service"
           value="Aerial Mapping & Surveying"
         >
-
         Aerial Mapping & Surveying
-
       </label>
 
 
       <label class="checkbox-item">
-
         <input
           type="checkbox"
           name="service"
           value="Aerial Drone Thermal Inspection"
         >
-
         Aerial Drone Thermal Inspection
-
       </label>
 
 
       <label class="checkbox-item">
-
         <input
           type="checkbox"
           name="service"
           value="Drone Inspection"
         >
-
         Drone Inspection
-
       </label>
 
 
       <label class="checkbox-item">
-
         <input
           type="checkbox"
           name="service"
           value="Construction Monitoring"
         >
-
         Construction Monitoring
-
       </label>
 
 
       <label class="checkbox-item">
-
         <input
           type="checkbox"
           name="service"
           value="Real Estate Aerial Services"
         >
-
         Real Estate Aerial Services
-
       </label>
 
 
       <label class="checkbox-item">
-
         <input
           type="checkbox"
           name="service"
           value="Event Aerial Coverage"
         >
-
         Event Aerial Coverage
-
       </label>
 
 
       <label class="checkbox-item">
-
         <input
           type="checkbox"
           name="service"
           value="Promotional Aerial Content"
         >
-
         Promotional Aerial Content
-
       </label>
 
 
       <label class="checkbox-item">
-
         <input
           type="checkbox"
           name="service"
           value="FPV Drone Services"
         >
-
         FPV Drone Services
-
       </label>
 
 
       <label class="checkbox-item">
-
         <input
           type="checkbox"
           name="service"
           value="Drone Live Feed / Live Streaming"
         >
-
         Drone Live Feed / Live Streaming
-
       </label>
 
 
       <label class="checkbox-item">
-
         <input
           type="checkbox"
           name="service"
           value="Infrastructure / Structural Inspection"
         >
-
         Infrastructure / Structural Inspection
-
       </label>
 
 
       <label class="checkbox-item">
-
         <input
           type="checkbox"
           name="service"
           value="Solar Farm Thermal Inspection"
         >
-
         Solar Farm Thermal Inspection
-
       </label>
 
 
       <label class="checkbox-item">
-
         <input
           type="checkbox"
           name="service"
           value="Telecommunication / Cell Tower Inspection"
         >
-
         Telecommunication / Cell Tower Inspection
-
       </label>
 
 
       <label class="checkbox-item">
-
         <input
           type="checkbox"
           name="service"
           value="Drone Capture Only"
         >
-
         Drone Capture Only
-
       </label>
 
 
       <label class="checkbox-item">
-
         <input
           type="checkbox"
           name="service"
           value="Other Drone Services"
         >
-
         Other Drone Services
-
       </label>
 
 
@@ -517,7 +635,6 @@
 
 
     <h2>Preferred Drone / Equipment</h2>
-
 
     <select id="drone">
 
@@ -558,12 +675,10 @@
 
     <h2>Down Payment</h2>
 
-
     <div class="payment-box">
 
 
       <label>Payment Method *</label>
-
 
       <select
         id="paymentMethod"
@@ -610,10 +725,7 @@
       </div>
 
 
-      <label>
-        Down Payment Amount
-      </label>
-
+      <label>Down Payment Amount</label>
 
       <input
         type="number"
@@ -623,10 +735,7 @@
       >
 
 
-      <label>
-        Transaction Reference Number
-      </label>
-
+      <label>Transaction Reference Number</label>
 
       <input
         type="text"
@@ -642,20 +751,22 @@
       type="submit"
       id="submitButton"
     >
-
       Submit Booking
-
     </button>
 
 
   </form>
 
 
+  <!-- ERROR -->
+
   <div
     class="error"
     id="errorMessage"
   ></div>
 
+
+  <!-- SUCCESS -->
 
   <div
     class="result"
@@ -679,22 +790,24 @@
 
 
     <div class="status">
-
       Pending Verification
-
     </div>
 
 
+    <p class="success-message">
+      Your booking has been successfully saved.
+    </p>
+
+
     <p style="margin-top:15px;">
-
-      Please keep your booking reference number
-      for future inquiries.
-
+      Please keep your booking reference number for future inquiries.
     </p>
 
 
   </div>
 
+
+  <!-- FOOTER -->
 
   <div class="footer">
 
@@ -708,13 +821,13 @@
 </div>
 
 
-<script type="module">
+<!-- FIREBASE -->
 
+<script type="module">
 
   import {
     initializeApp
-  }
-  from
+  } from
   "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 
@@ -723,57 +836,48 @@
     collection,
     addDoc,
     serverTimestamp
-  }
-  from
+  } from
   "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
   const firebaseConfig = {
 
-
     apiKey:
-    "AIzaSyDKX2ZsfE8VRlwL38wjzBF-immeyh5CvwQ",
-
+      "AIzaSyDKX2ZsfE8VRlwL38wjzBF-immeyh5CvwQ",
 
     authDomain:
-    "manoy-drone-booking-system.firebaseapp.com",
-
+      "manoy-drone-booking-system.firebaseapp.com",
 
     projectId:
-    "manoy-drone-booking-system",
-
+      "manoy-drone-booking-system",
 
     storageBucket:
-    "manoy-drone-booking-system.firebasestorage.app",
-
+      "manoy-drone-booking-system.firebasestorage.app",
 
     messagingSenderId:
-    "1046234143737",
-
+      "1046234143737",
 
     appId:
-    "1:1046234143737:web:5642929f7b189e0a8fbb28",
-
+      "1:1046234143737:web:5642929f7b189e0a8fbb28",
 
     measurementId:
-    "G-BMVTT7JNLM"
-
+      "G-BMVTT7JNLM"
 
   };
 
 
   const app =
-  initializeApp(firebaseConfig);
+    initializeApp(firebaseConfig);
 
 
   const db =
-  getFirestore(app);
+    getFirestore(app);
 
 
   const bookingForm =
-  document.getElementById(
-    "bookingForm"
-  );
+    document.getElementById(
+      "bookingForm"
+    );
 
 
   bookingForm.addEventListener(
@@ -782,195 +886,187 @@
 
     async function(event) {
 
-
       event.preventDefault();
 
 
       const submitButton =
-      document.getElementById(
-        "submitButton"
-      );
+        document.getElementById(
+          "submitButton"
+        );
 
 
       const errorMessage =
-      document.getElementById(
-        "errorMessage"
-      );
+        document.getElementById(
+          "errorMessage"
+        );
+
+
+      const result =
+        document.getElementById(
+          "result"
+        );
 
 
       errorMessage.style.display =
-      "none";
+        "none";
 
+
+      result.style.display =
+        "none";
+
+
+      // GET SERVICES
 
       const services = [];
 
 
       document
-      .querySelectorAll(
-        'input[name="service"]:checked'
-      )
-      .forEach(
+        .querySelectorAll(
+          'input[name="service"]:checked'
+        )
+        .forEach(
 
-        function(item) {
+          function(item) {
 
-          services.push(
-            item.value
-          );
+            services.push(
+              item.value
+            );
 
-        }
+          }
 
-      );
+        );
 
 
       if (
         services.length === 0
       ) {
 
+        errorMessage.textContent =
+          "Please select at least one drone service.";
 
-        alert(
-          "Please select at least one drone service."
-        );
+
+        errorMessage.style.display =
+          "block";
 
 
         return;
 
-
       }
 
 
-      const randomNumber =
-      Math.floor(
-
-        100000 +
-        Math.random() *
-        900000
-
-      );
-
+      // GENERATE BOOKING REFERENCE
 
       const bookingReference =
-      "MDAVS-" +
-      randomNumber;
+        "MDAVS-" +
+        Math.floor(
+          100000 +
+          Math.random() *
+          900000
+        );
 
+
+      // BOOKING DATA
 
       const bookingData = {
 
-
         bookingReference:
-        bookingReference,
-
+          bookingReference,
 
         clientName:
-        document
-        .getElementById(
-          "clientName"
-        )
-        .value,
-
+          document
+            .getElementById(
+              "clientName"
+            )
+            .value,
 
         company:
-        document
-        .getElementById(
-          "company"
-        )
-        .value,
-
+          document
+            .getElementById(
+              "company"
+            )
+            .value,
 
         mobile:
-        document
-        .getElementById(
-          "mobile"
-        )
-        .value,
-
+          document
+            .getElementById(
+              "mobile"
+            )
+            .value,
 
         email:
-        document
-        .getElementById(
-          "email"
-        )
-        .value,
-
+          document
+            .getElementById(
+              "email"
+            )
+            .value,
 
         location:
-        document
-        .getElementById(
-          "location"
-        )
-        .value,
-
+          document
+            .getElementById(
+              "location"
+            )
+            .value,
 
         date:
-        document
-        .getElementById(
-          "date"
-        )
-        .value,
-
+          document
+            .getElementById(
+              "date"
+            )
+            .value,
 
         time:
-        document
-        .getElementById(
-          "time"
-        )
-        .value,
-
+          document
+            .getElementById(
+              "time"
+            )
+            .value,
 
         description:
-        document
-        .getElementById(
-          "description"
-        )
-        .value,
-
+          document
+            .getElementById(
+              "description"
+            )
+            .value,
 
         services:
-        services,
-
+          services,
 
         drone:
-        document
-        .getElementById(
-          "drone"
-        )
-        .value,
-
+          document
+            .getElementById(
+              "drone"
+            )
+            .value,
 
         paymentMethod:
-        document
-        .getElementById(
-          "paymentMethod"
-        )
-        .value,
-
+          document
+            .getElementById(
+              "paymentMethod"
+            )
+            .value,
 
         amountPaid:
-        Number(
-
-          document
-          .getElementById(
-            "amountPaid"
-          )
-          .value || 0
-
-        ),
-
+          Number(
+            document
+              .getElementById(
+                "amountPaid"
+              )
+              .value ||
+            0
+          ),
 
         transactionReference:
-        document
-        .getElementById(
-          "transactionReference"
-        )
-        .value,
-
+          document
+            .getElementById(
+              "transactionReference"
+            )
+            .value,
 
         status:
-        "Pending Verification",
-
+          "Pending Verification",
 
         createdAt:
-        serverTimestamp()
-
+          serverTimestamp()
 
       };
 
@@ -978,103 +1074,117 @@
       try {
 
 
+        // DISABLE BUTTON
+
         submitButton.disabled =
-        true;
+          true;
 
 
         submitButton.textContent =
-        "Submitting Booking...";
+          "Saving Booking...";
 
 
-        await addDoc(
+        // SAVE TO FIRESTORE
 
-          collection(
-            db,
-            "bookings"
-          ),
+        const docRef =
+          await addDoc(
 
-          bookingData
+            collection(
+              db,
+              "bookings"
+            ),
 
+            bookingData
+
+          );
+
+
+        console.log(
+          "Booking saved successfully:",
+          docRef.id
         );
 
 
-        document
-        .getElementById(
-          "bookingReference"
-        )
-        .textContent =
-
-        "Booking Reference: " +
-        bookingReference;
-
+        // SHOW BOOKING REFERENCE
 
         document
-        .getElementById(
-          "result"
-        )
-        .style.display =
-        "block";
+          .getElementById(
+            "bookingReference"
+          )
+          .textContent =
+
+          "Booking Reference: " +
+          bookingReference;
 
 
-        document
-        .getElementById(
-          "result"
-        )
-        .scrollIntoView({
+        result.style.display =
+          "block";
+
+
+        result.scrollIntoView({
 
           behavior:
-          "smooth"
+            "smooth"
 
         });
 
 
+        // RESET FORM
+
         bookingForm.reset();
 
 
+        // RESET BUTTON
+
         submitButton.disabled =
-        false;
+          false;
 
 
         submitButton.textContent =
-        "Submit Booking";
+          "Submit Booking";
 
 
       }
-
 
       catch(error) {
 
 
         console.error(
-          "Booking Error:",
+          "FIREBASE ERROR:",
           error
         );
 
 
-        errorMessage.textContent =
+        errorMessage.innerHTML =
 
-        "Sorry, your booking could not be submitted. Please try again.";
+          "<strong>Firebase Error</strong><br>" +
+
+          "Code: " +
+          error.code +
+
+          "<br><br>" +
+
+          "Message: " +
+          error.message;
 
 
         errorMessage.style.display =
-        "block";
+          "block";
 
 
         submitButton.disabled =
-        false;
+          false;
 
 
         submitButton.textContent =
-        "Submit Booking";
+          "Submit Booking";
 
 
       }
 
-
     }
 
   );
-
 
 </script>
 
